@@ -109,13 +109,17 @@ Same as above, with these differences:
 2. Do the work. Ask your orchestrator questions rather than guessing what the other side is doing.
 3. Report DONE with a summary. Never post to the ntfy bus directly; only orchestrators do.
 
-## Reviewer session (Ahmed's laptop, from 14:32)
+## Reviewer session (Ahmed's laptop)
 
-`main` is protected by a ruleset; every change lands through a PR. A reviewer session on Ahmed's
-laptop polls open PRs, checks typecheck / owned files / acceptance output, merges, and reports
-`MERGED #<n> <phase>` to the main orchestrator via `SendMessage`. The main orchestrator records the
-merge in `coordination/PLAN.md` and posts `PLAN: merged #<n>` on the bus so Ather's side pulls.
-The main orchestrator's own plan commits also go through a PR (branch `plan-<hhmm>`).
+`main` is protected by a ruleset (1 approving review, no bypass); every change lands through a PR.
+A reviewer session on Ahmed's laptop, per open PR: checks it is mergeable and conflicts with no
+other open PR, checks it touches only files inside the owner's claim (`coordination/PLAN.md`),
+reports the result to the main orchestrator via `SendMessage`, then approves it on GitHub
+(`gh pr review <n> --approve`). **It runs no code and never merges.** Anything needing a fix goes to
+the main orchestrator, which assigns it to the owning worker. GitHub rejects self-approval, so PRs
+authored from Ahmed's account are approved by Ather (and vice versa). Merging is done by a human
+from the GitHub UI. The main orchestrator records merges in `coordination/PLAN.md` and posts
+`PLAN: merged #<n>` on the bus.
 
 ## Rules
 
