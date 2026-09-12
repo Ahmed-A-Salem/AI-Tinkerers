@@ -38,8 +38,7 @@ Only the main orchestrator edits this file. Everyone else reads it and reports C
 3. Read answers with `python coordination/agent_bus.py poll --since 30m` (the main orchestrator
    replies on the same topic with `reply_to` set to your message id). Pull `main` after any
    `PLAN:` message.
-4. Commit your phase's files on `main` when DONE (pull first, push right away, only your own
-   files). Ahmed's side does the same, so conflicts stay inside `package.json` at worst.
+4. When DONE, push your phase's files on a branch and open a PR (see "Git workflow"). Never push to `main`.
 5. Current lane order: **D now** (no LLM needed), **C now** (build + dry run; the LLM acceptance
    waits for the OpenRouter key), then **E** once B, C, D are done, then **H**.
 
@@ -60,16 +59,16 @@ Shared, append-only: `package.json` (add deps, don't remove), `.env.example`.
 
 | Phase | Name                              | Lane  | Status        | Gate  | Depends on |
 |-------|-----------------------------------|-------|---------------|-------|------------|
-| A     | Foundation                        | Ahmed | **done** except A4: smoke read+write OK on `SCRUM-1`, import script re-runnable (13:35); **waiting on Ahmed to run `npm run import:issues -- --go` in his terminal** (worker's permission classifier blocks bulk Jira writes) | 12:15 | — |
-| B     | Ticket extractor → records        | Ahmed | in-progress (a3; code done, OpenAI key landed 13:40, running acceptance) | 12:45 | A |
-| C     | Ticket→code mapping (decision)    | Ather | todo          | 13:00 | A |
-| D     | Planted conflicts + ground truth  | Ather | claimed (ai-tinkerers-d0 via ather orchestrator, 13:32) | 13:00 | A |
-| E     | Retrieval + comparison → verdicts | Ather | todo          | 13:30 | B, C, D |
-| F     | Write-back + Accept mode          | Ahmed | todo          | 14:00 | A4, E (interface only) |
-| G     | Event-driven via Trigger.dev      | Free  | todo          | 14:15 | F |
+| A     | Foundation                        | Ahmed | **done** except A4: 200 issues imported 13:42 (SCRUM-5..204, `data/gh-to-jira.json`); **6 PLANT tickets pending Ahmed's `npm run import:issues -- --go`** | 12:15 | — |
+| B     | Ticket extractor → records        | Ahmed | **done** 13:50 (206 records, rerun 0 LLM calls; code ba293e9) | 12:45 | A |
+| C     | Ticket→code mapping (decision)    | Ather | claimed (ai-tinkerers-9c via ather orchestrator, 13:42) | 13:00 | A |
+| D     | Planted conflicts + ground truth  | Ather | **done** 13:42 (plant.ts --check exit 0; commit to main pending from Ather) | 13:00 | A |
+| E     | Retrieval + comparison → verdicts | Ather | claimed (ai-tinkerers-b2 via ather orchestrator, 13:49) | 13:30 | B, C, D |
+| F     | Write-back + Accept mode          | Ahmed | **done** 14:00 in live Jira on SCRUM-2/3/4 (0e5c1b2); final re-run on the planted pair after the PLANT import | 14:00 | A4, E (interface only) |
+| G     | Event-driven via Trigger.dev      | Free  | **done** 14:25 (manual endpoint + webhook verified in live Jira; Trigger.dev task typechecks, no live run without a key). On PR #1 (branch `phase-g-event-driven`, bb4e0a0), **not on main** | 14:15 | F |
 | H     | Auto mode + risk gate             | Ather | todo          | 14:30 | F |
-| I     | Agent 1: transcript → drafts      | Free  | todo, cut if E slipped | 14:30 | A4 |
-| J     | Demo, writeup, submit             | Ahmed | todo          | 15:10 | E, F |
+| I     | Agent 1: transcript → drafts      | Free  | in-progress (a3): drafts SCRUM-205 (collides with PLANT-3 getPath) and SCRUM-206 (clean) created 14:15; stray SCRUM-207 for Ahmed to delete; extractor tightened, adding rerun dedupe | 14:30 | A4 |
+| J     | Demo, writeup, submit             | Ahmed | in-progress: README + WRITEUP done (3e0efcb; §9 sentence and project name are placeholders); video/post owner still [OPEN] | 15:10 | E, F |
 
 Status values: todo · claimed · in-progress · done · blocked
 
@@ -258,11 +257,26 @@ the LLM using the code graph, emit §5.3 `ConflictVerdict[]`.
 
 | Owner | Phase | Files / areas | Since |
 |-------|-------|---------------|-------|
-| Ather / session ai-tinkerers-d0 | D | `data/planted.json`, `data/planted-tickets.json`, `scripts/plant.ts`, append PLANT-1..6 to `data/hono-issues.json` | 13:32 |
+| Ather / session ai-tinkerers-b2 | E | `src/retrieval/`, `src/compare/`, `src/agent2.ts`, `scripts/check.ts`, `data/verdicts/<KEY>.json` (not SAMPLE.json), `check` script in package.json | 13:49 |
+| Ather / session ai-tinkerers-9c | C | `src/mapping/`, `scripts/map.ts`, `data/mapping-eval.md`, `data/mapping/<KEY>.json` (predicted-files cache), `map` script in package.json | 13:42 |
+| Ahmed / session ai-tinkerers-f2 | J (demo) | `demo/narration.txt`, `demo/DEMO.md` | 14:27 |
+| Ahmed / session ai-tinkerers-a3 | I | `demo/standup.txt`, `src/agent1.ts`, `scripts/meeting.ts`, `meeting` script in package.json | 13:52 |
 | Ahmed / session ai-tinkerers-a3 | A4 | `scripts/import-issues.ts`, `scripts/jira-smoke.ts`, `data/gh-to-jira.json` | 13:25 |
-| Ahmed / session ai-tinkerers-a3 | B | `src/extract/` (issues.ts, llm.ts, cache.ts, index.ts), `scripts/extract.ts`, package.json (append `extract` script + dotenv) | 12:49 |
 
 Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: local orchestrator ai-tinkerers-c3 (bus node `ather`) online since 13:33; it relays its workers' CLAIM/DONE. Direct `ather-<phase>` posts are also accepted.
+
+## Git workflow (decided by Ahmed 14:32): PR per phase, no direct pushes to main
+
+Workers were racing each other on `main` (last push wins), so the ruleset "Protect main" is
+deliberate and stays. Rules from now on, both laptops, orchestrator included:
+1. Never push to `main`. Branch from a fresh `main`: `git fetch origin && git checkout -b phase-<x>-<slug> origin/main`.
+2. Commit only your phase's files. Push the branch, open a PR against `main`
+   (`gh pr create --fill --base main`), and put the PR number in your DONE message.
+3. A reviewer session on Ahmed's laptop checks each PR (typecheck, only owned files touched,
+   acceptance output in the description), merges it, and reports the merge to the main orchestrator.
+   Do not merge your own PR. If the reviewer asks for a change, fix it on the same branch.
+4. After a merge, everyone `git pull origin main` before starting the next thing.
+Open PRs: #1 Phase G.
 
 ## Decisions
 
@@ -278,6 +292,10 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: local orch
 - 2026-09-12 13:30 (Ahmed + Ather): **no local orchestrator on Ather's laptop.** Ather's developer
   sessions post CLAIM/DONE/BLOCKED/Q directly on the bus with `AGENT_BUS_NODE=ather-<phase>`;
   the main orchestrator answers on the bus. Each side commits its own finished phase files to `main`.
+- 2026-09-12 13:50 (Phase B): **records are keyed by Jira key.** The 200 GitHub issues are
+  `SCRUM-5..SCRUM-204` (`data/gh-to-jira.json`, rows `{key, gh}`); planted tickets are `PLANT-1..6`
+  until their import. `data/planted.json` still names `GH-<n>`; resolve through `issueKey()` in
+  `src/extract/issues.ts`. `depends_on` refs in records already resolve to SCRUM keys.
 - 2026-09-12 13:40 (Ahmed): **LLM provider = OpenAI, model = `gpt-5-mini`.** Supersedes the 12:58
   OpenRouter decision (organizers gave OpenAI credits). Every phase that calls a model (B, C, E, I):
   `new OpenAI()` with `OPENAI_API_KEY`, model id from `LLM_MODEL` env (`.env` has `gpt-5-mini`).
@@ -289,6 +307,37 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: local orch
   present (PLANT-*), else the `data/gh-to-jira.json` mapping if it exists, else `GH-<number>`.
   Exported as `issueKey()` / `loadIssues()` from `src/extract/issues.ts`; Phases C and E reuse it
   rather than re-deriving keys.
+
+## Phase F interface (done 14:00, commit 0e5c1b2)
+
+- `src/actions/index.ts`: `propose(verdicts) → AgentAction[]`, `apply(actions)`, `linkFor`, `describe`;
+  constants `PROPOSED_TAG`, `APPLIED_TAG`, `CONFLICT_LABEL` (`agent-conflict`), `APPROVED_LABEL` (`agent-approved`).
+- `src/modes/accept.ts`: `gate(actions, mode, approved) → { now, pending }`, `acceptGate`, `isApproved`.
+  `MODE=accept` (default) holds links until the ticket carries `agent-approved`; `MODE=auto` applies links
+  at once. **Phase H extends this file's `gate()` with `risk`** (confidence ≥ 0.9 now, else pending).
+- `scripts/act.ts` verdict source order: `src/agent2.ts` `checkTicket(key)` if the module exists →
+  `data/verdicts/<KEY>.json` → `SAMPLE.json`. Either a bare `ConflictVerdict[]` or
+  `{ candidates: number, verdicts: [] }`; **Phase E should return the object form** so the
+  no-conflict comment can say "Checked against N related tickets".
+- Links: `ordering` → "Blocks" (A blocks B), everything else → "Relates". Label `agent-conflict` on both
+  tickets, comment on the checked ticket only.
+- Known limit: re-running the proposal step posts a duplicate comment (no comment dedupe).
+
+## Planted conflicts (Phase D output, 13:42)
+
+| Pair | Type | Code path |
+|------|------|-----------|
+| GH-2398 ↔ PLANT-1 | dependency_break | `src/helper/cookie/index.ts` `getSignedCookie()` — **demo pair** (jwt middleware reads its token from a signed cookie) |
+| GH-4192 ↔ PLANT-2 | dependency_break | `src/utils/basic-auth.ts` `auth()` |
+| GH-3210 ↔ PLANT-3 | dependency_break | `src/utils/url.ts` `getPath()` |
+| GH-3543 ↔ PLANT-4 | dependency_break | `src/utils/accept.ts` `parseAccept()` |
+| GH-3527 ↔ PLANT-5 | ordering | `src/helper/streaming/sse.ts` `streamSSE()` |
+| GH-3751 ↔ PLANT-6 | ordering | `src/utils/color.ts` `getColorEnabledAsync()` |
+
+`data/hono-issues.json` has 206 entries; PLANT-n entries carry `key` instead of `number`.
+`data/planted.json` entries also have `edge`, `demo`, `also_acceptable`. For Phase E scoring:
+`also_acceptable` pairs are real overlaps, not false positives; pairs match in either order.
+Phase I: an Agent 1 draft that "rips out signed cookies" would duplicate PLANT-1; pick a different commitment.
 
 ## Notes for the intelligence layer (Phases C, D, E)
 
