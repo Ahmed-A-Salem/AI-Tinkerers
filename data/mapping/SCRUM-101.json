@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-101",
+  "files": [
+    "src/middleware/jwt/jwt.ts",
+    "src/middleware/jwt/index.ts",
+    "src/utils/jwt/jwt.ts",
+    "src/http-exception.ts"
+  ],
+  "source": {
+    "src/middleware/jwt/jwt.ts": "llm",
+    "src/middleware/jwt/index.ts": "llm",
+    "src/utils/jwt/jwt.ts": "llm",
+    "src/http-exception.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}
