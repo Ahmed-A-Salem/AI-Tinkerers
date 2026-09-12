@@ -6,7 +6,7 @@ on (Atlassian Jira, ElevenLabs); confirm the exact handles on each platform.
 
 ---
 
-Built at the AI Tinkerers "Agents, Everywhere" hackathon in Paris today: **Backlog Conflict Agents**, two agents that live inside Jira.
+Built today at the AI Tinkerers hackathon in Paris: **Backlog Conflict Agents**, two agents that live inside Jira.
 
 Agent 1 listens to a stand-up and turns each commitment into a draft ticket.
 
@@ -25,7 +25,7 @@ Thanks to [@OpenAI] [@triggerdotdev] [@Atlassian] [@elevenlabsio] and [@aitinker
 
 ---
 
-Word count of the post body (between the rules, excluding placeholders): about 115.
+Word count of the post body (between the rules, placeholders included): under 120.
 
 X variant if the character limit bites: drop the two agent sentences, keep the hook, the number,
 the video link, and the tags.
