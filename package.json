@@ -1,0 +1,22 @@
+{
+  "name": "backlog-conflict-agents",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Two agents living inside Jira: meeting commitments to draft tickets, and backlog conflict detection against the backlog and the target codebase.",
+  "scripts": {
+    "import:issues": "tsx scripts/import-issues.ts",
+    "typecheck": "tsc --noEmit",
+    "index": "tsx scripts/build-index.ts"
+  },
+  "dependencies": {
+    "@trigger.dev/sdk": "^3.3.17",
+    "openai": "^4.77.0",
+    "ts-morph": "^24.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
