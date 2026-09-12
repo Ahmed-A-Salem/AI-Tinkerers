@@ -16,7 +16,7 @@ import { resolve } from 'node:path';
 import type { AgentAction, ConflictVerdict, Mode } from '../types.js';
 import { getJiraClient } from '../jira/index.js';
 import { apply, propose, describe, APPLIED_TAG, APPROVED_LABEL, type ApplyResult } from './index.js';
-import { gate, isApproved } from '../modes/accept.js';
+import { gate, isApproved } from '../modes/index.js';
 
 /** What happened to the ticket. `approved` means a human added agent-approved. */
 export type Agent2Event = 'created' | 'updated' | 'approved';
@@ -111,7 +111,12 @@ export async function runAgent2(opts: RunOptions): Promise<RunResult> {
   log(`${key}: "${issue.summary.slice(0, 60)}" labels=[${issue.labels.join(', ')}] approved=${approved}`);
 
   const all = propose(key, verdicts.length ? verdicts : [], candidates);
-  const { now, pending } = gate(all, mode, approved);
+  // Confidence belongs to one verdict (risk mode gates on it), so gate each verdict's actions on their own.
+  const { now, pending } = verdicts.length
+    ? verdicts
+        .map((v) => gate(propose(key, [v], candidates), mode, approved, v.confidence))
+        .reduce((acc, g) => ({ now: [...acc.now, ...g.now], pending: [...acc.pending, ...g.pending] }))
+    : gate(all, mode, approved, 1);
   const base: Omit<RunResult, 'performed' | 'pending'> = {
     key, event, mode, source, verdicts: verdicts.length, candidates, approved, dry, url: issue.url,
   };
