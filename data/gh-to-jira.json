@@ -798,5 +798,29 @@
   {
     "key": "SCRUM-204",
     "gh": 2249
+  },
+  {
+    "key": "SCRUM-208",
+    "src": "PLANT-1"
+  },
+  {
+    "key": "SCRUM-209",
+    "src": "PLANT-2"
+  },
+  {
+    "key": "SCRUM-210",
+    "src": "PLANT-3"
+  },
+  {
+    "key": "SCRUM-211",
+    "src": "PLANT-4"
+  },
+  {
+    "key": "SCRUM-212",
+    "src": "PLANT-5"
+  },
+  {
+    "key": "SCRUM-213",
+    "src": "PLANT-6"
   }
 ]
