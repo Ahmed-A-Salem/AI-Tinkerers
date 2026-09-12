@@ -1,0 +1,16 @@
+{
+  "note": "Hand-written stand-in for Phase E on the demo pair. Pair uses record keys (GH-n / PLANT-n); act maps them to Jira keys through data/gh-to-jira.json. Quoted lines are verbatim from the two tickets.",
+  "candidates": 3,
+  "verdicts": [
+    {
+      "pair": ["GH-2398", "PLANT-1"],
+      "type": "dependency_break",
+      "confidence": 0.94,
+      "evidence": {
+        "ticket_a_line": "jwt middleware needs a parameter to specify the secret for the cookie and needs to be able to handle signed cookies.",
+        "ticket_b_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+        "code_path": "src/helper/cookie/index.ts -> getSignedCookie()"
+      }
+    }
+  ]
+}
