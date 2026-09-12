@@ -21,7 +21,9 @@ Jira key.
 ## Before recording
 
 1. `.env` filled in, `npm install`, `target/hono` cloned, `npm run index` done. `data/records/` full.
-2. Run the reset procedure at the bottom so every ticket is clean.
+2. Run the reset procedure at the bottom so every ticket is clean. Once, before the first take:
+   delete SCRUM-207 ("Finish PR review and release notes"), a stray draft from an early Agent 1
+   run before the commitment filter existed, so the backlog shows only real drafts.
 3. Confirm the verdicts exist before going on camera. Either `npm run check -- SCRUM-205` and
    `npm run check -- SCRUM-208` (Phase E), or, if `check` is not on main yet:
    `data/verdicts/SCRUM-208.json` is already in the repo, and the SCRUM-205 fallback is in the
