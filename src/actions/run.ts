@@ -17,6 +17,14 @@ import type { AgentAction, ConflictVerdict, Mode } from '../types.js';
 import { getJiraClient } from '../jira/index.js';
 import { apply, propose, describe, APPLIED_TAG, APPROVED_LABEL, type ApplyResult } from './index.js';
 import { gate, isApproved } from '../modes/accept.js';
+import { resolveKey, jiraKey } from '../extract/issues.js';
+
+/** Any spelling → the Jira key to act on (PLANT-1 → SCRUM-208, GH-2398 → SCRUM-198). */
+const toJiraKey = (k: string): string => jiraKey(resolveKey(k));
+/** Any spelling → the record key verdict files are named by (SCRUM-208 → PLANT-1). */
+const toRecordKey = (k: string): string => resolveKey(k);
+/** Every spelling a verdict for this ticket might be stored under. */
+const aliases = (k: string): string[] => [...new Set([k, toJiraKey(k), toRecordKey(k)])];
 
 /** What happened to the ticket. `approved` means a human added agent-approved. */
 export type Agent2Event = 'created' | 'updated' | 'approved';
@@ -72,25 +80,44 @@ async function readJson(path: string): Promise<unknown | undefined> {
   }
 }
 
+/** Verdict pairs may be written in record keys (GH-n / PLANT-n); Jira only knows SCRUM-n. */
+function inJiraKeys(v: Verdicts): Verdicts {
+  return {
+    ...v,
+    verdicts: v.verdicts.map((x) => ({ ...x, pair: [toJiraKey(x.pair[0]), toJiraKey(x.pair[1])] })),
+  };
+}
+
+/**
+ * `key` may be a Jira key or a record key; verdicts are looked up under every spelling
+ * (resolveKey / jiraKey in src/extract/issues.ts) and returned with pairs in Jira keys.
+ */
 export async function loadVerdicts(key: string): Promise<Verdicts> {
+  const names = aliases(key);
   // 1. Phase E, if it exists. A non-literal specifier keeps tsc from resolving it.
+  //    It reads data/records/<KEY>.json, which are keyed the extractor's way, so it gets the record key.
   const agent2 = '../agent2.js';
   try {
     const mod = (await import(agent2)) as { checkTicket?: (k: string) => Promise<unknown> };
-    if (typeof mod.checkTicket === 'function') return normalise(await mod.checkTicket(key), 'checkTicket');
+    if (typeof mod.checkTicket === 'function') {
+      const recordKey = toRecordKey(toJiraKey(key));
+      return inJiraKeys(normalise(await mod.checkTicket(recordKey), `checkTicket(${recordKey})`));
+    }
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code !== 'ERR_MODULE_NOT_FOUND') throw e;
   }
-  // 2. per-ticket verdict file.
-  const own = await readJson(`data/verdicts/${key}.json`);
-  if (own !== undefined) return normalise(own, `data/verdicts/${key}.json`);
+  // 2. per-ticket verdict file, under any spelling of the key.
+  for (const name of names) {
+    const own = await readJson(`data/verdicts/${name}.json`);
+    if (own !== undefined) return inJiraKeys(normalise(own, `data/verdicts/${name}.json`));
+  }
   // 3. hand-written sample, filtered to this ticket.
   const sample = await readJson('data/verdicts/SAMPLE.json');
   if (sample === undefined) {
-    throw new Error(`no verdicts for ${key}: no checkTicket, no data/verdicts/${key}.json, no SAMPLE.json`);
+    throw new Error(`no verdicts for ${key}: no checkTicket, no data/verdicts/{${names.join(',')}}.json, no SAMPLE.json`);
   }
   const s = normalise(sample, 'data/verdicts/SAMPLE.json');
-  return { ...s, verdicts: s.verdicts.filter((v) => v.pair.includes(key)) };
+  return inJiraKeys({ ...s, verdicts: s.verdicts.filter((v) => v.pair.some((p) => names.includes(p))) });
 }
 
 export async function runAgent2(opts: RunOptions): Promise<RunResult> {
@@ -99,7 +126,9 @@ export async function runAgent2(opts: RunOptions): Promise<RunResult> {
   const applyFlag = opts.apply ?? event === 'approved';
   const dry = opts.dry ?? false;
   const mode: Mode = opts.mode ?? ((process.env.MODE as Mode | undefined) ?? 'accept');
-  const { key } = opts;
+  // Jira only knows SCRUM-n; a PLANT-n or GH-n on the command line is mapped first.
+  const key = toJiraKey(opts.key);
+  if (key !== opts.key) log(`${opts.key} is ${key} in Jira`);
 
   const { verdicts, candidates, source } = await loadVerdicts(key);
   const cand = candidates !== undefined ? `, ${candidates} candidates` : '';
