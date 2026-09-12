@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-129",
+  "candidates": 3,
+  "checked": [
+    "SCRUM-210",
+    "SCRUM-162",
+    "SCRUM-8"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-129",
+        "SCRUM-210"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "Something like the `getPath` method would be sufficient enough for my use case.",
+        "ticket_b_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+        "code_path": "src/utils/url.ts → getPath()"
+      }
+    }
+  ]
+}

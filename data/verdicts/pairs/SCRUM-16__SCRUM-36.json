@@ -1,0 +1,21 @@
+{
+  "hash": "b05ffb80ff32947d9bc281678dcc5d6839daea3b",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-16",
+    "SCRUM-36"
+  ],
+  "signals": [
+    "SCRUM-16 removes routePath(); SCRUM-36 names it"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "- Obsolete `HonoRequest.routePath()`",
+    "ticket_b_line": "console.log(`[middleware A] in`, c.req.path, routePath(c), routePath(c, -1))",
+    "file": "src/helper/route/index.ts",
+    "symbol": "routePath",
+    "reason": "Ticket A explicitly plans to remove/mark HonoRequest.routePath() obsolete, while Ticket B directly uses routePath(c) in middleware; removing the symbol would break the behavior described in Ticket B."
+  }
+}

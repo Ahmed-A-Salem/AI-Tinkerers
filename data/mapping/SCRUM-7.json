@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-7",
+  "files": [
+    "src/jsx/streaming.ts",
+    "src/jsx/jsx-runtime.ts",
+    "src/jsx/index.ts",
+    "src/jsx/types.ts",
+    "src/jsx/dom/components.ts",
+    "src/jsx/dom/server.ts",
+    "src/jsx/intrinsic-element/components.ts",
+    "src/jsx/dom/intrinsic-element/components.ts"
+  ],
+  "source": {
+    "src/jsx/streaming.ts": "llm",
+    "src/jsx/jsx-runtime.ts": "llm",
+    "src/jsx/index.ts": "llm",
+    "src/jsx/types.ts": "llm",
+    "src/jsx/dom/components.ts": "collision",
+    "src/jsx/dom/server.ts": "collision",
+    "src/jsx/intrinsic-element/components.ts": "collision",
+    "src/jsx/dom/intrinsic-element/components.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

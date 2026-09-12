@@ -1,0 +1,23 @@
+{
+  "hash": "96c4942a58d5e5ef28d5e058cc4f1a4648ea1d07",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-122",
+    "SCRUM-174"
+  ],
+  "signals": [
+    "SCRUM-174 removes getSignedCookie() from src/helper/cookie/index.ts; src/middleware/jwt/jwt.ts (SCRUM-122) uses it",
+    "src/middleware/jwt/jwt.ts (SCRUM-122) imports src/helper/cookie/index.ts (SCRUM-174)",
+    "src/middleware/jwt/jwt.ts (SCRUM-122) imports src/utils/cookie.ts (SCRUM-174)"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.85,
+    "ticket_a_line": "Currently, Hono's middlewares, such as `csrf`, throw `HTTPException` by default.",
+    "ticket_b_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "The JWT middleware is one of Hono's built-in middlewares and src/middleware/jwt/jwt.ts currently imports and calls getSignedCookie from src/helper/cookie/index.ts; changing/removing getSignedCookie's signature (as SCRUM-174 proposes) would break the built-in middleware work SCRUM-122 intends to modify, so SCRUM-174 is a breaking dependency for SCRUM-122."
+  }
+}

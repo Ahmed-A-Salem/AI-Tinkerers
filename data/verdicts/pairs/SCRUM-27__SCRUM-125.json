@@ -1,0 +1,35 @@
+{
+  "hash": "456c9f611520ac374c74cb1e1f57098af3497b70",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-27",
+    "SCRUM-125"
+  ],
+  "signals": [
+    "SCRUM-27 removes ConnInfo() from src/helper/conninfo/types.ts; src/helper/conninfo/index.ts (SCRUM-125) uses it",
+    "src/helper/conninfo/index.ts (SCRUM-27) imports src/helper/conninfo/types.ts (SCRUM-125)",
+    "src/adapter/deno/conninfo.ts (SCRUM-125) imports src/helper/conninfo/index.ts (SCRUM-27)",
+    "src/adapter/cloudflare-workers/conninfo.ts (SCRUM-125) imports src/helper/conninfo/index.ts (SCRUM-27)",
+    "src/helper/conninfo/index.ts (SCRUM-125) imports src/helper/conninfo/types.ts (SCRUM-27)",
+    "src/adapter/cloudflare-workers/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-125)",
+    "src/adapter/deno/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-125)",
+    "src/adapter/bun/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-125)",
+    "both map to src/helper/conninfo/index.ts",
+    "both map to src/helper/conninfo/types.ts",
+    "both map to src/adapter/cloudflare-workers/conninfo.ts",
+    "both map to src/adapter/deno/conninfo.ts",
+    "both map into src/helper/conninfo/",
+    "both map into src/adapter/cloudflare-workers/",
+    "both map into src/adapter/deno/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Replace ConnInfo with WinterTC SocketInfo",
+    "ticket_b_line": "files (predicted): src/helper/conninfo/index.ts, src/helper/conninfo/types.ts, src/adapter/deno/conninfo.ts, src/adapter/cloudflare-workers/conninfo.ts",
+    "file": "src/helper/conninfo/types.ts",
+    "symbol": "ConnInfo",
+    "reason": "Ticket A removes/replaces the ConnInfo symbol; Ticket B is predicted to use/edit the conninfo helpers (which export ConnInfo), so removing ConnInfo would break Ticket B's changes."
+  }
+}

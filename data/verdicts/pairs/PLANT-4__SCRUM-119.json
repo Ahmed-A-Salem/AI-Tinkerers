@@ -1,0 +1,25 @@
+{
+  "hash": "3d8eb27dfbd4e1717d25f1573b84d8dc8393c583",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-4",
+    "SCRUM-119"
+  ],
+  "signals": [
+    "PLANT-4 removes parseAccept() from src/utils/accept.ts; src/middleware/compress/index.ts (SCRUM-119) uses it",
+    "src/middleware/compress/index.ts (SCRUM-119) imports src/utils/accept.ts (PLANT-4)",
+    "src/middleware/compress/index.ts (PLANT-4) imports src/utils/compress.ts (SCRUM-119)",
+    "both map to src/middleware/compress/index.ts",
+    "both map into src/middleware/compress/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Remove parseAccept() from src/utils/accept.ts.",
+    "ticket_b_line": "https://github.com/honojs/hono/blob/b1335f9fb296cfa4b947367bbad0512c7739c5f5/src/middleware/compress/index.ts#L9",
+    "file": "src/utils/accept.ts",
+    "symbol": "parseAccept",
+    "reason": "src/middleware/compress/index.ts currently imports and calls parseAccept (import at line 7 and call at line 31); Ticket A removes parseAccept from src/utils/accept.ts while Ticket B modifies the compress middleware file that depends on that symbol, so removing it would break SCRUM-119."
+  }
+}

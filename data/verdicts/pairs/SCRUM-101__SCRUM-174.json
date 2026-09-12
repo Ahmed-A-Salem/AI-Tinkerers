@@ -1,0 +1,23 @@
+{
+  "hash": "a6468b2b39ab83683b07a4f62eec3965f2b1ca50",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-101",
+    "SCRUM-174"
+  ],
+  "signals": [
+    "SCRUM-174 removes getSignedCookie() from src/helper/cookie/index.ts; src/middleware/jwt/jwt.ts (SCRUM-101) uses it",
+    "src/middleware/jwt/jwt.ts (SCRUM-101) imports src/helper/cookie/index.ts (SCRUM-174)",
+    "src/middleware/jwt/jwt.ts (SCRUM-101) imports src/utils/cookie.ts (SCRUM-174)"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "When using JWT Middleware to validate bearer token, if the token has expired then the error is a generic HTTPException rather than explanatory.",
+    "ticket_b_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "The JWT middleware (ticket A) calls getSignedCookie (seen in src/middleware/jwt/jwt.ts), and ticket B proposes a breaking change to getSignedCookie's argument order (removing/changing its current signature), which would break the middleware's existing calls."
+  }
+}

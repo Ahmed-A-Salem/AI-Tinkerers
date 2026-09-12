@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-113",
+  "files": [
+    "src/adapter/bun/websocket.ts",
+    "src/helper/websocket/index.ts",
+    "src/types.ts",
+    "src/adapter/cloudflare-workers/websocket.ts",
+    "src/adapter/deno/websocket.ts"
+  ],
+  "source": {
+    "src/adapter/bun/websocket.ts": "llm",
+    "src/helper/websocket/index.ts": "llm",
+    "src/types.ts": "llm",
+    "src/adapter/cloudflare-workers/websocket.ts": "collision",
+    "src/adapter/deno/websocket.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

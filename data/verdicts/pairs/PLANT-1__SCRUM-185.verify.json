@@ -1,0 +1,16 @@
+{
+  "hash": "307383e7dad0e5db1a5699562ada2d5de91b2834",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-1",
+    "SCRUM-185"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.86,
+    "reason": "PLANT-1 explicitly deletes getSignedCookie (and friends) and src/middleware/jwt/jwt.ts (SCRUM-185) imports and calls getSignedCookie (lines shown in code graph), so removing that export would break the jwt middleware."
+  }
+}

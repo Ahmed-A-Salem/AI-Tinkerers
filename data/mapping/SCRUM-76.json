@@ -1,0 +1,10 @@
+{
+  "key": "SCRUM-76",
+  "files": [
+    "src/middleware/basic-auth/index.ts"
+  ],
+  "source": {
+    "src/middleware/basic-auth/index.ts": "linked"
+  },
+  "model": "openai:gpt-5-mini"
+}

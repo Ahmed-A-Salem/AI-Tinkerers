@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-119",
+  "files": [
+    "src/middleware/compress/index.ts",
+    "src/utils/compress.ts"
+  ],
+  "source": {
+    "src/middleware/compress/index.ts": "linked",
+    "src/utils/compress.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

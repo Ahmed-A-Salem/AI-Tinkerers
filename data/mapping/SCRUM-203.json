@@ -1,0 +1,32 @@
+{
+  "key": "SCRUM-203",
+  "files": [
+    "src/context.ts",
+    "src/types.ts",
+    "src/hono-base.ts",
+    "src/hono.ts",
+    "src/preset/quick.ts",
+    "src/preset/tiny.ts",
+    "src/jsx/context.ts",
+    "src/jsx/dom/render.ts",
+    "src/router/reg-exp-router/node.ts",
+    "src/adapter/aws-lambda/conninfo.ts",
+    "src/adapter/lambda-edge/conninfo.ts",
+    "src/adapter/netlify/conninfo.ts"
+  ],
+  "source": {
+    "src/context.ts": "llm",
+    "src/types.ts": "llm",
+    "src/hono-base.ts": "collision",
+    "src/hono.ts": "collision",
+    "src/preset/quick.ts": "collision",
+    "src/preset/tiny.ts": "collision",
+    "src/jsx/context.ts": "collision",
+    "src/jsx/dom/render.ts": "collision",
+    "src/router/reg-exp-router/node.ts": "collision",
+    "src/adapter/aws-lambda/conninfo.ts": "collision",
+    "src/adapter/lambda-edge/conninfo.ts": "collision",
+    "src/adapter/netlify/conninfo.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

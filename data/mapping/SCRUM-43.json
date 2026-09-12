@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-43",
+  "files": [
+    "src/adapter/cloudflare-workers/websocket.ts",
+    "src/adapter/cloudflare-workers/index.ts"
+  ],
+  "source": {
+    "src/adapter/cloudflare-workers/websocket.ts": "linked",
+    "src/adapter/cloudflare-workers/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

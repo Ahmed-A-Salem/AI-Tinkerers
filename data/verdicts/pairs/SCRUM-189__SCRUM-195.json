@@ -1,0 +1,28 @@
+{
+  "hash": "cd2d2d327b1a5a092675f35c301ed2e30f754e43",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-189",
+    "SCRUM-195"
+  ],
+  "signals": [
+    "both name Context()",
+    "src/jsx/dom/render.ts (SCRUM-195) imports src/jsx/context.ts (SCRUM-189)",
+    "src/jsx/dom/render.ts (SCRUM-189) imports src/jsx/context.ts (SCRUM-195)",
+    "both map to src/jsx/context.ts",
+    "both map to src/jsx/dom/render.ts",
+    "both map to src/router/reg-exp-router/node.ts",
+    "both map into src/jsx/dom/",
+    "both map into src/router/reg-exp-router/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A requests adding a TypeScript/ESLint check to catch missing 'return c.xxx()' (and references the runtime 'Context is not finalized' error), while Ticket B only proposes changing the typed return of middleware next() from void to Context; neither ticket removes or renames the Context symbol or the error, nor requires the other to land first, so there is no dependency_break or ordering conflict."
+  }
+}

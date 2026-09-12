@@ -1,0 +1,24 @@
+{
+  "hash": "572b3f33e4d5eb39606151ea91372d79903b2093",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-23"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/adapter/bun/serve-static.ts; src/adapter/bun/index.ts (SCRUM-23) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-23) uses it",
+    "src/adapter/bun/index.ts (SCRUM-23) imports src/adapter/bun/serve-static.ts (SCRUM-12)",
+    "both map into src/adapter/bun/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "Bun",
+    "file": "src/adapter/bun/serve-static.ts",
+    "symbol": "serveStatic",
+    "reason": "SCRUM-12 changes/removes serveStatic (ticket A refers to modifying serveStatic) while SCRUM-23 targets the Bun adapter (ticket B) and the Bun adapter index currently re-exports and its files import serveStatic (src/adapter/bun/index.ts imports/exports serveStatic), so removing/changing serveStatic would break SCRUM-23."
+  }
+}

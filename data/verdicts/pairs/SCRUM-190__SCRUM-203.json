@@ -1,0 +1,21 @@
+{
+  "hash": "1fc69b22708cbb81ab1b956b2a40fddf5632ef58",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-190",
+    "SCRUM-203"
+  ],
+  "signals": [
+    "SCRUM-190 removes ContextVariableMap(); SCRUM-203 names it"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "Or we remove the following:\n\n```ts\ninterface ContextVariableMap {\n  jwtPayload: any;\n}\n```",
+    "ticket_b_line": "If only there was a `ContextBindingMap`, similar to [`ContextVariableMap`](https://hono.dev/api/context#contextvariablemap), to declare a module interface to write any global bindings there, then you can simply type your context like `(c: Context)` in a route to be able to get types in your `c.env` or `env(c)` Bindings.",
+    "file": "",
+    "symbol": "",
+    "reason": "These proposals are independent: A is about adding JWT payload typing or removing a jwtPayload property from ContextVariableMap, while B proposes adding a new ContextBindingMap for env bindings; neither ticket removes or renames the other's required symbol nor requires the other to land first."
+  }
+}

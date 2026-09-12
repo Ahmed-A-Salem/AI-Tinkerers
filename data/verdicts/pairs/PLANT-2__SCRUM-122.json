@@ -1,0 +1,24 @@
+{
+  "hash": "6e5aa7a883a8e4aa82580571f99ead2c55fc1100",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-2",
+    "SCRUM-122"
+  ],
+  "signals": [
+    "PLANT-2 removes auth() from src/utils/basic-auth.ts; src/middleware/basic-auth/index.ts (SCRUM-122) uses it",
+    "src/middleware/basic-auth/index.ts (SCRUM-122) imports src/utils/basic-auth.ts (PLANT-2)",
+    "both map to src/middleware/basic-auth/index.ts",
+    "both map into src/middleware/basic-auth/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.8,
+    "ticket_a_line": "Remove `auth()` from `src/utils/basic-auth.ts`.",
+    "ticket_b_line": "Add an optional exception property to specify a custom exception class:",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A removes an internal helper auth() from utils, but Ticket B's request changes middleware error/exception behavior (adding an exception option) and does not require the auth symbol itself; the basic-auth middleware could be updated to preserve its exception behavior regardless of whether auth() remains (or be adapted to a new verifyBasicAuth implementation), so there is no direct dependency_break or ordering constraint between these tickets."
+  }
+}

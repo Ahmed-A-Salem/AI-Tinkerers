@@ -1,0 +1,27 @@
+{
+  "hash": "92c5c28038093e3bac3f5b68be0ce692ecb094d5",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-127"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-127) uses it",
+    "SCRUM-39 removes ClientResponse(); SCRUM-127 names it",
+    "src/client/utils.ts (SCRUM-127) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-127)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "removes: ClientResponse",
+    "ticket_b_line": "The return of ofetch does not match hc's `ClientResponse`.",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "SCRUM-39 intends to remove/replace the ClientResponse type in src/client/types.ts, while SCRUM-127 explicitly depends on the ClientResponse symbol and its typings to adapt hono to ofetch, so removing/renaming it would break SCRUM-127."
+  }
+}

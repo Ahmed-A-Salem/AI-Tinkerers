@@ -1,0 +1,23 @@
+{
+  "hash": "510b2c345415d703a6e3670a1074251ef2b2f6c2",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-174",
+    "SCRUM-190"
+  ],
+  "signals": [
+    "SCRUM-174 removes getSignedCookie() from src/helper/cookie/index.ts; src/middleware/jwt/jwt.ts (SCRUM-190) uses it",
+    "src/middleware/jwt/jwt.ts (SCRUM-190) imports src/helper/cookie/index.ts (SCRUM-174)",
+    "src/middleware/jwt/jwt.ts (SCRUM-190) imports src/utils/cookie.ts (SCRUM-174)"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "ticket_b_line": "When using the JWT middleware, end users currently cannot specify the type for the payload.",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "Ticket A proposes a breaking change to (and effectively removes/renames/changes) getSignedCookie in src/helper/cookie/index.ts, while Ticket B modifies the JWT middleware which today imports and calls getSignedCookie; changing or removing that exported symbol will break the JWT middleware changes."
+  }
+}

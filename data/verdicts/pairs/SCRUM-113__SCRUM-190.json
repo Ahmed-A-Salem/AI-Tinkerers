@@ -1,0 +1,21 @@
+{
+  "hash": "6e3e57a552233c4dc9a5e0ea68c16a9a433530ed",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-113",
+    "SCRUM-190"
+  ],
+  "signals": [
+    "SCRUM-190 removes ContextVariableMap(); SCRUM-113 names it"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.85,
+    "ticket_a_line": "Globally extending `ContextVariableMap` is problematic when the app has multiple routes where every route has its own context fields:",
+    "ticket_b_line": "Or we remove the following: \n\n```ts\ninterface ContextVariableMap {\n  jwtPayload: any;\n}\n```",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A requests per-route generics for upgradeWebSocket and explicitly objects to relying on a globally-augmented ContextVariableMap; Ticket B proposes adding a generic to the jwt middleware or removing a jwtPayload property from ContextVariableMap — neither change renames or removes upgradeWebSocket or the types that Ticket A needs, so there is no dependency or ordering conflict."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "hash": "b86958d7ed83a5cb26100782dec48ebfd7a451fa",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-6",
+    "SCRUM-32"
+  ],
+  "signals": [
+    "PLANT-6 removes getColorEnabled() from src/utils/color.ts; src/helper/dev/index.ts (SCRUM-32) uses it",
+    "src/helper/dev/index.ts (SCRUM-32) imports src/utils/color.ts (PLANT-6)",
+    "both map to src/helper/dev/index.ts",
+    "both map into src/helper/dev/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.8,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A proposes changing how colorization is decided in showRoutes()/utils/color, but Ticket B is a high-level feature request for an AI skill and does not explicitly rely on or reference the getColorEnabled symbol or showRoutes behavior; there is no concrete sentence in Ticket B that shows it depends on the symbol Ticket A would change."
+  }
+}

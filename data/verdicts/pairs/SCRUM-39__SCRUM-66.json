@@ -1,0 +1,26 @@
+{
+  "hash": "66a0781bce69406464ee3c31b56f548ce6b6e29c",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-66"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-66) uses it",
+    "src/client/utils.ts (SCRUM-66) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-66)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.85,
+    "ticket_a_line": "The RPC client accepts a custom `fetch` implementation via options, but the `ClientResponse` types are tightly coupled to the native fetch API.",
+    "ticket_b_line": "response.parseResponse() should return the response parsed according to the schema for the response's status code.",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A proposes changing the ClientResponse types to accommodate non-native fetch clients (altering/removing the current ClientResponse shape), while Ticket B directly depends on ClientResponse / response.parseResponse (utils.parseResponse<T extends ClientResponse<any>>); changing or removing ClientResponse will break the parsing API that Ticket B expects."
+  }
+}

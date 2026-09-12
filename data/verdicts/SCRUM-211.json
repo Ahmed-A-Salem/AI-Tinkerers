@@ -1,0 +1,36 @@
+{
+  "key": "SCRUM-211",
+  "candidates": 2,
+  "checked": [
+    "SCRUM-119",
+    "SCRUM-140"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-211",
+        "SCRUM-119"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "Remove parseAccept() from src/utils/accept.ts.",
+        "ticket_b_line": "https://github.com/honojs/hono/blob/b1335f9fb296cfa4b947367bbad0512c7739c5f5/src/middleware/compress/index.ts#L9",
+        "code_path": "src/utils/accept.ts → parseAccept()"
+      }
+    },
+    {
+      "pair": [
+        "SCRUM-211",
+        "SCRUM-140"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.85,
+      "evidence": {
+        "ticket_a_line": "Remove parseAccept() from src/utils/accept.ts.",
+        "ticket_b_line": "compress middleware currently uses a hard-coded list of supported compression algorithms",
+        "code_path": "src/utils/accept.ts → parseAccept()"
+      }
+    }
+  ]
+}

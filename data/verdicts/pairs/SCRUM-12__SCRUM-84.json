@@ -1,0 +1,26 @@
+{
+  "hash": "1b2651dea55249584cc29f8224993b4592c9c144",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-84"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-84) uses it",
+    "src/adapter/bun/serve-static.ts (SCRUM-84) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/middleware/serve-static/index.ts (SCRUM-12) imports src/middleware/serve-static/path.ts (SCRUM-84)",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map into src/middleware/serve-static/",
+    "both map into src/adapter/bun/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "- modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "Hono should be able to serve the same imported HTML routes.",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "Ticket A changes/removes the serveStatic implementation in src/middleware/serve-static/index.ts while Ticket B's Bun adapter (src/adapter/bun/serve-static.ts) imports and depends on that serveStatic symbol, so A would break B if landed first."
+  }
+}

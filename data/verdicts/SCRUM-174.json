@@ -1,0 +1,29 @@
+{
+  "key": "SCRUM-174",
+  "candidates": 8,
+  "checked": [
+    "SCRUM-31",
+    "SCRUM-208",
+    "SCRUM-198",
+    "SCRUM-101",
+    "SCRUM-122",
+    "SCRUM-185",
+    "SCRUM-190",
+    "SCRUM-69"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-174",
+        "SCRUM-208"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+        "ticket_b_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+        "code_path": "src/helper/cookie/index.ts → getSignedCookie()"
+      }
+    }
+  ]
+}

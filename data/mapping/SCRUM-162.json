@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-162",
+  "files": [
+    "src/utils/url.ts",
+    "src/router/utils.ts",
+    "src/request.ts",
+    "src/helper/route/index.ts",
+    "src/context.ts"
+  ],
+  "source": {
+    "src/utils/url.ts": "llm",
+    "src/router/utils.ts": "llm",
+    "src/request.ts": "llm",
+    "src/helper/route/index.ts": "llm",
+    "src/context.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

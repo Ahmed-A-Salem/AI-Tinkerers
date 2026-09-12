@@ -1,0 +1,20 @@
+{
+  "hash": "6a3fdab7a18b25a354abae3b280efcce1ca0ce54",
+  "record": {
+    "key": "SCRUM-205",
+    "components": [
+      "helper",
+      "hono",
+      "utils"
+    ],
+    "files_touched": [],
+    "behaviors_asserted": [
+      "A hono/path helper is implemented and available in the repo.",
+      "The helper exposes matchedPath and basePath APIs.",
+      "The implementation uses getPath from utils/url (no new duplicate percent-decoding loop)."
+    ],
+    "values_specified": {},
+    "removes": [],
+    "depends_on": []
+  }
+}

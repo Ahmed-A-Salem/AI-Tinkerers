@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-96",
+  "files": [
+    "src/adapter/vercel/handler.ts",
+    "src/adapter/vercel/conninfo.ts",
+    "src/adapter/vercel/index.ts",
+    "src/helper/adapter/index.ts"
+  ],
+  "source": {
+    "src/adapter/vercel/handler.ts": "llm",
+    "src/adapter/vercel/conninfo.ts": "llm",
+    "src/adapter/vercel/index.ts": "llm",
+    "src/helper/adapter/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

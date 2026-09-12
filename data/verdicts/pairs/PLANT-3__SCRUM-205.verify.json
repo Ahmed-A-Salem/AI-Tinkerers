@@ -1,0 +1,16 @@
+{
+  "hash": "9eb0a4db3f23bc8b59002ff866a90a3fba59bf25",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-205"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.92,
+    "reason": "Ticket A explicitly removes the getPath export from src/utils/url.ts while Ticket B explicitly states it will use getPath from utils/url, so A would break B if merged."
+  }
+}

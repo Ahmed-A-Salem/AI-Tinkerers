@@ -1,0 +1,27 @@
+{
+  "hash": "58eb9f4ce0ea70a9b0982bb66ed67e08bb44e445",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-84",
+    "SCRUM-144"
+  ],
+  "signals": [
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-84) uses it",
+    "src/adapter/bun/serve-static.ts (SCRUM-84) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "src/middleware/serve-static/index.ts (SCRUM-144) imports src/middleware/serve-static/path.ts (SCRUM-84)",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map to src/middleware/serve-static/path.ts",
+    "both map into src/adapter/bun/",
+    "both map into src/middleware/serve-static/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "It would be really helpful if you can serve the same imported HTML routes using Hono.",
+    "ticket_b_line": "Create `serveStatic` in `hono/nodejs`",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "Ticket A expects Hono's Bun adapter to serve HTML imports and the Bun adapter file (src/adapter/bun/serve-static.ts) imports and uses the serveStatic symbol from src/middleware/serve-static/index.ts; Ticket B moves/removes/relocates serveStatic (creating a new hono/nodejs serveStatic), which would remove or change the existing serveStatic export and break the Bun adapter that Ticket A relies on."
+  }
+}

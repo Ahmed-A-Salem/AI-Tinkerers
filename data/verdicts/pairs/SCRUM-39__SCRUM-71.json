@@ -1,0 +1,24 @@
+{
+  "hash": "9ca5a259d1eeaebf43f936b4fe0ca83e7279fcd4",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-71"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/index.ts (SCRUM-71) uses it",
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-71) uses it",
+    "src/client/index.ts (SCRUM-71) imports src/client/utils.ts (SCRUM-39)",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "removes: ClientResponse",
+    "ticket_b_line": "I propose adding two new type helpers to `hono/client` to extract success and error response body types from an RPC client function.",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A intends to remove the ClientResponse type from src/client/types.ts, while Ticket B adds new type helpers under hono/client that rely on the existing response typing surface (the repo currently exports/uses ClientResponse), so removing that symbol would break the type helpers in Ticket B."
+  }
+}

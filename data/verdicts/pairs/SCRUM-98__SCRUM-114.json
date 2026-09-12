@@ -1,0 +1,26 @@
+{
+  "hash": "4fd30496bca6ca30ea1245ee80177b6c73337f95",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-98",
+    "SCRUM-114"
+  ],
+  "signals": [
+    "SCRUM-114 removes generateDigest() from src/middleware/etag/digest.ts; src/middleware/etag/index.ts (SCRUM-98) uses it",
+    "src/middleware/etag/index.ts (SCRUM-114) imports src/middleware/etag/digest.ts (SCRUM-98)",
+    "src/middleware/etag/index.ts (SCRUM-98) imports src/middleware/etag/digest.ts (SCRUM-114)",
+    "both map to src/middleware/etag/digest.ts",
+    "both map to src/middleware/etag/index.ts",
+    "both map into src/middleware/etag/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "The app registers etag, serveStatic, and secureHeaders middleware and responds to GET '*' with c.html(renderPage(...)).",
+    "ticket_b_line": "Allow the user to pass a func to use a custom hashing method that overrides generateDigest.",
+    "file": "src/middleware/etag/digest.ts",
+    "symbol": "generateDigest",
+    "reason": "Ticket B removes/overrides the exported generateDigest in src/middleware/etag/digest.ts, but Ticket A uses the etag middleware which imports and depends on generateDigest (src/middleware/etag/index.ts), so removing or renaming it would break Ticket A."
+  }
+}

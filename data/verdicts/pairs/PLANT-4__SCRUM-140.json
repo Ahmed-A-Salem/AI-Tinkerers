@@ -1,0 +1,25 @@
+{
+  "hash": "8a8b57f594ac1aa3b68493b87b79ceb377b7c462",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-4",
+    "SCRUM-140"
+  ],
+  "signals": [
+    "PLANT-4 removes parseAccept() from src/utils/accept.ts; src/middleware/compress/index.ts (SCRUM-140) uses it",
+    "src/middleware/compress/index.ts (SCRUM-140) imports src/utils/accept.ts (PLANT-4)",
+    "src/middleware/compress/index.ts (PLANT-4) imports src/utils/compress.ts (SCRUM-140)",
+    "both map to src/middleware/compress/index.ts",
+    "both map into src/middleware/compress/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.85,
+    "ticket_a_line": "Remove parseAccept() from src/utils/accept.ts.",
+    "ticket_b_line": "compress middleware currently uses a hard-coded list of supported compression algorithms",
+    "file": "src/utils/accept.ts",
+    "symbol": "parseAccept",
+    "reason": "PLANT-4 explicitly removes parseAccept from src/utils/accept.ts while SCRUM-140 modifies the compress middleware which, according to the current code, imports and calls parseAccept (src/middleware/compress/index.ts), so removing parseAccept would break the compress changes in SCRUM-140."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-54",
+  "files": [
+    "src/adapter/bun/server.ts",
+    "src/adapter/bun/index.ts",
+    "src/helper/adapter/index.ts",
+    "src/adapter/bun/serve-static.ts",
+    "src/adapter/bun/websocket.ts"
+  ],
+  "source": {
+    "src/adapter/bun/server.ts": "llm",
+    "src/adapter/bun/index.ts": "llm",
+    "src/helper/adapter/index.ts": "llm",
+    "src/adapter/bun/serve-static.ts": "llm",
+    "src/adapter/bun/websocket.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

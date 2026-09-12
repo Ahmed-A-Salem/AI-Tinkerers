@@ -1,0 +1,24 @@
+{
+  "hash": "8e91db467e62b77e0d8e32692e8aaf65c0d9ef07",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-91"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-91) uses it",
+    "src/client/utils.ts (SCRUM-91) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "The RPC client accepts a custom `fetch` implementation via options, but the `ClientResponse` types are tightly coupled to the native fetch API.",
+    "ticket_b_line": "Client side: https://github.com/honojs/hono/blob/main/src/client/utils.ts#L18",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A proposes removing/changing the ClientResponse type in src/client/types.ts while Ticket B intends to modify src/client/utils.ts which imports and uses ClientResponse; removing or renaming that symbol would break the client-side changes in Ticket B."
+  }
+}

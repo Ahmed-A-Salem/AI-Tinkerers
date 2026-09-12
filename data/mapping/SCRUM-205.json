@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-205",
+  "files": [
+    "src/index.ts",
+    "src/types.ts",
+    "src/utils/url.ts"
+  ],
+  "source": {
+    "src/index.ts": "llm",
+    "src/types.ts": "llm",
+    "src/utils/url.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

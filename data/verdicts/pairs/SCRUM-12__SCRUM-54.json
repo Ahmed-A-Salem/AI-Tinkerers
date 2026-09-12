@@ -1,0 +1,26 @@
+{
+  "hash": "035c92187d0580dc05ab8eef58c048d81639ead4",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-54"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/adapter/bun/serve-static.ts; src/adapter/bun/index.ts (SCRUM-54) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-54) uses it",
+    "src/adapter/bun/serve-static.ts (SCRUM-54) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/bun/index.ts (SCRUM-54) imports src/adapter/bun/serve-static.ts (SCRUM-12)",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map into src/adapter/bun/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "- modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "Now that Bun has stable support for its native HTTP router, is there any plan to support or integrate Bun's router when the runtime is Bun?",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "SCRUM-12 intends to change/remove the serveStatic implementation (ticket A explicitly proposes modifying serveStatic), while SCRUM-54 adds/relies on Bun adapter code that imports/exports serveStatic (the Bun adapter files in the repo import serveStatic from src/middleware/serve-static); removing or renaming serveStatic would break SCRUM-54."
+  }
+}

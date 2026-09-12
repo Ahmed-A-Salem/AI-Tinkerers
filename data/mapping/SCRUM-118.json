@@ -1,0 +1,28 @@
+{
+  "key": "SCRUM-118",
+  "files": [
+    "src/types.ts",
+    "src/hono.ts",
+    "src/hono-base.ts",
+    "src/context.ts",
+    "src/request.ts",
+    "src/preset/quick.ts",
+    "src/preset/tiny.ts",
+    "src/adapter/aws-lambda/conninfo.ts",
+    "src/adapter/lambda-edge/conninfo.ts",
+    "src/adapter/netlify/conninfo.ts"
+  ],
+  "source": {
+    "src/types.ts": "llm",
+    "src/hono.ts": "llm",
+    "src/hono-base.ts": "llm",
+    "src/context.ts": "llm",
+    "src/request.ts": "llm",
+    "src/preset/quick.ts": "collision",
+    "src/preset/tiny.ts": "collision",
+    "src/adapter/aws-lambda/conninfo.ts": "collision",
+    "src/adapter/lambda-edge/conninfo.ts": "collision",
+    "src/adapter/netlify/conninfo.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

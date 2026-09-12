@@ -1,0 +1,26 @@
+{
+  "hash": "0acae08eb89564488ab9982820e4e5604fdc849f",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-104"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-104) uses it",
+    "src/client/utils.ts (SCRUM-104) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-104)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.7,
+    "ticket_a_line": "2. **Separate type for custom fetch clients** type CustomClientResponse<TBody, TStatus> = TBody",
+    "ticket_b_line": "Type definitions should support both styles and ensure proper type inference for path parameters",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A proposes replacing/altering the existing ClientResponse type (introducing a separate CustomClientResponse), while Ticket B explicitly plans type-definition changes for the client (touching src/client/types.ts and related utils) which currently import and rely on ClientResponse; removing or renaming ClientResponse in A would break the types/usage B expects."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "hash": "bf49a9562ac16f0c068ceae171802826f8d488c3",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-8",
+    "SCRUM-203"
+  ],
+  "signals": [
+    "both name Hono()",
+    "src/router/reg-exp-router/router.ts (SCRUM-8) imports src/router/reg-exp-router/node.ts (SCRUM-203)",
+    "both map to src/preset/quick.ts",
+    "both map to src/preset/tiny.ts",
+    "both map into src/router/reg-exp-router/",
+    "both map into src/preset/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A is a runtime bugfix changing RegExpRouter's wildcard matching (patterns in src/router/reg-exp-router), while Ticket B requests adding a new TypeScript interface ContextBindingMap (a type-level addition that doesn't exist today); they touch unrelated symbols and neither removes or depends on the other's symbol."
+  }
+}

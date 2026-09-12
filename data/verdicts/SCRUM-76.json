@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-76",
+  "candidates": 1,
+  "checked": [
+    "SCRUM-209"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-76",
+        "SCRUM-209"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "I need to get the username in the route handler, and it seems I have to parse the header again, duplicating half of the `basicAuth` (the `auth` util, to be exact).",
+        "ticket_b_line": "- Remove `auth()` from `src/utils/basic-auth.ts`.",
+        "code_path": "src/utils/basic-auth.ts → auth()"
+      }
+    }
+  ]
+}

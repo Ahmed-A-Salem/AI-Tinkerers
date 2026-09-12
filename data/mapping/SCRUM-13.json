@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-13",
+  "files": [
+    "src/middleware/bearer-auth/index.ts",
+    "src/http-exception.ts",
+    "src/types.ts",
+    "src/middleware/basic-auth/index.ts"
+  ],
+  "source": {
+    "src/middleware/bearer-auth/index.ts": "linked",
+    "src/http-exception.ts": "llm",
+    "src/types.ts": "llm",
+    "src/middleware/basic-auth/index.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

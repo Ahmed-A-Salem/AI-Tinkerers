@@ -1,0 +1,16 @@
+{
+  "hash": "8378597e1d6327c60328fcfaeb4acf3d78eae266",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-174",
+    "SCRUM-190"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "reason": "Ticket A explicitly proposes changing getSignedCookie's argument order (a signature change), and Ticket B's JWT middleware imports and calls getSignedCookie (src/middleware/jwt/jwt.ts lines shown), so A's change would break B."
+  }
+}

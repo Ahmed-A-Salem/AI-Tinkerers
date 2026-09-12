@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-8",
+  "files": [
+    "src/router/reg-exp-router/matcher.ts",
+    "src/router/reg-exp-router/router.ts",
+    "src/router/reg-exp-router/prepared-router.ts",
+    "src/hono-base.ts",
+    "src/hono.ts",
+    "src/preset/quick.ts",
+    "src/preset/tiny.ts"
+  ],
+  "source": {
+    "src/router/reg-exp-router/matcher.ts": "llm",
+    "src/router/reg-exp-router/router.ts": "llm",
+    "src/router/reg-exp-router/prepared-router.ts": "llm",
+    "src/hono-base.ts": "collision",
+    "src/hono.ts": "collision",
+    "src/preset/quick.ts": "collision",
+    "src/preset/tiny.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

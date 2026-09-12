@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-67",
+  "files": [
+    "src/jsx/context.ts",
+    "src/jsx/components.ts",
+    "src/jsx/base.ts",
+    "src/jsx/jsx-runtime.ts",
+    "src/jsx/children.ts"
+  ],
+  "source": {
+    "src/jsx/context.ts": "llm",
+    "src/jsx/components.ts": "llm",
+    "src/jsx/base.ts": "llm",
+    "src/jsx/jsx-runtime.ts": "llm",
+    "src/jsx/children.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

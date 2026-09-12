@@ -1,0 +1,28 @@
+{
+  "hash": "d5ed03b7263f622cefd0436f30bc4253aa9fd6ac",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-9",
+    "SCRUM-189"
+  ],
+  "signals": [
+    "both name Context()",
+    "src/jsx/dom/render.ts (SCRUM-189) imports src/jsx/context.ts (SCRUM-9)",
+    "src/jsx/dom/render.ts (SCRUM-9) imports src/jsx/context.ts (SCRUM-189)",
+    "both map to src/jsx/context.ts",
+    "both map to src/jsx/dom/render.ts",
+    "both map to src/router/reg-exp-router/node.ts",
+    "both map into src/jsx/dom/",
+    "both map into src/router/reg-exp-router/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.78,
+    "ticket_a_line": "Expose a `c.waitUntil(promise)` helper on the Hono `Context` object",
+    "ticket_b_line": "Runtime throws \"Context is not finalized\" if there is no 'return c.xxx()' in a handler.",
+    "file": "",
+    "symbol": "",
+    "reason": "The proposals do not remove or rename any existing symbol the other relies on, nor does one require the other to ship first: SCRUM-9 adds an ergonomic helper (waitUntil) while SCRUM-189 changes runtime behavior around missing returns; this may affect how middleware is written but is not a direct dependency or breaking change to a concrete symbol."
+  }
+}

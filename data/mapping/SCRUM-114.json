@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-114",
+  "files": [
+    "src/middleware/etag/digest.ts",
+    "src/middleware/etag/index.ts"
+  ],
+  "source": {
+    "src/middleware/etag/digest.ts": "llm",
+    "src/middleware/etag/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

@@ -1,0 +1,22 @@
+{
+  "hash": "0509119f06b709051d5de6c1cc8391f53d4f4162",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-8"
+  ],
+  "signals": [
+    "PLANT-3 removes getPath(); SCRUM-8 names it",
+    "src/router/reg-exp-router/router.ts (SCRUM-8) imports src/utils/url.ts (PLANT-3)"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+    "ticket_b_line": "getPath() runs the path through decodeURI before routing, so `%0A` becomes a real newline.",
+    "file": "src/utils/url.ts",
+    "symbol": "getPath",
+    "reason": "Ticket A explicitly removes the exported symbol getPath from src/utils/url.ts, while Ticket B and the RegExpRouter behavior described rely on getPath() being available and used during routing, so removing the export would break that usage."
+  }
+}

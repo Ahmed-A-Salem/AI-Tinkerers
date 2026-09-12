@@ -1,0 +1,27 @@
+{
+  "hash": "123bde6231a08ca63e578dd2071cd988f257e6f7",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-5",
+    "SCRUM-194"
+  ],
+  "signals": [
+    "PLANT-5 removes streamSSE() from src/helper/streaming/sse.ts; src/helper/streaming/index.ts (SCRUM-194) uses it",
+    "src/helper/streaming/index.ts (SCRUM-194) imports src/helper/streaming/sse.ts (PLANT-5)",
+    "src/helper/streaming/index.ts (PLANT-5) imports src/helper/streaming/stream.ts (SCRUM-194)",
+    "src/helper/streaming/index.ts (PLANT-5) imports src/helper/streaming/sse.ts (SCRUM-194)",
+    "both map to src/helper/streaming/sse.ts",
+    "both map to src/helper/streaming/index.ts",
+    "both map into src/helper/streaming/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.86,
+    "ticket_a_line": "Remove streamSSE() in v5.",
+    "ticket_b_line": "files (predicted): src/helper/streaming/index.ts, src/helper/streaming/stream.ts, src/helper/streaming/sse.ts, src/client/client.ts, src/client/index.ts",
+    "file": "src/helper/streaming/sse.ts",
+    "symbol": "streamSSE",
+    "reason": "SCRUM-194's predicted streaming files include src/helper/streaming/sse.ts and the streaming index uses streamSSE, while PLANT-5 explicitly removes streamSSE(), so implementing PLANT-5 would break SCRUM-194's use of that symbol."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "hash": "646f96c299923f719abf74a9ec87e17eec3b8a81",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-98",
+    "SCRUM-114"
+  ],
+  "verification": {
+    "changer": "B",
+    "change_is_explicit": false,
+    "dependent_needs_it": false,
+    "type": "none",
+    "confidence": 0.9,
+    "reason": "Ticket B proposes adding an option to allow a custom hash (overriding generateDigest) rather than removing or renaming the exported generateDigest, and Ticket A only uses the etag middleware (doesn't call or require the symbol directly), so there is no explicit breaking change or dependency conflict in the tickets' texts or the current code facts (generateDigest is exported and an override option already exists in the etag types)."
+  }
+}

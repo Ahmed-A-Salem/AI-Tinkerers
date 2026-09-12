@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-183",
+  "files": [
+    "src/utils/headers.ts",
+    "src/types.ts",
+    "src/context.ts",
+    "src/index.ts"
+  ],
+  "source": {
+    "src/utils/headers.ts": "llm",
+    "src/types.ts": "llm",
+    "src/context.ts": "llm",
+    "src/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

@@ -1,0 +1,24 @@
+{
+  "hash": "0a873775dd2f3528b5fb3e28e6804bd97c6b697f",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-1",
+    "SCRUM-174"
+  ],
+  "signals": [
+    "PLANT-1 removes setSignedCookie(); SCRUM-174 names it",
+    "src/helper/cookie/index.ts (PLANT-1) imports src/utils/cookie.ts (SCRUM-174)",
+    "both map to src/helper/cookie/index.ts",
+    "both map into src/helper/cookie/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+    "ticket_b_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "Ticket A removes getSignedCookie from src/helper/cookie/index.ts while Ticket B relies on and proposes changing getSignedCookie's argument order, so removing the symbol would break Ticket B."
+  }
+}

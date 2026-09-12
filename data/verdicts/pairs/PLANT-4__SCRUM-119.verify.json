@@ -1,0 +1,16 @@
+{
+  "hash": "db846b989195cacf11929e9824d900313d16769a",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-4",
+    "SCRUM-119"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "reason": "Ticket A explicitly says “Remove parseAccept() from src/utils/accept.ts”; Ticket B edits src/middleware/compress/index.ts which currently imports and calls parseAccept, so removing that symbol would break B."
+  }
+}

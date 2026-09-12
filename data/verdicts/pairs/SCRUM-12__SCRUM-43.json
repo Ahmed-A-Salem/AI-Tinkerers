@@ -1,0 +1,22 @@
+{
+  "hash": "22ea1cd3db3d691dd9bf142c507026d3b2cdf54e",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-43"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/adapter/cloudflare-workers/serve-static.ts; src/adapter/cloudflare-workers/serve-static-module.ts (SCRUM-43) uses it",
+    "both map into src/adapter/cloudflare-workers/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "- modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "Currently, the hono/cloudflare-worker api uses the normal websocket api:",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A targets the serveStatic/methodNotAllowed middleware behavior (serveStatic symbol), while Ticket B targets the Cloudflare Workers websocket adapter; they touch different symbols and do not add/remove or depend on the same API, so there is no dependency or ordering conflict."
+  }
+}

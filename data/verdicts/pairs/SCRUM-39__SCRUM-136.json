@@ -1,0 +1,24 @@
+{
+  "hash": "dd798652c6973ae655b74e8a2c1c2e1cd8898422",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-136"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-136) uses it",
+    "src/client/utils.ts (SCRUM-136) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "removes: ClientResponse",
+    "ticket_b_line": "files (predicted): src/utils/body.ts, src/request.ts, src/utils/mime.ts, src/client/utils.ts",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A removes the ClientResponse symbol from src/client/types.ts, while Ticket B touches src/client/utils.ts which currently imports and relies on ClientResponse, so applying A would break B."
+  }
+}

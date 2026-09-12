@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-9",
+  "files": [
+    "src/context.ts",
+    "src/types.ts",
+    "src/jsx/context.ts",
+    "src/jsx/dom/render.ts",
+    "src/router/reg-exp-router/node.ts"
+  ],
+  "source": {
+    "src/context.ts": "llm",
+    "src/types.ts": "llm",
+    "src/jsx/context.ts": "collision",
+    "src/jsx/dom/render.ts": "collision",
+    "src/router/reg-exp-router/node.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

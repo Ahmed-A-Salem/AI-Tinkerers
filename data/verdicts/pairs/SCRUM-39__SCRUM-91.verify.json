@@ -1,0 +1,16 @@
+{
+  "hash": "11633b8eceed8540e1eee2f93fe93d31d41956f0",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-91"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "reason": "Ticket A proposes changing the ClientResponse type (suggesting new generics / separate custom response types), and current code shows src/client/utils.ts (which Ticket B wants to change) imports and uses ClientResponse, so changing/removing/renaming that type would break Ticket B's edits."
+  }
+}

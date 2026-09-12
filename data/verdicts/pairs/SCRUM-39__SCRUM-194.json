@@ -1,0 +1,24 @@
+{
+  "hash": "0b2a58efc592c9ea8640de4d893408886b42fd7f",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-194"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/index.ts (SCRUM-194) uses it",
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-194) uses it",
+    "src/client/index.ts (SCRUM-194) imports src/client/utils.ts (SCRUM-39)",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "The RPC client accepts a custom `fetch` implementation via options, but the `ClientResponse` types are tightly coupled to the native fetch API.",
+    "ticket_b_line": "files (predicted): src/helper/streaming/index.ts, src/helper/streaming/stream.ts, src/helper/streaming/sse.ts, src/client/client.ts, src/client/index.ts",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A proposes changing/removing the ClientResponse types, while Ticket B plans to add a long-polling client/middleware touching src/client/* (including src/client/index.ts), which currently imports and depends on the ClientResponse symbol — so A would break B if ClientResponse is removed/renamed/changed."
+  }
+}

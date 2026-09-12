@@ -1,0 +1,21 @@
+{
+  "hash": "3262dfef7984750d58d968815498f3a7617e0f6a",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-2",
+    "SCRUM-35"
+  ],
+  "signals": [
+    "PLANT-2 removes auth(); SCRUM-35 names it"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "PLANT-2 replaces/removes auth() in src/utils/basic-auth.ts and introduces verifyBasicAuth(), while SCRUM-35 is about TrieRouter's handling of '/**' in src/router/trie-router/*; SCRUM-35 does not reference or rely on auth() or the new verifyBasicAuth(), so there is no dependency_break or ordering conflict."
+  }
+}

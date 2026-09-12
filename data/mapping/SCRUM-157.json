@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-157",
+  "files": [
+    "src/jsx/components.ts",
+    "src/jsx/streaming.ts",
+    "src/jsx/context.ts",
+    "src/jsx/jsx-runtime.ts",
+    "src/jsx/dom/components.ts"
+  ],
+  "source": {
+    "src/jsx/components.ts": "llm",
+    "src/jsx/streaming.ts": "llm",
+    "src/jsx/context.ts": "llm",
+    "src/jsx/jsx-runtime.ts": "llm",
+    "src/jsx/dom/components.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

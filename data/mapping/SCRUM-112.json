@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-112",
+  "files": [
+    "src/middleware/cache/index.ts",
+    "src/types.ts",
+    "src/hono-base.ts",
+    "src/hono.ts"
+  ],
+  "source": {
+    "src/middleware/cache/index.ts": "llm",
+    "src/types.ts": "llm",
+    "src/hono-base.ts": "llm",
+    "src/hono.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

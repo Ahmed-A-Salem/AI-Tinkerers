@@ -1,0 +1,22 @@
+{
+  "hash": "1dcd2bb314e2472b26100410a68408564f9b1e7a",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-153",
+    "SCRUM-154"
+  ],
+  "signals": [
+    "SCRUM-154 removes createHash(); SCRUM-153 names it",
+    "both map to src/utils/crypto.ts"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.86,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A proposes adding a new hashing library and only mentions the existing createHash as vulnerable; Ticket B raises a vulnerability in createHash but does not (in its text) require removing or renaming that symbol or state that A depends on it — there is no concrete removal or ordering dependency in the tickets."
+  }
+}

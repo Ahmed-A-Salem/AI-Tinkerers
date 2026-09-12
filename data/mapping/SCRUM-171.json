@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-171",
+  "files": [
+    "src/helper/conninfo/index.ts",
+    "src/helper/conninfo/types.ts"
+  ],
+  "source": {
+    "src/helper/conninfo/index.ts": "llm",
+    "src/helper/conninfo/types.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

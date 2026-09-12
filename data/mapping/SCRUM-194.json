@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-194",
+  "files": [
+    "src/helper/streaming/index.ts",
+    "src/helper/streaming/stream.ts",
+    "src/helper/streaming/sse.ts",
+    "src/client/client.ts",
+    "src/client/index.ts"
+  ],
+  "source": {
+    "src/helper/streaming/index.ts": "llm",
+    "src/helper/streaming/stream.ts": "llm",
+    "src/helper/streaming/sse.ts": "llm",
+    "src/client/client.ts": "llm",
+    "src/client/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

@@ -1,0 +1,51 @@
+{
+  "key": "SCRUM-210",
+  "candidates": 4,
+  "checked": [
+    "SCRUM-162",
+    "SCRUM-8",
+    "SCRUM-129",
+    "SCRUM-205"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-210",
+        "SCRUM-205"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.92,
+      "evidence": {
+        "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`.",
+        "ticket_b_line": "The implementation uses `getPath` from utils/url (no new duplicate percent-decoding loop).",
+        "code_path": "src/utils/url.ts → getPath()"
+      }
+    },
+    {
+      "pair": [
+        "SCRUM-210",
+        "SCRUM-162"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+        "ticket_b_line": "Most path-related issues can be resolved with `getPath`.",
+        "code_path": "src/utils/url.ts → getPath()"
+      }
+    },
+    {
+      "pair": [
+        "SCRUM-210",
+        "SCRUM-129"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+        "ticket_b_line": "Something like the `getPath` method would be sufficient enough for my use case.",
+        "code_path": "src/utils/url.ts → getPath()"
+      }
+    }
+  ]
+}

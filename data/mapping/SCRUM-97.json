@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-97",
+  "files": [
+    "src/helper/streaming/stream.ts",
+    "src/helper/streaming/sse.ts",
+    "src/helper/streaming/text.ts",
+    "src/jsx/streaming.ts",
+    "src/utils/headers.ts"
+  ],
+  "source": {
+    "src/helper/streaming/stream.ts": "llm",
+    "src/helper/streaming/sse.ts": "llm",
+    "src/helper/streaming/text.ts": "llm",
+    "src/jsx/streaming.ts": "llm",
+    "src/utils/headers.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

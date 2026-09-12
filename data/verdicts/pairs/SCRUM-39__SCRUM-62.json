@@ -1,0 +1,26 @@
+{
+  "hash": "096f02b46b8e1c844e6e8a8ad8d05479a551cbe0",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-62"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-62) uses it",
+    "src/client/utils.ts (SCRUM-62) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-62)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.8,
+    "ticket_a_line": "- removes: ClientResponse",
+    "ticket_b_line": "Provide a way to integrate axios with api client.",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A proposes removing/changing ClientResponse in src/client/types.ts, but Ticket B only requests a feature to integrate axios and does not explicitly reference or require the ClientResponse symbol, so there is no demonstrated dependency_break or ordering conflict between the two tickets."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "hash": "4b134bd4e02ca3dfe7ede73cfffe1c594e433123",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-162"
+  ],
+  "signals": [
+    "PLANT-3 removes getPath(); SCRUM-162 names it",
+    "src/helper/route/index.ts (SCRUM-162) imports src/utils/url.ts (PLANT-3)",
+    "both map to src/utils/url.ts"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.95,
+    "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+    "ticket_b_line": "Most path-related issues can be resolved with `getPath`.",
+    "file": "src/utils/url.ts",
+    "symbol": "getPath",
+    "reason": "Ticket B intends to build user-facing utilities that rely on the exported getPath from src/utils/url.ts, while Ticket A explicitly removes the getPath export, which would break the utilities that import or call getPath."
+  }
+}

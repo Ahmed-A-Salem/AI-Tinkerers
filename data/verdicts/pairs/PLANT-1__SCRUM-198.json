@@ -1,0 +1,23 @@
+{
+  "hash": "76f1160096a056ecf197f893f0ccc7bf6ec58b0c",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-1",
+    "SCRUM-198"
+  ],
+  "signals": [
+    "PLANT-1 removes getSignedCookie() from src/helper/cookie/index.ts; src/middleware/jwt/jwt.ts (SCRUM-198) uses it",
+    "src/middleware/jwt/jwt.ts (SCRUM-198) imports src/helper/cookie/index.ts (PLANT-1)",
+    "src/helper/cookie/index.ts (PLANT-1) imports src/utils/cookie.ts (SCRUM-198)"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+    "ticket_b_line": "jwt middleware needs to be able to handle signed cookies",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "Ticket A removes getSignedCookie (and related signed-cookie helpers) from src/helper/cookie/index.ts, while Ticket B's jwt middleware explicitly needs to handle signed cookies and currently imports/uses getSignedCookie, so removing it would break the middleware."
+  }
+}

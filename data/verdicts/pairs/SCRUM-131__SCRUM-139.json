@@ -1,0 +1,27 @@
+{
+  "hash": "c3aee027cae18d18f3b17e71f6c7dc76bc88b026",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-131",
+    "SCRUM-139"
+  ],
+  "signals": [
+    "both name build()",
+    "src/router/reg-exp-router/prepared-router.ts (SCRUM-131) imports src/router/reg-exp-router/router.ts (SCRUM-139)",
+    "src/router/reg-exp-router/prepared-router.ts (SCRUM-131) imports src/router/reg-exp-router/matcher.ts (SCRUM-139)",
+    "src/router/reg-exp-router/index.ts (SCRUM-131) imports src/router/reg-exp-router/prepared-router.ts (SCRUM-139)",
+    "src/router/reg-exp-router/index.ts (SCRUM-131) imports src/router/reg-exp-router/router.ts (SCRUM-139)",
+    "both map to src/router/reg-exp-router/prepared-router.ts",
+    "both map into src/router/reg-exp-router/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "ordering",
+    "confidence": 0.6,
+    "ticket_a_line": "I'm creating a new router named \"PreparedRouter\" using AOT.",
+    "ticket_b_line": "Export routes and RegExp when building Hono application.",
+    "file": "src/router/reg-exp-router/prepared-router.ts",
+    "symbol": "PreparedRouter",
+    "reason": "Ticket A's PreparedRouter 'using AOT' requires importing prebuilt/exported routes and RegExp at boot, which is exactly the behavior Ticket B would add (export/import of router state), so PreparedRouter is only correct if the import/export feature from Ticket B ships first."
+  }
+}

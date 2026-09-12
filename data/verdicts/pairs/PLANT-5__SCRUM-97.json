@@ -1,0 +1,26 @@
+{
+  "hash": "a96bea49575e988c5121cb20727db9de11770504",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-5",
+    "SCRUM-97"
+  ],
+  "signals": [
+    "PLANT-5 removes streamSSE() from src/helper/streaming/sse.ts; src/helper/streaming/index.ts (SCRUM-97) uses it",
+    "src/helper/streaming/index.ts (PLANT-5) imports src/helper/streaming/stream.ts (SCRUM-97)",
+    "src/helper/streaming/index.ts (PLANT-5) imports src/helper/streaming/sse.ts (SCRUM-97)",
+    "src/helper/streaming/index.ts (PLANT-5) imports src/helper/streaming/text.ts (SCRUM-97)",
+    "both map to src/helper/streaming/sse.ts",
+    "both map into src/helper/streaming/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.75,
+    "ticket_a_line": "Remove streamSSE() in v5.",
+    "ticket_b_line": "files (predicted): src/helper/streaming/stream.ts, src/helper/streaming/sse.ts, src/helper/streaming/text.ts, src/jsx/streaming.ts, src/utils/headers.ts",
+    "file": "src/helper/streaming/sse.ts",
+    "symbol": "streamSSE",
+    "reason": "Ticket A plans to remove streamSSE() from src/helper/streaming/sse.ts; Ticket B explicitly involves that file (and the codebase currently exports streamSSE from it), so removing the exported streamSSE would break the streaming code touched by SCRUM-97."
+  }
+}
