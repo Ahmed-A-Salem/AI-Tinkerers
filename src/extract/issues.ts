@@ -25,15 +25,75 @@ const ISSUES = process.env.ISSUES_FILE ?? 'data/hono-issues.json';
 const GH_TO_JIRA = 'data/gh-to-jira.json';
 
 /** Rows are `{ key, gh }` for GitHub-sourced issues or `{ key, src: 'PLANT-n' }` for planted ones. */
+interface MappingRow {
+  key: string;
+  gh?: number;
+  src?: string;
+}
+
+interface Mapping {
+  /** GitHub issue number → Jira key */
+  byGh: Map<number, string>;
+  /** planted source key (PLANT-n) → Jira key */
+  bySrc: Map<string, string>;
+  /** Jira key → record key (SCRUM-x → itself for GitHub issues, SCRUM-208 → PLANT-1 for planted) */
+  byJira: Map<string, string>;
+}
+
+let mappingCache: Mapping | undefined;
+
+/** data/gh-to-jira.json, read once per process. Empty maps when the import has not run yet. */
+function mapping(): Mapping {
+  if (mappingCache) return mappingCache;
+  const rows: MappingRow[] = existsSync(GH_TO_JIRA) ? JSON.parse(readFileSync(GH_TO_JIRA, 'utf8')) : [];
+  const m: Mapping = { byGh: new Map(), bySrc: new Map(), byJira: new Map() };
+  for (const r of rows) {
+    if (r.gh !== undefined) {
+      m.byGh.set(r.gh, r.key);
+      m.byJira.set(r.key, r.key);
+    } else if (r.src) {
+      m.bySrc.set(r.src, r.key);
+      m.byJira.set(r.key, r.src);
+    }
+  }
+  mappingCache = m;
+  return m;
+}
+
 function ghToJira(): Map<number, string> {
-  if (!existsSync(GH_TO_JIRA)) return new Map();
-  const rows: { key: string; gh?: number; src?: string }[] = JSON.parse(readFileSync(GH_TO_JIRA, 'utf8'));
-  return new Map(rows.filter((r) => r.gh !== undefined).map((r) => [r.gh!, r.key]));
+  return mapping().byGh;
 }
 
 /** Record key for a GitHub issue number: its Jira key once imported, GH-<n> before that. */
 export function ghKey(n: number, map = ghToJira()): string {
   return map.get(n) ?? `GH-${n}`;
+}
+
+/**
+ * Any way of naming a ticket → the canonical record key (the file name under data/records).
+ *   "#3210", "gh#3210", "GH-3210", "https://github.com/.../issues/3210" → SCRUM-<x> (or GH-3210 before import)
+ *   "PLANT-3"                                                          → PLANT-3 (planted tickets keep their key)
+ *   "SCRUM-210"                                                        → PLANT-3 if it is a planted import, else itself
+ * Unknown shapes are returned trimmed and unchanged.
+ */
+export function resolveKey(ref: string): string {
+  const s = ref.trim();
+  const gh = /^(?:#|gh#|GH-|.*\/issues\/)(\d+)$/i.exec(s);
+  if (gh?.[1]) return ghKey(Number(gh[1]));
+  if (/^PLANT-\d+$/i.test(s)) return s.toUpperCase();
+  return mapping().byJira.get(s) ?? s;
+}
+
+/**
+ * Record key → the Jira key to act on: PLANT-1 → SCRUM-208 once imported (PLANT-1 until then),
+ * SCRUM-x → itself, GH-n → its Jira key if imported. What write-back and linking must use.
+ */
+export function jiraKey(recordKey: string): string {
+  const s = recordKey.trim();
+  if (/^PLANT-\d+$/i.test(s)) return mapping().bySrc.get(s.toUpperCase()) ?? s.toUpperCase();
+  const gh = /^GH-(\d+)$/i.exec(s);
+  if (gh?.[1]) return ghKey(Number(gh[1]));
+  return s;
 }
 
 export function issueKey(i: SourceIssue, map = ghToJira()): string {
