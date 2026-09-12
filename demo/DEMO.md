@@ -3,27 +3,31 @@
 Two minutes, brief §7. Terminal on the left, Jira on the right. Narration is `demo/narration.txt`;
 each step below has the same number as its narration block.
 
-Tickets used. `PLANT-n` keys are assigned by the import and will be filled in here once known.
+Tickets used:
 
 | Role | Key | What it is |
 |---|---|---|
 | Agent 1 draft | SCRUM-205 | "Add hono/path helper with matchedPath and basePath", created from the stand-up |
-| Its conflict | PLANT-3 = `SCRUM-___` | "perf: fold getPath and getPathNoStrict into one internal path parser", removes `getPath` |
-| Auto-mode ticket | SCRUM-198 | GitHub #2398 "Use Signed Cookies in jwt Middleware" |
-| Its conflict | PLANT-1 = `SCRUM-___` | "Remove signed cookie helpers (getSignedCookie / setSignedCookie) from hono/cookie" |
+| Its conflict | SCRUM-210 (PLANT-3) | "perf: fold getPath and getPathNoStrict into one internal path parser", removes `getPath` |
+| Auto-mode ticket | SCRUM-208 (PLANT-1) | "Remove signed cookie helpers (getSignedCookie / setSignedCookie) from hono/cookie" |
+| Its conflict | SCRUM-198 | GitHub #2398 "Use Signed Cookies in jwt Middleware", needs those helpers |
 
-Expected code paths: SCRUM-205 vs PLANT-3 → `src/utils/url.ts -> getPath()`.
-SCRUM-198 vs PLANT-1 → `src/helper/cookie/index.ts -> getSignedCookie()`.
+Expected code paths: SCRUM-205 vs SCRUM-210 → `src/utils/url.ts -> getPath()`.
+SCRUM-208 vs SCRUM-198 → `src/helper/cookie/index.ts -> getSignedCookie()`.
+
+`act` accepts either spelling of a key (`SCRUM-208` or `PLANT-1`) and always writes to the
+Jira key.
 
 ## Before recording
 
 1. `.env` filled in, `npm install`, `target/hono` cloned, `npm run index` done. `data/records/` full.
 2. Run the reset procedure at the bottom so every ticket is clean.
 3. Confirm the verdicts exist before going on camera. Either `npm run check -- SCRUM-205` and
-   `npm run check -- SCRUM-198` (Phase E), or, if `check` is not on main yet, the two fallback
-   verdict files in the appendix are in `data/verdicts/`.
+   `npm run check -- SCRUM-208` (Phase E), or, if `check` is not on main yet:
+   `data/verdicts/SCRUM-208.json` is already in the repo, and the SCRUM-205 fallback is in the
+   appendix.
 4. Dry run the whole sheet once with `--dry` on each `act` command. Nothing is posted. Then reset.
-5. Browser tabs open in this order: SCRUM-205, PLANT-3, SCRUM-198, PLANT-1, and the backlog
+5. Browser tabs open in this order: SCRUM-205, SCRUM-210, SCRUM-208, SCRUM-198, and the backlog
    filter `project = SCRUM AND labels = agent-conflict ORDER BY key`.
 6. Terminal: repo root, font large, `MODE` unset (Accept is the default).
 7. If the webhook server is part of the take (step 3 option B), start it in a second terminal
@@ -45,13 +49,10 @@ Screen: terminal. Then switch to the SCRUM-205 tab.
 npm run meeting -- demo/standup.txt
 ```
 
-Expect: "3 commitment(s) found" and three keys printed. Only the first two are code changes
-(hono/path helper, Retry-After); the third, PR review, is created as a draft by design of the
-current filter and is not shown.
-
-If you re-run this on camera the keys will be new (SCRUM-208 and up). Either use the keys it
-prints for the rest of the take, or skip the command and show SCRUM-205 as already created.
-The label `agent-draft` must be visible on the ticket.
+Expect: "3 commitment(s) found". Agent 1 deduplicates against Jira, so on a repeat run each
+commitment is reported as `skipped, exists as SCRUM-205` (and 206, 207) instead of being
+created again. The command is safe to run live and the keys stay the same. On the SCRUM-205
+tab the label `agent-draft` must be visible.
 
 ### 3. Agent 2 flags the draft (0:45 to 1:00)
 
@@ -71,11 +72,11 @@ Expect in the terminal:
 
 ```
 SCRUM-205: 1 verdict(s) ...
-  ok   comment on SCRUM-205: [agent-proposed] Possible dependency break with SCRUM-___ (confidence NN%)
+  ok   comment on SCRUM-205: [agent-proposed] Possible dependency break with SCRUM-210 (confidence NN%)
   ok   label SCRUM-205 += agent-conflict
-  ok   label SCRUM-___ += agent-conflict
+  ok   label SCRUM-210 += agent-conflict
 held for approval (1); add label agent-approved then run with --apply:
-  - link SCRUM-___ -[Relates]-> SCRUM-205
+  - link SCRUM-210 -[Relates]-> SCRUM-205
 ```
 
 Screen: reload the SCRUM-205 tab. The label `agent-conflict` is on the ticket. Scroll to the
@@ -86,20 +87,20 @@ new comment.
 Screen: SCRUM-205, comment in full view. It reads, in this shape:
 
 ```
-[agent-proposed] Possible dependency break with SCRUM-___ (confidence NN%)
+[agent-proposed] Possible dependency break with SCRUM-210 (confidence NN%)
 
 SCRUM-205 says: "<the line about building on getPath from utils/url>"
 
-SCRUM-___ says: "<the line about removing the getPath export from src/utils/url.ts>"
+SCRUM-210 says: "<the line about removing the getPath export from src/utils/url.ts>"
 
 Code path: src/utils/url.ts -> getPath()
 
-Proposed action: link SCRUM-205 <-> SCRUM-___ (Relates). To approve, add the label
+Proposed action: link SCRUM-205 <-> SCRUM-210 (Relates). To approve, add the label
 agent-approved to this ticket; the agent will then link the pair. -- Backlog Conflict Agent
 ```
 
 Hover or point at the two quoted lines, then the code path. Optional: click through to the
-PLANT-3 tab to show it carries `agent-conflict` too.
+SCRUM-210 tab to show it carries `agent-conflict` too.
 
 ### 5. Accept mode: human approves (1:20 to 1:35)
 
@@ -115,36 +116,39 @@ Or, if the server is running, the webhook shape Jira sends on that label change:
 curl -X POST localhost:3123/webhook -H 'Content-Type: application/json' -d '{"webhookEvent":"jira:issue_updated","issue":{"key":"SCRUM-205"},"changelog":{"items":[{"field":"labels","fromString":"agent-conflict agent-draft","toString":"agent-approved agent-conflict agent-draft"}]}}'
 ```
 
-Expect: `ok   link SCRUM-___ -[Relates]-> SCRUM-205` and an `[agent-applied]` comment.
+Expect: `ok   link SCRUM-210 -[Relates]-> SCRUM-205` and an `[agent-applied]` comment.
 
-Screen: reload SCRUM-205. The "Linked issues" section shows PLANT-3 under "relates to". The
+Screen: reload SCRUM-205. The "Linked issues" section shows SCRUM-210 under "relates to". The
 `[agent-applied]` comment is at the bottom.
 
 ### 6. Auto mode: no approval (1:35 to 1:50)
 
-Screen: the SCRUM-198 tab, clean, no labels. Terminal:
+Screen: the SCRUM-208 tab, clean, no agent labels. This is the planted ticket that rips out the
+signed cookie helpers. Terminal:
 
 ```bash
-MODE=auto npm run act -- SCRUM-198
+MODE=auto npm run act -- SCRUM-208
 ```
 
 On Windows PowerShell:
 
 ```bash
-$env:MODE='auto'; npm run act -- SCRUM-198
+$env:MODE='auto'; npm run act -- SCRUM-208
 ```
 
 Expect: comment, both labels, and the link in a single run, `held for approval` absent:
 
 ```
-  ok   comment on SCRUM-198: [agent-proposed] Possible dependency break with SCRUM-___ ...
+  ok   comment on SCRUM-208: [agent-proposed] Possible dependency break with SCRUM-198 (confidence 94%)
+  ok   label SCRUM-208 += agent-conflict
   ok   label SCRUM-198 += agent-conflict
-  ok   label SCRUM-___ += agent-conflict
-  ok   link SCRUM-198 -[Relates]-> SCRUM-___
+  ok   link SCRUM-208 -[Relates]-> SCRUM-198
 ```
 
-Screen: reload SCRUM-198. Label and link present, nobody clicked anything. The comment's code
-path is `src/helper/cookie/index.ts -> getSignedCookie()`.
+Screen: reload SCRUM-208. Label and link present, nobody clicked anything. The comment quotes
+SCRUM-198 ("jwt middleware ... needs to be able to handle signed cookies") against SCRUM-208
+("Delete getSignedCookie, setSignedCookie and generateSignedCookie from
+src/helper/cookie/index.ts"), code path `src/helper/cookie/index.ts -> getSignedCookie()`.
 
 ### 7. The backlog number (1:50 to 2:00)
 
@@ -162,16 +166,16 @@ tickets." Hold on it. End.
 
 The agent only ever adds; it never deletes. Undo by hand in Jira, in this order.
 
-1. **Links.** On SCRUM-205 and SCRUM-198, open "Linked issues", hover the link, click the x.
+1. **Links.** On SCRUM-205 and SCRUM-208, open "Linked issues", hover the link, click the x.
    One removal clears both sides.
 2. **Labels.** On SCRUM-205: remove `agent-approved` and `agent-conflict`, keep `agent-draft`.
-   On SCRUM-198, PLANT-1, PLANT-3: remove `agent-conflict`.
+   On SCRUM-198, SCRUM-208, SCRUM-210: remove `agent-conflict`.
 3. **Comments.** Every run posts a new comment and the agent cannot delete them, so a take
    without a reset shows duplicates. Delete the `[agent-proposed]` and `[agent-applied]`
-   comments on SCRUM-205 and SCRUM-198 via the comment's "..." menu, or leave them and scroll
+   comments on SCRUM-205 and SCRUM-208 via the comment's "..." menu, or leave them and scroll
    past. Comments on other tickets are harmless.
-4. **Drafts.** If step 2 was run on camera, the new `agent-draft` tickets stay. Move them to
-   Done or delete them in Jira so the next take starts with SCRUM-205 only.
+4. **Drafts.** Nothing to do: Agent 1's dedupe means step 2 creates no new tickets. If a draft
+   was deleted by mistake, `npm run meeting` recreates it under a new key; use that key.
 5. **Terminal.** Unset `MODE` (`Remove-Item Env:MODE` on PowerShell, `unset MODE` elsewhere).
 6. If the server was used, restart it so any in-flight run is gone: Ctrl+C, `npm run serve`.
 
@@ -179,46 +183,24 @@ Jira does not create a second identical link, so a missed link removal is not fa
 label removal is: step 3 would post the proposal but step 5 would find the ticket already
 approved and skip.
 
-## Appendix: fallback verdicts if `npm run check` is not available
+## Appendix: fallback verdict for SCRUM-205 if `npm run check` is not available
 
-Put these in `data/verdicts/SCRUM-205.json` and `data/verdicts/SCRUM-198.json` with the
-`PLANT-n` keys replaced by the real ones. `act` reads them when there is no `checkTicket`.
-Remove them once Phase E lands so the real verdicts are used.
-
-`data/verdicts/SCRUM-205.json`:
+`data/verdicts/SCRUM-208.json` is committed. For the Accept pair, put this in
+`data/verdicts/SCRUM-205.json`; `act` reads it when there is no `checkTicket`. Remove it once
+Phase E lands so the real verdict is used.
 
 ```json
 {
   "candidates": 4,
   "verdicts": [
     {
-      "pair": ["SCRUM-205", "PLANT-3"],
+      "pair": ["SCRUM-205", "SCRUM-210"],
       "type": "dependency_break",
       "confidence": 0.93,
       "evidence": {
         "ticket_a_line": "Build hono/path on top of getPath from utils/url so the percent-decoding loop is not duplicated a third time.",
         "ticket_b_line": "Remove the getPath and getPathNoStrict exports from src/utils/url.ts.",
         "code_path": "src/utils/url.ts -> getPath()"
-      }
-    }
-  ]
-}
-```
-
-`data/verdicts/SCRUM-198.json`:
-
-```json
-{
-  "candidates": 3,
-  "verdicts": [
-    {
-      "pair": ["SCRUM-198", "PLANT-1"],
-      "type": "dependency_break",
-      "confidence": 0.91,
-      "evidence": {
-        "ticket_a_line": "Set up a signed cookie with jwt: await setSignedCookie(c, 'session', await sign(payload, secret), ...) and read it back with jwt({ cookie }).",
-        "ticket_b_line": "Delete getSignedCookie, setSignedCookie and generateSignedCookie from src/helper/cookie/index.ts.",
-        "code_path": "src/helper/cookie/index.ts -> getSignedCookie()"
       }
     }
   ]

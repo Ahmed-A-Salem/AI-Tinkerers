@@ -22,9 +22,9 @@ Here is the comment. Both lines, quoted. Dev's ticket says build on getPath. The
 
 This is Accept mode. The agent proposed, and it waits. A human adds one label, agent-approved. That is the whole approval interface. The agent links the two tickets. Nobody left Jira.
 
-[6 · 1:35 · MODE=auto npm run act -- SCRUM-198]
+[6 · 1:35 · MODE=auto npm run act -- SCRUM-208]
 
-Now Auto mode. A different ticket, a signed cookie flow in the JWT middleware, against a planted ticket that rips out the signed cookie helpers. Same pipeline, but it comments, labels, and links in one pass, nobody clicking. Safe, because those are its only three actions. There is no code path that edits a ticket.
+Now Auto mode. A ticket that rips out the signed cookie helpers, against an open issue that needs them in the JWT middleware. Same pipeline, but it comments, labels, and links in one pass, nobody clicking. Safe, because those are its only three actions. There is no code path that edits a ticket.
 
 [7 · 1:50 · backlog filter, npm run check -- --all]
 
