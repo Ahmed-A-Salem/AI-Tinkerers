@@ -6,12 +6,16 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "auth(req) decodes the Authorization header and returns { username, password } in clear text.",
-    "src/middleware/basic-auth/index.ts compares both fields itself with timingSafeEqual.",
-    "Add verifyBasicAuth(req, users) which decodes the header and does the constant-time comparison, returning only true/false.",
-    "basicAuth() calls verifyBasicAuth(); the { username, password } object is no longer produced anywhere."
+    "auth(req) decodes the Authorization header and returns { username, password } in clear text",
+    "the basic-auth middleware compares username and password itself using timingSafeEqual",
+    "replace auth() with verifyBasicAuth(req, users) which decodes the header and does a constant-time comparison in one place, returning only true / false",
+    "basicAuth() calls verifyBasicAuth(), and the { username, password } object is no longer produced anywhere",
+    "remove auth() from src/utils/basic-auth.ts"
   ],
-  "values_specified": {},
+  "values_specified": {
+    "authorization_header": "Authorization",
+    "verify_basic_auth_return": "true / false"
+  },
   "removes": [
     "auth"
   ],

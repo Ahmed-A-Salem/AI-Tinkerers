@@ -2,18 +2,19 @@
   "key": "SCRUM-42",
   "components": [
     "preset",
-    "types",
-    "request"
+    "middleware"
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "BeforeRequestHook runs before the discovery request that determines the paths of dynamic routes (not before the final request).",
-    "AfterResponseHook runs the actual requests.",
-    "The plugin system currently allows defining BeforeRequestHook, AfterResponseHook and AfterGenerateHook.",
-    "Add a new hook that runs before the actual request (after discovery).",
-    "The new hook should be able to return false each time to skip performing the actual request, allowing a first pass to count routes and a second pass to run requests."
+    "SSG is a long operation and needs progress reporting for total and completed requests",
+    "BeforeRequestHook does not run before the final request; it runs before the discovery request that determines the paths of dynamic routes",
+    "AfterResponseHook runs the actual requests",
+    "The current plugin system allows defining BeforeRequestHook, AfterResponseHook and AfterGenerateHook",
+    "Add a hook that runs before the actual request to allow a discovery-only pass that can skip performing requests by returning false"
   ],
-  "values_specified": {},
+  "values_specified": {
+    "new_hook_skip_return_value": "false"
+  },
   "removes": [
     "BeforeRequestHook"
   ],

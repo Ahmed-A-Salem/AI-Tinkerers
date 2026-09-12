@@ -6,20 +6,19 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "ClientResponse types assume native fetch behavior (res.ok, res.json(), res.text())",
-    "ofetch throws errors on non-2xx responses instead of returning a response object with ok: false",
-    "axios responses use a data property instead of methods like .json()",
-    "TypeScript does not know that non-2xx responses will never arrive as normal response objects when using ofetch",
-    "Users must create type workarounds like res200() for every RPC call"
+    "Client accepts a custom fetch implementation via options.",
+    "ClientResponse types assume native fetch methods like res.ok, res.json(), res.text().",
+    "ofetch throws on non-2xx responses instead of returning a Response object with ok: false.",
+    "TypeScript cannot infer that non-2xx responses will never arrive as normal response objects when using ofetch.",
+    "Users must add type workarounds like res200() after every RPC call."
   ],
   "values_specified": {
     "status_200": "200",
-    "fetch_behavior_throw_on_error": "throw-on-error",
-    "fetch_behavior_native": "native",
-    "hono_version": "Latest"
+    "response_range_2xx": "2xx",
+    "non_2xx": "non-2xx",
+    "fetch_behavior_option_throw_on_error": "throw-on-error",
+    "fetch_behavior_option_native": "native"
   },
-  "removes": [
-    "ClientResponse"
-  ],
+  "removes": [],
   "depends_on": []
 }

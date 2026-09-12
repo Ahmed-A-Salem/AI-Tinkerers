@@ -8,7 +8,8 @@
   "behaviors_asserted": [
     "Fold getPath and getPathNoStrict into a single parsePath(request, strict) that lives inside src/hono-base.ts and is not exported",
     "Remove the getPath and getPathNoStrict exports from src/utils/url.ts",
-    "The getPath constructor option keeps working, but the default implementation is no longer importable"
+    "Keep the getPath constructor option working while making the default implementation non-importable",
+    "Eliminate the extra indirection on every request caused by choosing between getPath and getPathNoStrict at app construction"
   ],
   "values_specified": {},
   "removes": [

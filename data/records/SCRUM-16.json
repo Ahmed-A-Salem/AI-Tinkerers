@@ -1,25 +1,23 @@
 {
   "key": "SCRUM-16",
   "components": [
-    "adapter",
+    "hono",
     "request",
-    "utils"
+    "adapter"
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "Make the project ESM only.",
-    "Split adapters into separate packages.",
-    "Adopt tsdown.",
-    "c.req.query() returns Record<string, string | undefined>.",
-    "c.req.json() returns unknown instead of any."
+    "ESM only",
+    "Splitting adapters to separate packages",
+    "c.req.query() returns Record<string, string | undefined>",
+    "c.req.json() to unknown from any",
+    "Remove getQueryStrings from utils/url.ts (not used)"
   ],
   "values_specified": {
-    "module_format": "ESM only",
     "c_req_query_return_type": "Record<string, string | undefined>",
     "c_req_json_return_type": "unknown"
   },
   "removes": [
-    "routePath",
     "getQueryStrings"
   ],
   "depends_on": []

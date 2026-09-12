@@ -7,18 +7,16 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "compose intercepts errors at the inner dispatch and routes them to onError before the await unwinds",
-    "when app.onError is registered, middleware that wraps await next() never sees errors thrown downstream",
-    "next() with no argument behaves exactly as today",
-    "when next({ rethrow: true }) is passed, the dispatch lets the error propagate out of await next() so the caller can try/catch it"
+    "When app.onError is registered, compose currently catches errors at the inner dispatch and routes them to onError before the await unwinds",
+    "Add an optional argument to next: NextOptions with a rethrow boolean to control error propagation",
+    "When { rethrow: true } is passed, the dispatch lets the error propagate out of await next() so the caller can try/catch it",
+    "Calling next() with no argument (the default) behaves exactly as today"
   ],
   "values_specified": {
-    "next_options_type": "{ rethrow?: boolean }",
-    "next_type": "(options?: NextOptions) => Promise<void>",
-    "next_default": "no argument (current behavior)"
+    "next_options_definition": "type NextOptions = { rethrow?: boolean }",
+    "next_signature": "type Next = (options?: NextOptions) => Promise<void>",
+    "next_default": "current behavior"
   },
-  "removes": [
-    "Next"
-  ],
+  "removes": [],
   "depends_on": []
 }
