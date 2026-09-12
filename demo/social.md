@@ -10,11 +10,11 @@ Built today at the AI Tinkerers hackathon in Paris: **Backlog Conflict Agents**,
 
 Agent 1 listens to a stand-up and turns each commitment into a draft ticket.
 
-Agent 2 checks every new or edited ticket against the backlog *and the codebase*, then comments, labels, and links, with a human-approval mode and an auto mode.
+Agent 2 checks every ticket against the backlog *and the codebase*, comments, labels, and links, with a human-approval mode and an auto mode.
 
 The demo hook: an engineer says "I'll build on getPath." A ticket already in the backlog removes getPath. Agent 2 quotes both lines, names the file, and flags it before anyone writes code.
 
-Caught [N] of 6 planted conflicts across 206 real Hono tickets.
+Caught 4 of 6 planted conflicts with 3 false positives across 206 real Hono tickets.
 
 Video: [VIDEO_LINK]
 Code: [REPO_LINK]

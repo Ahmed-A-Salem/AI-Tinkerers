@@ -24,10 +24,12 @@ Jira key.
 2. Run the reset procedure at the bottom so every ticket is clean. Once, before the first take:
    delete SCRUM-207 ("Finish PR review and release notes"), a stray draft from an early Agent 1
    run before the commitment filter existed, so the backlog shows only real drafts.
-3. Confirm the verdicts exist before going on camera. Either `npm run check -- SCRUM-205` and
-   `npm run check -- SCRUM-208` (Phase E), or, if `check` is not on main yet:
-   `data/verdicts/SCRUM-208.json` is already in the repo, and the SCRUM-205 fallback is in the
-   appendix.
+3. Run Phase E on both demo tickets and confirm the verdicts before going on camera:
+   `npm run check -- SCRUM-208` prints verdict SCRUM-208 / SCRUM-198, dependency_break, 0.9,
+   code path `src/helper/cookie/index.ts -> getSignedCookie()`, and the line
+   "Checked against 9 related tickets, 3 conflict(s) found." (the other two are real overlaps
+   on the same helpers). `npm run check -- SCRUM-210` prints SCRUM-210 / SCRUM-205,
+   dependency_break, 0.92, `src/utils/url.ts -> getPath()`.
 4. Dry run the whole sheet once with `--dry` on each `act` command. Nothing is posted. Then reset.
 5. Browser tabs open in this order: SCRUM-205, SCRUM-210, SCRUM-208, SCRUM-198, and the backlog
    filter `project = SCRUM AND labels = agent-conflict ORDER BY key`.
@@ -75,7 +77,7 @@ Expect in the terminal:
 
 ```
 SCRUM-205: 1 verdict(s) ...
-  ok   comment on SCRUM-205: [agent-proposed] Possible dependency break with SCRUM-210 (confidence NN%)
+  ok   comment on SCRUM-205: [agent-proposed] Possible dependency break with SCRUM-210 (confidence 92%)
   ok   label SCRUM-205 += agent-conflict
   ok   label SCRUM-210 += agent-conflict
 held for approval (1); add label agent-approved then run with --apply:
@@ -90,7 +92,7 @@ new comment.
 Screen: SCRUM-205, comment in full view. It reads, in this shape:
 
 ```
-[agent-proposed] Possible dependency break with SCRUM-210 (confidence NN%)
+[agent-proposed] Possible dependency break with SCRUM-210 (confidence 92%)
 
 SCRUM-205 says: "<the line about building on getPath from utils/url>"
 
@@ -139,10 +141,12 @@ On Windows PowerShell:
 $env:MODE='auto'; npm run act -- SCRUM-208
 ```
 
-Expect: comment, both labels, and the link in a single run, `held for approval` absent:
+Expect: comment, both labels, and the link in a single run, `held for approval` absent. Phase E
+finds three conflicts for SCRUM-208 (SCRUM-198 plus two other signed-cookie tickets), so the
+run posts three proposal comments and three links; the take narrates the SCRUM-198 one:
 
 ```
-  ok   comment on SCRUM-208: [agent-proposed] Possible dependency break with SCRUM-198 (confidence 94%)
+  ok   comment on SCRUM-208: [agent-proposed] Possible dependency break with SCRUM-198 (confidence 90%)
   ok   label SCRUM-208 += agent-conflict
   ok   label SCRUM-198 += agent-conflict
   ok   link SCRUM-208 -[Relates]-> SCRUM-198
@@ -162,7 +166,7 @@ Screen: the backlog filter tab, reload. Every ticket the agent touched is listed
 npm run check -- --all
 ```
 
-Expect the one sentence: "Caught N of 6 planted conflicts with M false positives across 206
+Expect the one sentence: "Caught 4 of 6 planted conflicts with 3 false positives across 206
 tickets." Hold on it. End.
 
 ## Reset between takes
@@ -186,11 +190,10 @@ Jira does not create a second identical link, so a missed link removal is not fa
 label removal is: step 3 would post the proposal but step 5 would find the ticket already
 approved and skip.
 
-## Appendix: fallback verdict for SCRUM-205 if `npm run check` is not available
+## Appendix: fallback verdict for SCRUM-205 if `npm run check` fails on the day
 
-`data/verdicts/SCRUM-208.json` is committed. For the Accept pair, put this in
-`data/verdicts/SCRUM-205.json`; `act` reads it when there is no `checkTicket`. Remove it once
-Phase E lands so the real verdict is used.
+Phase E is on main and `act` calls it first, so this is only insurance. If `check` errors (LLM
+key, rate limit), put this in `data/verdicts/SCRUM-205.json` and `act` uses it instead.
 
 ```json
 {
