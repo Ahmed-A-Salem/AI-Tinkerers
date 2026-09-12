@@ -96,7 +96,15 @@ export function recommendedOrder(v: ConflictVerdict): string {
   const [a, b] = v.pair;
   if (v.type === 'ordering') return `${a} first, then ${b} (${b} assumes ${a} has shipped).`;
   const sym = symbolOf(v.evidence.code_path);
-  const remover = removesSymbol(a, sym) && !removesSymbol(b, sym) ? a : b;
+  const ra = removesSymbol(a, sym);
+  const rb = removesSymbol(b, sym);
+  let remover: string;
+  if (ra !== rb) remover = ra ? a : b;
+  else {
+    // Records agree or are silent: fall back to the quoted lines (which one talks about removing).
+    const verb = /(remov|delet|drop|rip out|fold|un-?export|get rid)/i;
+    remover = verb.test(v.evidence.ticket_b_line) && !verb.test(v.evidence.ticket_a_line) ? b : a;
+  }
   const dependent = remover === a ? b : a;
   return `land ${dependent} before ${remover}, or keep ${sym} available until ${dependent} has migrated off it; if ${remover} must go first, add the replacement to ${dependent} before merging.`;
 }
