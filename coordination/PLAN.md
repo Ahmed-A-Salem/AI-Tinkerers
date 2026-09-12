@@ -14,8 +14,8 @@ Only the main orchestrator edits this file. Everyone else reads it and reports C
   `CLAUDE.md` (auto-loaded) + its phase card and start. If the card is missing something, that's
   a plan bug: tell your orchestrator, don't guess.
 - **Two lanes, one plan.** Ahmed's sessions report to the main orchestrator directly (session
-  messages). Ather's sessions report to Ather's local orchestrator, which reports to the main
-  orchestrator over the ntfy bus. See `coordination/ORCHESTRATION.md`.
+  messages). **Ather's developer sessions report straight to the main orchestrator over the ntfy
+  bus** (no local orchestrator on Ather's side, decided 13:30). See "Ather's developer sessions" below.
 - If a gate is missed, cut from the bottom of the phase list, never the top. Phases A–F alone
   are a submittable product.
 
@@ -30,7 +30,20 @@ Only the main orchestrator edits this file. Everyone else reads it and reports C
 4. Send `CLAIM <phase>: <files>` to your orchestrator. Do the work. Run the acceptance check.
    Send `DONE <phase>: <acceptance output>` or `BLOCKED <phase>: <what you need>`.
 
-**Orchestrator session (either laptop):** see `coordination/ORCHESTRATION.md` → "Fresh orchestrator".
+**Ather's developer sessions (one per phase, no local orchestrator):**
+1. Do steps 1–3 above. Set `AGENT_BUS_NODE=ather-<phase>` (e.g. `ather-D`) in your shell.
+2. Report over the bus instead of `SendMessage`, from the repo root:
+   `python coordination/agent_bus.py send request "CLAIM D: data/planted.json, data/planted-tickets.json, scripts/plant.ts"`
+   Same for `DONE <phase>: <acceptance output>`, `BLOCKED <phase>: <need>`, `Q: <question>`.
+3. Read answers with `python coordination/agent_bus.py poll --since 30m` (the main orchestrator
+   replies on the same topic with `reply_to` set to your message id). Pull `main` after any
+   `PLAN:` message.
+4. Commit your phase's files on `main` when DONE (pull first, push right away, only your own
+   files). Ahmed's side does the same, so conflicts stay inside `package.json` at worst.
+5. Current lane order: **D now** (no LLM needed), **C now** (build + dry run; the LLM acceptance
+   waits for the OpenRouter key), then **E** once B, C, D are done, then **H**.
+
+**Orchestrator session (Ahmed's laptop):** see `coordination/ORCHESTRATION.md` → "Fresh orchestrator".
 
 ## Lanes
 
@@ -47,7 +60,7 @@ Shared, append-only: `package.json` (add deps, don't remove), `.env.example`.
 
 | Phase | Name                              | Lane  | Status        | Gate  | Depends on |
 |-------|-----------------------------------|-------|---------------|-------|------------|
-| A     | Foundation                        | Ahmed | **done** except A4 (needs Jira credential) | 12:15 | — |
+| A     | Foundation                        | Ahmed | **done** except A4: **in-progress** (a3, 13:25; Jira REST creds in `.env`, read smoke OK, project `SCRUM`) | 12:15 | — |
 | B     | Ticket extractor → records        | Ahmed | **blocked** (a3; code + typecheck done 12:55, needs OPENROUTER_API_KEY in `.env` to run acceptance) | 12:45 | A |
 | C     | Ticket→code mapping (decision)    | Ather | todo          | 13:00 | A |
 | D     | Planted conflicts + ground truth  | Ather | todo          | 13:00 | A |
@@ -245,9 +258,10 @@ the LLM using the code graph, emit §5.3 `ConflictVerdict[]`.
 
 | Owner | Phase | Files / areas | Since |
 |-------|-------|---------------|-------|
+| Ahmed / session ai-tinkerers-a3 | A4 | `scripts/import-issues.ts`, `scripts/jira-smoke.ts`, `data/gh-to-jira.json` | 13:25 |
 | Ahmed / session ai-tinkerers-a3 | B | `src/extract/` (issues.ts, llm.ts, cache.ts, index.ts), `scripts/extract.ts`, package.json (append `extract` script + dotenv) | 12:49 |
 
-Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: onboarding sent 12:35, no reply yet.
+Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: developer sessions report on the bus directly (from 13:30).
 
 ## Decisions
 
@@ -260,6 +274,9 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: onboarding
   Linear only if no Jira credential at all.
 - `JiraClient` has no updateDescription(); `createDraftIssue()` hardcodes `agent-draft`.
 - Verification = functional acceptance checks per phase, no unit tests.
+- 2026-09-12 13:30 (Ahmed + Ather): **no local orchestrator on Ather's laptop.** Ather's developer
+  sessions post CLAIM/DONE/BLOCKED/Q directly on the bus with `AGENT_BUS_NODE=ather-<phase>`;
+  the main orchestrator answers on the bus. Each side commits its own finished phase files to `main`.
 - 2026-09-12 12:58 (Ahmed): **LLM provider = OpenRouter.** Every phase that calls a model (B, C, E, I)
   reads `OPENROUTER_API_KEY` and talks to `https://openrouter.ai/api/v1` through the `openai` SDK
   with `baseURL` set. `OPENAI_API_KEY` is optional and only used if present. Pick a cheap
@@ -285,4 +302,4 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: onboarding
 - Project name: [OPEN]
 - Video owner, social post owner: [OPEN], assign by 14:00
 - CopilotKit panel: only if a teammate wants it and it costs nothing
-- Jira credential + project key: **[OPEN, blocks A4 and everything that writes to Jira]**
+- Jira credential + project key: **resolved 13:20**, REST backend, project key `SCRUM`. OpenRouter key: **[OPEN, waiting on organizers; blocks B, C, E]**

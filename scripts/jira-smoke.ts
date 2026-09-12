@@ -6,6 +6,7 @@
  *
  * Works against whichever backend has credentials (see src/jira/index.ts).
  */
+import 'dotenv/config';
 import { getJiraClient, describeCredentials } from '../src/jira/index.js';
 
 async function main() {

@@ -83,7 +83,15 @@ has allowed committing).
 4. Reply to Ather's orchestrator with `python coordination/agent_bus.py send response "..." --reply-to <id>`.
    Reply to a local worker with `SendMessage`.
 
-## Ather's local orchestrator procedure (Ather's laptop)
+## Change 13:30 — Ather runs developers directly, no local orchestrator
+
+Ather's laptop has no orchestrator. Ather's developer sessions post `CLAIM` / `DONE` / `BLOCKED` /
+`Q` on the bus themselves with `AGENT_BUS_NODE=ather-<phase>`, and read replies with `poll`.
+The main orchestrator treats any bus message from a node named `ather-*` as a worker report:
+record it in `coordination/PLAN.md`, run the conflict check, reply with `send response ... --reply-to <id>`.
+The "Ather's local orchestrator" section below is kept for reference only.
+
+## Ather's local orchestrator procedure (Ather's laptop) — superseded, see above
 
 Same as above, with these differences:
 - Arm the same Monitor on the same topic; set `AGENT_BUS_NODE` to something identifying
