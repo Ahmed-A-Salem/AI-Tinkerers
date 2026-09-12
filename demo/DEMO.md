@@ -51,9 +51,10 @@ Screen: terminal. Then switch to the SCRUM-205 tab.
 npm run meeting -- demo/standup.txt
 ```
 
-Expect: "3 commitment(s) found". Agent 1 deduplicates against Jira, so on a repeat run each
-commitment is reported as `skipped, exists as SCRUM-205` (and 206, 207) instead of being
-created again. The command is safe to run live and the keys stay the same. On the SCRUM-205
+Expect: "2 commitment(s) found": Dev's hono/path helper and Priya's Retry-After. Maya's
+PR-review item is filtered out as not a code change. Agent 1 deduplicates against Jira, so on
+a repeat run each one is reported as `skipped, exists as SCRUM-205` (and SCRUM-206) instead
+of being created again. The command is safe to run live and the keys stay the same. On the SCRUM-205
 tab the label `agent-draft` must be visible.
 
 ### 3. Agent 2 flags the draft (0:45 to 1:00)
