@@ -10,7 +10,8 @@
     "index": "tsx scripts/build-index.ts",
     "extract": "tsx scripts/extract.ts",
     "act": "tsx scripts/act.ts",
-    "map": "tsx scripts/map.ts"
+    "map": "tsx scripts/map.ts",
+    "serve": "tsx scripts/serve.ts"
   },
   "dependencies": {
     "@trigger.dev/sdk": "^3.3.17",
