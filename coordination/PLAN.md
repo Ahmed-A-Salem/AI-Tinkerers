@@ -48,7 +48,7 @@ Shared, append-only: `package.json` (add deps, don't remove), `.env.example`.
 | Phase | Name                              | Lane  | Status        | Gate  | Depends on |
 |-------|-----------------------------------|-------|---------------|-------|------------|
 | A     | Foundation                        | Ahmed | **done** except A4 (needs Jira credential) | 12:15 | — |
-| B     | Ticket extractor → records        | Ahmed | todo (partial uncommitted code may exist in `src/extract/` from a stopped session; review or discard) | 12:45 | A |
+| B     | Ticket extractor → records        | Ahmed | todo          | 12:45 | A |
 | C     | Ticket→code mapping (decision)    | Ather | todo          | 13:00 | A |
 | D     | Planted conflicts + ground truth  | Ather | todo          | 13:00 | A |
 | E     | Retrieval + comparison → verdicts | Ather | todo          | 13:30 | B, C, D |
