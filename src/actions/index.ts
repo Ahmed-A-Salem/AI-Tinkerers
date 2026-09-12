@@ -62,8 +62,26 @@ export function proposalComment(v: ConflictVerdict, key: string): string {
     `${v.pair[0]} says: ${quote(v.evidence.ticket_a_line)}`,
     `${v.pair[1]} says: ${quote(v.evidence.ticket_b_line)}`,
     `Code path: ${v.evidence.code_path}`,
+    `Recommended order: ${recommendedOrder(v)}`,
     `Proposed action: link ${arrow} (${link.linkType}). To approve, add the label ${APPROVED_LABEL} to this ticket; the agent will then link the pair. -- Backlog Conflict Agent`,
   ].join('\n\n');
+}
+
+/** Symbol name from a code path like "src/utils/url.ts -> getPath()" (either arrow style). */
+function symbolOf(codePath: string): string {
+  const tail = codePath.split(/->|→/).pop() ?? codePath;
+  return tail.trim().replace(/\(\)$/, '') || 'the shared symbol';
+}
+
+/**
+ * A human-readable ordering suggestion inside the comment. Advice only: the agent's actions
+ * stay comment / label / link, and the humans decide.
+ */
+export function recommendedOrder(v: ConflictVerdict): string {
+  const [a, b] = v.pair;
+  if (v.type === 'ordering') return `${a} first, then ${b} (${b} assumes ${a} has shipped).`;
+  const sym = symbolOf(v.evidence.code_path);
+  return `land ${a} before ${b}, or keep ${sym} available until ${a} has migrated off it; if ${b} must go first, add the replacement to ${a} before merging.`;
 }
 
 export function noConflictComment(candidates: number | undefined): string {
