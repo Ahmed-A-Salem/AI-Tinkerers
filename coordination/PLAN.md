@@ -60,10 +60,10 @@ Shared, append-only: `package.json` (add deps, don't remove), `.env.example`.
 
 | Phase | Name                              | Lane  | Status        | Gate  | Depends on |
 |-------|-----------------------------------|-------|---------------|-------|------------|
-| A     | Foundation                        | Ahmed | **done** except A4: **in-progress** (a3, 13:25; Jira REST creds in `.env`, read smoke OK, project `SCRUM`) | 12:15 | — |
-| B     | Ticket extractor → records        | Ahmed | **blocked** (a3; code + typecheck done 12:55, needs OPENROUTER_API_KEY in `.env` to run acceptance) | 12:45 | A |
+| A     | Foundation                        | Ahmed | **done** except A4: smoke read+write OK on `SCRUM-1`, import script re-runnable (13:35); **waiting on Ahmed to run `npm run import:issues -- --go` in his terminal** (worker's permission classifier blocks bulk Jira writes) | 12:15 | — |
+| B     | Ticket extractor → records        | Ahmed | in-progress (a3; code done, OpenAI key landed 13:40, running acceptance) | 12:45 | A |
 | C     | Ticket→code mapping (decision)    | Ather | todo          | 13:00 | A |
-| D     | Planted conflicts + ground truth  | Ather | todo          | 13:00 | A |
+| D     | Planted conflicts + ground truth  | Ather | claimed (ai-tinkerers-d0 via ather orchestrator, 13:32) | 13:00 | A |
 | E     | Retrieval + comparison → verdicts | Ather | todo          | 13:30 | B, C, D |
 | F     | Write-back + Accept mode          | Ahmed | todo          | 14:00 | A4, E (interface only) |
 | G     | Event-driven via Trigger.dev      | Free  | todo          | 14:15 | F |
@@ -103,7 +103,7 @@ Known sharp edges for later phases: see "Notes for the intelligence layer" at th
 - **Output:** `data/records/<KEY>.json`, one per ticket, exactly `TicketRecord`. `files_touched` may be empty here; Phase C fills it.
 - **CLI:** `npm run extract` (all tickets, skips cached) and `npm run extract -- <KEY>` (force one).
 - **Files:** `src/extract/`, `scripts/extract.ts`.
-- **Model:** OpenRouter (`OPENROUTER_API_KEY`, OpenAI-compatible endpoint `https://openrouter.ai/api/v1`). `OPENAI_API_KEY` is optional; if set it is used first. Use structured output / JSON mode.
+- **Model:** OpenAI (`OPENAI_API_KEY`), model `gpt-5-mini` via `LLM_MODEL`. OpenRouter (`OPENROUTER_API_KEY`) only as fallback. Use structured output / JSON mode. **Do not send `temperature`**: GPT-5 models reject any value but the default.
 - **Acceptance:**
   1. `npm run extract` over 200 tickets completes; `ls data/records | wc -l` = 200.
   2. Open 5 records by hand: `components` non-empty and plausible, `removes` / `values_specified` populated where the ticket text supports it, nothing invented.
@@ -258,10 +258,11 @@ the LLM using the code graph, emit §5.3 `ConflictVerdict[]`.
 
 | Owner | Phase | Files / areas | Since |
 |-------|-------|---------------|-------|
+| Ather / session ai-tinkerers-d0 | D | `data/planted.json`, `data/planted-tickets.json`, `scripts/plant.ts`, append PLANT-1..6 to `data/hono-issues.json` | 13:32 |
 | Ahmed / session ai-tinkerers-a3 | A4 | `scripts/import-issues.ts`, `scripts/jira-smoke.ts`, `data/gh-to-jira.json` | 13:25 |
 | Ahmed / session ai-tinkerers-a3 | B | `src/extract/` (issues.ts, llm.ts, cache.ts, index.ts), `scripts/extract.ts`, package.json (append `extract` script + dotenv) | 12:49 |
 
-Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: developer sessions report on the bus directly (from 13:30).
+Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: local orchestrator ai-tinkerers-c3 (bus node `ather`) online since 13:33; it relays its workers' CLAIM/DONE. Direct `ather-<phase>` posts are also accepted.
 
 ## Decisions
 
@@ -277,11 +278,13 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: developer 
 - 2026-09-12 13:30 (Ahmed + Ather): **no local orchestrator on Ather's laptop.** Ather's developer
   sessions post CLAIM/DONE/BLOCKED/Q directly on the bus with `AGENT_BUS_NODE=ather-<phase>`;
   the main orchestrator answers on the bus. Each side commits its own finished phase files to `main`.
-- 2026-09-12 12:58 (Ahmed): **LLM provider = OpenRouter.** Every phase that calls a model (B, C, E, I)
-  reads `OPENROUTER_API_KEY` and talks to `https://openrouter.ai/api/v1` through the `openai` SDK
-  with `baseURL` set. `OPENAI_API_KEY` is optional and only used if present. Pick a cheap
-  JSON-capable model (e.g. `openai/gpt-4o-mini` via OpenRouter) and put the id in one place
-  (`LLM_MODEL` env, default in code) so it can be swapped.
+- 2026-09-12 13:40 (Ahmed): **LLM provider = OpenAI, model = `gpt-5-mini`.** Supersedes the 12:58
+  OpenRouter decision (organizers gave OpenAI credits). Every phase that calls a model (B, C, E, I):
+  `new OpenAI()` with `OPENAI_API_KEY`, model id from `LLM_MODEL` env (`.env` has `gpt-5-mini`).
+  Fallback only if `OPENAI_API_KEY` is absent: OpenRouter with `baseURL https://openrouter.ai/api/v1`
+  and the model prefixed `openai/`. **Never pass `temperature`** (GPT-5 family returns 400 for
+  anything but the default). Use `response_format: json_schema` (strict) with a `json_object` retry.
+  Reuse `src/extract/llm.ts` (`completeJson`) instead of writing another client.
 - 2026-09-12 12:50 (Phase B): **record key convention** for `data/records/<KEY>.json`: `issue.key` if
   present (PLANT-*), else the `data/gh-to-jira.json` mapping if it exists, else `GH-<number>`.
   Exported as `issueKey()` / `loadIssues()` from `src/extract/issues.ts`; Phases C and E reuse it
@@ -302,4 +305,4 @@ Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: developer 
 - Project name: [OPEN]
 - Video owner, social post owner: [OPEN], assign by 14:00
 - CopilotKit panel: only if a teammate wants it and it costs nothing
-- Jira credential + project key: **resolved 13:20**, REST backend, project key `SCRUM`. OpenRouter key: **[OPEN, waiting on organizers; blocks B, C, E]**
+- Jira credential + project key: **resolved 13:20**, REST backend, project key `SCRUM`. LLM key: **resolved 13:40**, OpenAI, model `gpt-5-mini`.
