@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-70",
+  "components": [
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ws.raw is available but typed as optional",
+    "The adapter leverages the raw.data attribute for internal use, which can be overwritten by application code",
+    "Overwriting raw.data in user code can lead to runtime errors (e.g. TypeError in onClose due to websocketListeners being lost)",
+    "Hono-specific internal data should not be stored alongside application-specific data on raw.data"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

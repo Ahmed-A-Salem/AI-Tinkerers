@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-117",
+  "components": [
+    "middleware",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Default logger middleware emits ANSI escape sequences when the output is not a TTY.",
+    "Hono should check that stdout is a TTY when determining whether to emit ANSI escape sequences for colors.",
+    "When running on Node, the check should use Boolean(process.stdout.isTTY) === true.",
+    "When running on Deno, the check should use Deno.stdout.isTerminal()."
+  ],
+  "values_specified": {
+    "hono_version": "4.6.16",
+    "no_color_env_value": "1"
+  },
+  "removes": [],
+  "depends_on": []
+}

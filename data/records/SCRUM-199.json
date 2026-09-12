@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-199",
+  "components": [
+    "hono",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono instances should expose a listen function to start a server.",
+    "listen starts the server by calling @hono/node-server serve with fetch, port, and hostname.",
+    "listen accepts an options object { port?, hostname? } and an optional listener(info) callback.",
+    "When port is unspecified, listen defaults port to 3000.",
+    "When hostname is unspecified, listen defaults hostname to '0.0.0.0' and the listener callback receives an info object with properties address, family, and port."
+  ],
+  "values_specified": {
+    "default_port": "3000",
+    "default_hostname": "0.0.0.0",
+    "listener_info_property_names": "address,family,port"
+  },
+  "removes": [],
+  "depends_on": []
+}

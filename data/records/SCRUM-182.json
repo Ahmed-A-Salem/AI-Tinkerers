@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-182",
+  "components": [
+    "adapter",
+    "middleware",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "GET requests to /graphql should be handled by the GraphQL server middleware",
+    "When running with the aws-lambda adapter (handle), GET to /graphql does not work",
+    "When running with the node server (serve), GET to /graphql works"
+  ],
+  "values_specified": {
+    "hono_version": "4.3.7",
+    "runtime": "Lambda",
+    "graphql_path": "/graphql"
+  },
+  "removes": [],
+  "depends_on": []
+}

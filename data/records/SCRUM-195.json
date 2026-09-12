@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-195",
+  "components": [
+    "middleware",
+    "types",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "next() is typed as void",
+    "await next() returns a Context object",
+    "await next() does not appear to throw when wrapped middleware throws"
+  ],
+  "values_specified": {
+    "hono_version": "4.1.4",
+    "tested_hono_version": "4.0.1",
+    "runtime_platform": "Cloudflare workers"
+  },
+  "removes": [],
+  "depends_on": []
+}

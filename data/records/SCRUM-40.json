@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-40",
+  "components": [
+    "hono",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "app.ts holds the server logic and must be runtime-agnostic so it can be used in node for local development and in AWS Lambda for production",
+    "Provide an example in the docs showing how to set up websockets in hono in AWS Lambda",
+    "Document how, where, and when to call injectWebSocket",
+    "Expose a websocket route at /api/ws using upgradeWebSocket"
+  ],
+  "values_specified": {
+    "base_path": "/api",
+    "auth_route": "/auth",
+    "websocket_path": "/ws",
+    "local_port": "3000"
+  },
+  "removes": [],
+  "depends_on": []
+}

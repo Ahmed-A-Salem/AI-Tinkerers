@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-21",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "run hono app within WebExtensions webRequest environment",
+    "easily switch hono IIFE bundler impl among deno, service worker, web extension",
+    "currently only able to switch among deno and service worker"
+  ],
+  "values_specified": {
+    "iife_bundler_impls": "deno, service worker, web extension",
+    "target_environment": "webRequest"
+  },
+  "removes": [],
+  "depends_on": []
+}

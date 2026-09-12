@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-185",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "jwt middleware requires a static secret value",
+    "jwt middleware should support an async function(payload: any) : string as the secret parameter",
+    "the verification secret may be retrieved from a JWKS"
+  ],
+  "values_specified": {
+    "secret_parameter_type": "async function(payload: any) : string"
+  },
+  "removes": [],
+  "depends_on": []
+}

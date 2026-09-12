@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-122",
+  "components": [
+    "middleware",
+    "http-exception",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "middlewares such as csrf throw HTTPException by default",
+    "add an optional exception property to specify a custom exception class",
+    "if an exception is provided, the middleware throws that instead of the default HTTPException",
+    "the original exception could be preserved in the cause property for debugging purposes",
+    "maintain backward compatibility by defaulting to HTTPException"
+  ],
+  "values_specified": {
+    "option_exception_property": "exception",
+    "default_exception": "HTTPException"
+  },
+  "removes": [],
+  "depends_on": []
+}

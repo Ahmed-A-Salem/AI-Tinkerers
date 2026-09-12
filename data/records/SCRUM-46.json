@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-46",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Automated run of Daily Perf Improver produced pull requests for Hono.",
+    "Some PRs passed the \"first glance\" check.",
+    "AI often generates garbage.",
+    "Performance figures produced in VM cloud environments are indicative at best.",
+    "There is absolutely no substitute for humans checking performance figures and actual workloads."
+  ],
+  "values_specified": {
+    "trial_repo_pulls_url": "https://github.com/githubnext/gh-aw-trial-hono/pulls?q=is%3Apr+is%3Aclosed",
+    "passed_pr_urls": "https://github.com/githubnext/gh-aw-trial-hono/pull/7, https://github.com/githubnext/gh-aw-trial-hono/pull/10, https://github.com/githubnext/gh-aw-trial-hono/pull/11, https://github.com/githubnext/gh-aw-trial-hono/pull/12, https://github.com/githubnext/gh-aw-trial-hono/pull/20, https://github.com/githubnext/gh-aw-trial-hono/pull/22, https://github.com/githubnext/gh-aw-trial-hono/pull/25, https://github.com/githubnext/gh-aw-trial-hono/pull/26, https://github.com/githubnext/gh-aw-trial-hono/pull/27",
+    "build_and_test_pr_url": "https://github.com/githubnext/gh-aw-trial-hono/pull/33",
+    "daily_perf_improver_doc_url": "https://github.com/githubnext/agentics/blob/main/docs/daily-perf-improver.md"
+  },
+  "removes": [],
+  "depends_on": []
+}

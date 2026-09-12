@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-162",
+  "components": [
+    "utils",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Most path-related issues can be resolved with getPath.",
+    "getPath is a primitive and requires the use of regular expressions in most cases.",
+    "Provide utilities to help users easily solve path issues.",
+    "Provide a URL Rewrite utility."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": [
+    "GH-3034",
+    "GH-1745"
+  ]
+}

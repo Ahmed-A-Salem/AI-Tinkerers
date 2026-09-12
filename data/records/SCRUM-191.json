@@ -1,0 +1,13 @@
+{
+  "key": "SCRUM-191",
+  "components": [
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide typed access to event.target.value."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-142",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "bun implements http2 server functionality (see https://github.com/oven-sh/bun/pull/14286)"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

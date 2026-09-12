@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-108",
+  "components": [
+    "hono",
+    "router",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Each sibling file (except the index/mod file) has a sole named export of type Hono.",
+    "The index/mod file re-exports each of its sibling modules (using export *).",
+    "Provide a utility (instance method like new Hono().fromLookup(routes) or static Hono.fromLookup(routes)) that merges an object of exported Hono instances into a single Hono router.",
+    "Iterating over routes and attaching their values to a Hono instance currently merges them but does not preserve type information for use by the Hono client."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

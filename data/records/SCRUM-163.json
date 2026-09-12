@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-163",
+  "components": [
+    "context",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "c.json() supports JSON5",
+    "JSON5 supports BigInt",
+    "JSON5 supports comments",
+    "JSON5 supports trailing commas"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

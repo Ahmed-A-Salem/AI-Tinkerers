@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-74",
+  "components": [
+    "validator"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support for passing Standard Schema into `hono/validator`.",
+    "`hono/validator` accepts Standard Schema-compliant validators from libraries such as zod, valibot, and arktype (e.g., z.number(), v.number(), type('number')).",
+    "Provide the ability to validate without requiring the third-party `@hono/standard-validator` package."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

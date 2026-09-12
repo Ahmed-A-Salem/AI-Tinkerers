@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-91",
+  "components": [
+    "client",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Allow replacing the default URLSearchParams-based query parsing logic with a custom parser on the server side.",
+    "Allow replacing the default URLSearchParams-based query parsing logic with a custom parser on the hono/client.",
+    "The qs library parses nested query parameters (for example status[0]) into arrays instead of treating them as string keys."
+  ],
+  "values_specified": {
+    "example_page_value": "1",
+    "example_page_size_value": "25",
+    "example_status0_value": "DRAFT",
+    "example_query_string": "page=1&pageSize=25&status%5B0%5D=DRAFT"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-190",
+  "components": [
+    "middleware",
+    "context",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "JWT middleware sets the context variable jwtPayload with type any.",
+    "ContextVariableMap cannot be overridden to change jwtPayload's type.",
+    "Only way to set jwtPayload type currently is by casting.",
+    "Allow specifying a generic type parameter on jwt middleware, e.g. jwt<MyPayloadType>({ secret: '123' }).",
+    "Alternatively, remove interface ContextVariableMap { jwtPayload: any; } and require users to define context variables themselves."
+  ],
+  "values_specified": {
+    "example_secret": "123"
+  },
+  "removes": [
+    "ContextVariableMap"
+  ],
+  "depends_on": []
+}

@@ -1,0 +1,26 @@
+{
+  "key": "SCRUM-160",
+  "components": [
+    "hono",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "package.json currently assigns a single types file to both the import (ESM) and require (CJS) exports",
+    "exports should provide separate type declaration files for the import (ESM) and require (CJS) entrypoints",
+    "Node.js ESM projects using moduleResolution \"node16\" (or \"nodenext\") should be able to import hono without resolving to a CJS type for an ESM JS file"
+  ],
+  "values_specified": {
+    "hono_version": "4.5.5",
+    "current_types_path": "./dist/types/index.d.ts",
+    "current_import_js": "./dist/index.js",
+    "current_require_js": "./dist/cjs/index.js",
+    "proposed_import_types": "./dist/types/index.d.ts",
+    "proposed_require_types": "./dist/types/index.d.cts",
+    "proposed_require_default": "./dist/cjs/index.cjs",
+    "module_resolution_node16": "node16",
+    "module_resolution_nodenext": "nodenext"
+  },
+  "removes": [],
+  "depends_on": []
+}

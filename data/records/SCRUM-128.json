@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-128",
+  "components": [
+    "preset",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "CI measures benchmarks",
+    "bundle size is measured as a benchmark"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

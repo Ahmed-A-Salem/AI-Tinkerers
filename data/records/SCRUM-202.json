@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-202",
+  "components": [
+    "context",
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "c.redirect(location) returns a Location: ${location} header.",
+    "Sub-routes do not know their mounted path, requiring hard-coded full paths for redirects.",
+    "Redirects should be able to respect the sub-route path so sub-routes don't need external knowledge of their mount point.",
+    "Changing c.redirect's behaviour would impact existing applications, so add an option or a new method (e.g. c.redirect(location, { subroute: true }))."
+  ],
+  "values_specified": {
+    "header_name_location": "Location",
+    "redirect_option_example": "{ subroute: true }"
+  },
+  "removes": [],
+  "depends_on": []
+}

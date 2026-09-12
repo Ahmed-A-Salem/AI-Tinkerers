@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-55",
+  "components": [
+    "adapter",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "mapper assumes the event is well formed and valid.",
+    "When given the AWS console prefilled example JSON the handler throws \"cannot access undefined when reading \\\"0\\\"\" as it tries to index into an array that doesn't exist.",
+    "Mapper should try/catch mapping errors and return an error message \"Unable to map cloudfront request to request object when handling request: malformed cloudfront edge event\"."
+  ],
+  "values_specified": {
+    "expected_error_message": "Unable to map cloudfront request to request object when handling request: malformed cloudfront edge event",
+    "thrown_error_fragment": "cannot access undefined when reading \"0\""
+  },
+  "removes": [],
+  "depends_on": []
+}

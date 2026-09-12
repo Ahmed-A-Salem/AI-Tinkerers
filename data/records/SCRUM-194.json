@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-194",
+  "components": [
+    "middleware",
+    "client"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide Long Polling middleware for Hono",
+    "Provide a Long Polling client or client support"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

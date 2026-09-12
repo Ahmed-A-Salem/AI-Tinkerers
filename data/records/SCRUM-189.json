@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-189",
+  "components": [
+    "context",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Runtime throws \"Context is not finalized\" if there is no 'return c.xxx()' in a handler.",
+    "Add a TypeScript check or ESLint rule to prevent missing return expressions in handlers.",
+    "Handlers that call c.body(null, 204) must return that call (e.g. 'return c.body(null, 204)') to avoid the runtime error."
+  ],
+  "values_specified": {
+    "error_message_context_not_finalized": "Context is not finalized",
+    "example_status_code": "204"
+  },
+  "removes": [],
+  "depends_on": []
+}

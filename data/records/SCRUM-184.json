@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-184",
+  "components": [
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "executionCtx getter throws when the execution context is not available",
+    "executionCtx should return undefined or null instead of throwing when unavailable",
+    "allow checking c.executionCtx in an if guard to decide whether to call c.executionCtx.waitUntil"
+  ],
+  "values_specified": {
+    "hono_version": "4.3.3",
+    "runtime": "Bun",
+    "error_message": "This context has no ExecutionContext"
+  },
+  "removes": [],
+  "depends_on": []
+}

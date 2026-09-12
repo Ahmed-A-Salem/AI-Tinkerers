@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-166",
+  "components": [
+    "client",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "hc should accept either a URL or a Hono instance",
+    "When passed a Hono instance, hc should function like testClient"
+  ],
+  "values_specified": {},
+  "removes": [
+    "testClient"
+  ],
+  "depends_on": []
+}

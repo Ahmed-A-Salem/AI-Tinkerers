@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-88",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "serveStatic currently tries to find the index file in the directory.",
+    "serveStatic should support serving extensionless files by preferring exact path matches (e.g., GET /config → serve /static/config)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

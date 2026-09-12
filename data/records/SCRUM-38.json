@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-38",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Colon currently indicates the start of a path parameter in route definitions.",
+    "Provide a mechanism to escape colons in route definitions so they are treated as literal characters rather than the start of a parameter.",
+    "Allow registering routes that match Google AIP-style custom methods (e.g. /books/69420:archive and /books:create)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": [
+    "GH-1301"
+  ]
+}

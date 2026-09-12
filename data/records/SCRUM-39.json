@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-39",
+  "components": [
+    "client",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ClientResponse types assume native fetch behavior (res.ok, res.json(), res.text())",
+    "ofetch throws errors on non-2xx responses instead of returning a response object with ok: false",
+    "axios responses use a data property instead of methods like .json()",
+    "TypeScript does not know that non-2xx responses will never arrive as normal response objects when using ofetch",
+    "Users must create type workarounds like res200() for every RPC call"
+  ],
+  "values_specified": {
+    "status_200": "200",
+    "fetch_behavior_throw_on_error": "throw-on-error",
+    "fetch_behavior_native": "native",
+    "hono_version": "Latest"
+  },
+  "removes": [
+    "ClientResponse"
+  ],
+  "depends_on": []
+}

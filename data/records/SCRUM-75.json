@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-75",
+  "components": [
+    "middleware",
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "middleware can access the current route's config via c.req.routeConfig.expose",
+    "route handlers can specify a config object when registering a route (e.g., app.get(path, handler, { config: { expose: true } }))",
+    "middleware can use a route's config to determine whether to perform authentication interception"
+  ],
+  "values_specified": {
+    "route_config_expose_true": "true",
+    "route_config_expose_false": "false"
+  },
+  "removes": [],
+  "depends_on": []
+}

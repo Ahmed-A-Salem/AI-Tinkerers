@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-33",
+  "components": [
+    "client",
+    "types",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Types should be inferred in both cases.",
+    "RPC json response has unknown type when the handler is an arrow function that returns a Promise.",
+    "Using a block-bodied function that returns the Promise preserves correct type inference (e.g. { hello: string })."
+  ],
+  "values_specified": {
+    "hono_version": "4.12.2"
+  },
+  "removes": [],
+  "depends_on": []
+}

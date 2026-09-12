@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-96",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono supports Expo API Routes.",
+    "Enable code sharing between an Expo project and an API."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

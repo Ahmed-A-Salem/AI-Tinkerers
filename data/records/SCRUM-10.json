@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-10",
+  "components": [
+    "client",
+    "types",
+    "http-exception"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "A first-party typed RPC client works in edge environments (Cloudflare Workers & Deno Deploy) without Node.js-specific adapters.",
+    "The client accepts an injected, environment-aware fetch function for Workers compatibility (e.g., service binding fetch).",
+    "The typed client supports streaming RPC responses (SSE / ReadableStream).",
+    "HTTPException subtypes (error handling types) are propagated to the client side."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

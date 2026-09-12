@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-192",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "export const GET = handle(app) throws TypeError: outgoing.on is not a function",
+    "export default handle(app) causes Next.js errors: 'Detected default export...' and 'No HTTP methods exported...'"
+  ],
+  "values_specified": {
+    "hono_version": "4.2.1",
+    "node_server_version": "^1.9.1",
+    "next_version": "14.1.4"
+  },
+  "removes": [],
+  "depends_on": []
+}

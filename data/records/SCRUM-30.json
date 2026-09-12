@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-30",
+  "components": [
+    "hono",
+    "middleware",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono emits structured events through TracingChannel.",
+    "The TracingChannel 'hono:request' tracks individual middleware and route handler executions with context fields type, name, ctx.",
+    "TracingChannel propagates AsyncLocalStorage context through the middleware cascade.",
+    "TracingChannel provides lifecycle events start, end, error, asyncStart, and asyncEnd.",
+    "Subscribers attach externally and receive events automatically without requiring user-added middleware."
+  ],
+  "values_specified": {
+    "tracing_channel_name": "hono:request",
+    "server_timing_header": "Server-Timing",
+    "tracing_channel_lifecycle_events": "start,end,error,asyncStart,asyncEnd",
+    "context_fields": "type,name,ctx"
+  },
+  "removes": [],
+  "depends_on": []
+}

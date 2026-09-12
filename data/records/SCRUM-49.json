@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-49",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Using hono/timing can raise TypeError: Can't modify immutable headers.",
+    "Common workaround is to wrap timing and replace c.res with a new Response(c.res.body, c.res) to ensure the response is mutable.",
+    "The timing middleware is often used as a bookend for the entire middleware chain, making this a common pitfall.",
+    "The timing middleware should itself ensure the response is mutable (so callers don't need to wrap it)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

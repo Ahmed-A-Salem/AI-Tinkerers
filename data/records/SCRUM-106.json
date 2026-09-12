@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-106",
+  "components": [
+    "hono",
+    "jsx"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Adding a reference to hono in tsconfig.json causes tsserver to take 5-10 seconds to check for errors after each change.",
+    "Based on the tsserver logs, most time is spent on the \"semanticDiag\" phase.",
+    "The nextJS project includes a tsconfig references entry pointing to ../api."
+  ],
+  "values_specified": {
+    "tsserver_check_time": "5-10 seconds",
+    "tsserver_phase": "semanticDiag",
+    "references_path": "../api"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-53",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "getContent should return file metadata (for example modified timestamp and file size) along with the file data.",
+    "Serve static middleware should send a Last-Modified header with the static file contents.",
+    "Serve static middleware should inspect the request's If-Modified-Since header and return a 304 Not Modified when the file has not changed.",
+    "Serve static middleware should ensure Content-Length is available so the Content-Length header can be sent for static files."
+  ],
+  "values_specified": {
+    "header_last_modified": "Last-Modified",
+    "header_if_modified_since": "If-Modified-Since",
+    "header_content_length": "Content-Length",
+    "header_content_type": "Content-Type",
+    "status_304": "304",
+    "status_200": "200",
+    "mime_default": "application/octet-stream"
+  },
+  "removes": [],
+  "depends_on": []
+}

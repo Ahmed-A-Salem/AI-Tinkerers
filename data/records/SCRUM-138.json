@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-138",
+  "components": [
+    "middleware",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support encryption and decryption of JWE based on RFC 7516.",
+    "Provide the functionality via middleware or utility functions similar to the current JWT module.",
+    "Allow the plaintext to be any arbitrary data."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

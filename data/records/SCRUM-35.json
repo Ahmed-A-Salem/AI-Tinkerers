@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-35",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "TrieRouter fails to match routes defined with '/**', returning a 404.",
+    "RegExpRouter, PatternRouter, and LinearRouter match routes defined with '/**' (returning 200 OK).",
+    "TrieRouter matches routes defined with '/auth/*' (single asterisk) and returns 200 OK.",
+    "SmartRouter defaults to TrieRouter in many cases."
+  ],
+  "values_specified": {
+    "route_pattern_auth_double_star": "/auth/**",
+    "route_pattern_auth_star": "/auth/*",
+    "status_code_not_found": "404",
+    "status_code_ok": "200",
+    "port": "3001"
+  },
+  "removes": [],
+  "depends_on": []
+}

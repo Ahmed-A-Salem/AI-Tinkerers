@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-131",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "A new router named \"PreparedRouter\" is being created using AOT."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

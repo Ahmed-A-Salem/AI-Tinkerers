@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-58",
+  "components": [
+    "hono",
+    "adapter",
+    "preset"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "The same code runs on all platforms.",
+    "Users expect the code can be run on all platforms with a single command like 'npm deploy [platform]'.",
+    "There are many exceptions to the slogan that the same code runs on all platforms.",
+    "The documentation does not provide a way to run the exact same code on all supported platforms and lacks a migration guide for moving projects across platforms."
+  ],
+  "values_specified": {
+    "slogan": "The same code runs on all platforms.",
+    "example_command": "npm deploy [platform]"
+  },
+  "removes": [],
+  "depends_on": []
+}

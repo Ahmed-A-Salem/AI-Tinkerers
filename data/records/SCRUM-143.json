@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-143",
+  "components": [
+    "client",
+    "validator",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "zValidator used on query with z.number() is currently inferred as string | string[].",
+    "zValidator should infer number for z.number() fields (at least for query parameters) instead of string | string[].",
+    "Query parameter values are ultimately represented as strings at runtime."
+  ],
+  "values_specified": {
+    "validator_location": "query",
+    "current_inferred_type": "string | string[]",
+    "desired_inferred_type": "number"
+  },
+  "removes": [],
+  "depends_on": []
+}

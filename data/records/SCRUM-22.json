@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-22",
+  "components": [
+    "context",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "c.header() writes to #preparedHeaders in the context.",
+    "The res setter only merges prepared headers into the handler Response when this.#res is truthy (guard: if (this.#res && _res)).",
+    "When merging, the setter deletes the handler Response's 'set-cookie' header and then re-appends only the context's cookies, causing the handler's cookies to be lost.",
+    "When this.#res is falsy, #preparedHeaders are never merged into the handler Response, so middleware-set cookies are lost.",
+    "Expected behavior: both middleware and handler Set-Cookie headers should be present in the final response."
+  ],
+  "values_specified": {
+    "hono_version": "4.12.18",
+    "node_version": "v24.1.0",
+    "header_name_set_cookie": "Set-Cookie"
+  },
+  "removes": [],
+  "depends_on": []
+}

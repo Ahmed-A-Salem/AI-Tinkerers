@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-72",
+  "components": [
+    "client"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "developers can use SWR's useSWR and useSWRMutation hooks through the existing chainable client API",
+    "SWR keys are generated automatically from the API path",
+    "TypeScript types from the RPC client are preserved in the SWR integration",
+    "All SWR options remain accessible when using the integrated hooks"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

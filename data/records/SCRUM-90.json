@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-90",
+  "components": [
+    "middleware",
+    "hono",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "For identical response bodies, the ETag should remain stable across requests, regardless of how the body is chunked.",
+    "When combining the etag() and cache() middleware on Cloudflare Workers, the ETag value changes on every request even when the response body remains the same.",
+    "On Cloudflare Workers, responses returned from the cache expose .body as a ReadableStream whose chunk structure is not consistent across requests.",
+    "PR #3832 introduced the generateDigest(body: Uint8Array) option."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.6",
+    "generate_digest_signature": "generateDigest(body: Uint8Array)",
+    "suggested_generate_etag_signature": "generateETag?: (res: ClonedResponse or stream?) => string | Promise<string>"
+  },
+  "removes": [],
+  "depends_on": []
+}

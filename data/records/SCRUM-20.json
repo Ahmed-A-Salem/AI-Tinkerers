@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-20",
+  "components": [
+    "middleware",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a universal cache() middleware with a storage adapter interface.",
+    "CacheStore interface must provide get(key): Promise<CacheEntry | null>, set(key, entry, ttlSeconds): Promise<void>, and delete(key): Promise<void>.",
+    "Middleware options include store, ttl (seconds), keyGenerator (default: full URL), vary (array of header names), and condition (predicate deciding whether to cache).",
+    "Default store should be an in-process LRU MemoryStore with zero dependencies.",
+    "Existing Cloudflare Cache API behavior should be migrated to a CloudflareKVStore adapter."
+  ],
+  "values_specified": {
+    "ttl_seconds": "60",
+    "key_generator_default": "full URL",
+    "default_store": "MemoryStore"
+  },
+  "removes": [],
+  "depends_on": [
+    "SCRUM-112"
+  ]
+}

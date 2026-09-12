@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-56",
+  "components": [
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "LinearRouter.matchRoute is a static method that applies route-matching logic directly.",
+    "LinearRouter.matchRoute matches a path against a given route definition without initializing a full router instance.",
+    "LinearRouter.matchRoute abstracts/reuses the logic already implemented in the router's existing match function.",
+    "Developers can use LinearRouter.matchRoute to check if a path would match a given route definition for testing and debugging."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

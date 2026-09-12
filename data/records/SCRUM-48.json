@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-48",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono's ReactNode export appears as the first autocomplete suggestion when typing 'ReactNode'.",
+    "Accepting the suggestion imports the wrong ReactNode from Hono."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

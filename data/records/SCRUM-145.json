@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-145",
+  "components": [
+    "adapter",
+    "validator",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "validator('query', ...) should receive multivalue query params",
+    "Hono's AWS Lambda adapter should use multiValueQueryStringParameters from the event when present",
+    "ctx.req.valid('query') currently receives only the last value of a multivalue query parameter when running behind API Gateway + Lambda"
+  ],
+  "values_specified": {
+    "hono_version": "4.6.3",
+    "runtime": "node20"
+  },
+  "removes": [],
+  "depends_on": []
+}

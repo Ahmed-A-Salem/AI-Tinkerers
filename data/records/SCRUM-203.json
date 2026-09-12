@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-203",
+  "components": [
+    "context",
+    "hono",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a ContextBindingMap to declare a module interface for global bindings.",
+    "When ContextBindingMap is declared in module 'hono', route handlers typed as (c: Context) should have c.env (and env(c)) typed from that ContextBindingMap without needing to pass an Env generic to Hono.",
+    "Update the documentation website to reflect the new ContextBindingMap API."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

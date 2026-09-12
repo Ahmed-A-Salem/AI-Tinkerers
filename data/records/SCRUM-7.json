@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-7",
+  "components": [
+    "jsx",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Current JSX renderer returns a fully rendered HTML string (blocks until full render is complete)",
+    "Provide a streamHtml / renderToReadableStream helper that returns a ReadableStream",
+    "The helper must work natively with the Workers runtime (no Node.js streams)",
+    "The helper must honor <Suspense> boundaries: flush synchronous subtrees immediately and defer async ones",
+    "The streaming helper must work alongside the existing @hono/react-renderer and the native JSX renderer"
+  ],
+  "values_specified": {
+    "runtime": "Cloudflare Workers (workerd)",
+    "hono_version": "v4.x",
+    "header_name": "Content-Type",
+    "content_type": "text/html; charset=utf-8"
+  },
+  "removes": [],
+  "depends_on": []
+}

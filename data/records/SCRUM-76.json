@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-76",
+  "components": [
+    "middleware",
+    "context",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "basicAuth currently does not pass the username to the context.",
+    "basicAuth should pass the extracted username to the context so route handlers can access it.",
+    "The middleware could set the username via context.set('username', username).",
+    "BasicAuthOptions may include a passUsernameToContext option to enable or configure passing the username."
+  ],
+  "values_specified": {
+    "pass_username_to_context": "boolean | string",
+    "username_key": "\"username\""
+  },
+  "removes": [],
+  "depends_on": []
+}

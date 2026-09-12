@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-66",
+  "components": [
+    "client",
+    "validator",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "@hono/zod-openapi allows typechecking input parameters using c.valid(\"query\").",
+    "HonoClient should parse response bodies using the route response schema selected by the HTTP status code.",
+    "response.parseResponse() should return the response parsed according to the schema for the response's status code.",
+    "Complex types serialized as JSON (e.g., Date) should be deserialized back when parsing responses."
+  ],
+  "values_specified": {
+    "http_status_ok": "HttpStatusCodes.OK",
+    "http_status_not_found": "HttpStatusCodes.NOT_FOUND"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-193",
+  "components": [
+    "validator",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide response validation for success or error payloads.",
+    "Ensure that only `external_id` IDs are ever returned without leaking `internal_id` IDs."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-127",
+  "components": [
+    "client",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ofetch unwraps the data by default, so await res.json() is not necessary.",
+    "The return of ofetch does not match hc's ClientResponse.",
+    "There is no way to update hono's typing to accept ofetch's response (module augmentation attempt did not work).",
+    "The user wants to use a different fetch client (unjs/ofetch) with hc and have typings reflect it."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

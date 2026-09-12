@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-92",
+  "components": [
+    "validator",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "validator currently treats all middleware validation targets as intersecting and requires all to validate before proceeding to the route handler.",
+    "The validator provides typed data back via c.req.valid(...).",
+    "JSON and form data are mutually exclusive as they are both part of the request body and cannot exist simultaneously.",
+    "Add support for a 'body' validation target that validates only the branch matching the incoming Content-Type (e.g., json OR form)."
+  ],
+  "values_specified": {
+    "validation_target_body": "body",
+    "validation_target_json": "json",
+    "validation_target_form": "form",
+    "content_type_application_json": "application/json",
+    "content_type_application_form_data": "application/form-data",
+    "header_user_agent": "User-Agent"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,30 @@
+{
+  "key": "SCRUM-23",
+  "components": [
+    "adapter",
+    "helper",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "GET /ws should upgrade to a WebSocket and provide a working WebSocket gateway",
+    "console.log in helper/websocket/index.js runs when a user makes a GET request",
+    "the client receives a 404 when attempting the WebSocket connection",
+    "WebSocket gateway works when tested with Express.js"
+  ],
+  "values_specified": {
+    "hono_version": "4.12.23",
+    "bun_version": "1.3.14",
+    "wsl_version": "Ubuntu 24.04",
+    "cors_origin": "*",
+    "cors_allow_headers": "[\"*\"]",
+    "cors_allow_methods": "[\"POST\", \"GET\", \"OPTIONS\"]",
+    "cors_expose_headers": "[\"Content-Length\", \"X-Kuma-Revision\"]",
+    "cors_max_age": "600",
+    "cors_credentials": "true",
+    "path_ws": "/ws",
+    "client_status_code": "404"
+  },
+  "removes": [],
+  "depends_on": []
+}

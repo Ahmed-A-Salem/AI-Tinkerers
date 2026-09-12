@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-173",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Generate Swagger/OpenAPI documentation automatically from Hono applications like Elysia or NestJS.",
+    "Provide automatic API documentation without requiring writing separate docs.",
+    "Enable automatic doc generation without forcing users to add zod to write APIs.",
+    "Use a type library under the hood (e.g., typebox or similar) to create API schemas automatically."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

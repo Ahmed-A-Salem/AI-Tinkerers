@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-133",
+  "components": [
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Do not include stash in matchResult.",
+    "matchResult currently includes stash.",
+    "stash is hard coded."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

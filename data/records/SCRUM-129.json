@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-129",
+  "components": [
+    "request",
+    "validator",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Allow switching out the default query parser with a custom parser (e.g., qs)",
+    "Provide a getPath method to support this use case",
+    "Support parsing query strings like '?amount[lte]=300' into nested objects (e.g., { amount: { lte: 300 } })",
+    "A validator-based workaround does not allow @hono/zod-openapi to use the validator output"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

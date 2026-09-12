@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-157",
+  "components": [
+    "jsx",
+    "helper",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "<ErrorBoundary> will always try to stream content when the current connection is streaming, even without <Suspense>.",
+    "This streaming behavior causes <ErrorBoundary> to send a placeholder instead of the actual content in SSE contexts.",
+    "SSE streams aren't like normal HTML streams, so regular HTML streaming shouldn't be attempted for SSE.",
+    "There should be a way to disable <ErrorBoundary>'s streaming behavior."
+  ],
+  "values_specified": {
+    "deno_version": "1.46.1",
+    "hono_version": "4.5.8"
+  },
+  "removes": [],
+  "depends_on": []
+}

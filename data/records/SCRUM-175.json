@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-175",
+  "components": [
+    "jsx",
+    "index"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Component is not exported.",
+    "Add class based Component and PureComponent to improve compatibility with React.",
+    "Export Component (and provide class-based Component/PureComponent) so MagicUI can be used with Framer Motion."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-181",
+  "components": [
+    "jsx",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "attachReactJsxNode takes a JSX.Element and returns a span element with an id used as a mount point.",
+    "On mount, useEffect calls render(jsxNode, document.getElementById(mountPointId)) to render the React component into the mount point.",
+    "The mount point id is generated randomly by _randomId().",
+    "Children are handled in the ingress JSX.",
+    "Implementation should utilize hono/useEffect internals or other DOM lifecycle related internals."
+  ],
+  "values_specified": {
+    "param_type": "JSX.Element",
+    "mount_element_tag": "span",
+    "mount_style": "content",
+    "mount_id_generator": "Math.random().toString(36).replace(/^0\\./, '_')"
+  },
+  "removes": [],
+  "depends_on": [
+    "GH-2508"
+  ]
+}

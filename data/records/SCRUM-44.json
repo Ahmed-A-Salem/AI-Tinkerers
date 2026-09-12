@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-44",
+  "components": [
+    "middleware",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Secure Headers Middleware can set a Trusted Types Content Security Policy.",
+    "ContentSecurityPolicyOptions includes a trustedTypes property."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

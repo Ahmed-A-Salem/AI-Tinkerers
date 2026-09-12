@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-130",
+  "components": [
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "CI currently executes `bun run build` in many jobs.",
+    "CI should cache the results of `bun run build`."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,22 @@
+{
+  "key": "PLANT-5",
+  "components": [
+    "helper",
+    "context",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "SSE can be written straight from the context with c.writeSSE().",
+    "Mark streamSSE() as @deprecated and point to c.writeSSE().",
+    "Move the SSE examples in the streaming docs and the hono/streaming JSDoc to c.writeSSE().",
+    "Remove streamSSE() in v5."
+  ],
+  "values_specified": {
+    "remove_in_version": "v5"
+  },
+  "removes": [
+    "streamSSE"
+  ],
+  "depends_on": []
+}

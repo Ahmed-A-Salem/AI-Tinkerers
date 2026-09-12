@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-146",
+  "components": [
+    "client",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "hc(...) sends requests to the configured NEXT_PUBLIC_APP_URL rather than the current page's subdomain",
+    "API requests go to http://localhost:3000 instead of http://store1.localhost:3000 when on a subdomain route",
+    "Setting NEXT_PUBLIC_APP_URL manually to the current subdomain URL causes requests to go to that subdomain"
+  ],
+  "values_specified": {
+    "env_var_name": "NEXT_PUBLIC_APP_URL",
+    "default_base_url_example": "http://localhost:3000",
+    "subdomain_base_url_example": "http://store1.localhost:3000"
+  },
+  "removes": [],
+  "depends_on": []
+}

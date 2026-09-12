@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-109",
+  "components": [
+    "context",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ctx.text(..., { headers: { 'Content-Type': 'text/javascript' } }) does not set the specified Content-Type header",
+    "ctx.body(..., { headers: { 'Content-Type': 'text/javascript' } }) sets the specified Content-Type header",
+    "ctx.text falls back to Content-Type 'text/plain' when a Content-Type header is provided but ignored",
+    "The TypeScript type for text (and likely json and other body helpers) should omit allowing a Content-Type header override"
+  ],
+  "values_specified": {
+    "hono_version": "4.7.0",
+    "header_name_content_type": "Content-Type",
+    "content_type_text_javascript": "text/javascript",
+    "content_type_text_plain": "text/plain"
+  },
+  "removes": [],
+  "depends_on": []
+}

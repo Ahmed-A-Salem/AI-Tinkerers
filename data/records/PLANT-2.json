@@ -1,0 +1,19 @@
+{
+  "key": "PLANT-2",
+  "components": [
+    "utils",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "auth(req) decodes the Authorization header and returns { username, password } in clear text.",
+    "src/middleware/basic-auth/index.ts compares both fields itself with timingSafeEqual.",
+    "Add verifyBasicAuth(req, users) which decodes the header and does the constant-time comparison, returning only true/false.",
+    "basicAuth() calls verifyBasicAuth(); the { username, password } object is no longer produced anywhere."
+  ],
+  "values_specified": {},
+  "removes": [
+    "auth"
+  ],
+  "depends_on": []
+}

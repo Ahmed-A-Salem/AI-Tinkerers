@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-151",
+  "components": [
+    "middleware",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Middleware declared after a route handler should not run for that earlier route.",
+    "Middleware declared before routes should run for routes declared after it.",
+    "Middleware is currently fired for all routes regardless of declaration order."
+  ],
+  "values_specified": {
+    "hono_version": "4.5.10",
+    "port": "5555"
+  },
+  "removes": [],
+  "depends_on": []
+}

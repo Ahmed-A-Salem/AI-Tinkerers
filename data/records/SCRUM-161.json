@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-161",
+  "components": [
+    "adapter",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Bun adapter only supports the send() API.",
+    "Bun adapter should support subscribe and publish APIs.",
+    "subscribe and publish APIs send data/messages to users subscribed to the same topic.",
+    "With the current send() API, messages have to be sent in a loop to broadcast to multiple users."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

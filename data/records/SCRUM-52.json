@@ -1,0 +1,28 @@
+{
+  "key": "SCRUM-52",
+  "components": [
+    "hono",
+    "middleware",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Requests should return 401 when middleware returns a response (c.json(401)).",
+    "With middleware present and a large multipart/form-data upload (~500KB), the function never returns.",
+    "Adding the Hono Body Limit Middleware is ignored in this scenario.",
+    "The endpoint without the middleware returns 200 successfully."
+  ],
+  "values_specified": {
+    "hono_version": "4.9.6",
+    "deno_version": "2.1",
+    "large_file_threshold": "500KB",
+    "upload_rate_example": "50MB/s",
+    "verify_jwt": "false",
+    "expected_status_code": "401",
+    "successful_status_code": "200",
+    "route_path": "/test",
+    "method": "POST"
+  },
+  "removes": [],
+  "depends_on": []
+}

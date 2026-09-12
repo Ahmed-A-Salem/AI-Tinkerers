@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-11",
+  "components": [
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "c.header() writes into the private #preparedHeaders and does not set finalized",
+    "c.res getter allocates by creating a Response instance and materialises #res",
+    "Reading c.res is not a neutral inspection — it changes the response (header() writes into #res.headers and text() loses its fast path)",
+    "There is no public way to check for or read pending response headers without materialising a Response",
+    "text() uses an internal predicate: !this.#preparedHeaders && !this.#status && !arg && !headers && !this.finalized to take a fast path"
+  ],
+  "values_specified": {
+    "bundle_size_baseline": "18134 B",
+    "bundle_size_with_preparedheaders": "18171 B",
+    "bundle_size_with_haspreparedheaders": "18183 B"
+  },
+  "removes": [],
+  "depends_on": []
+}

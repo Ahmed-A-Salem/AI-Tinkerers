@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-176",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "We only have 19% of the code documented.",
+    "Start with the public methods first before focusing on the private ones.",
+    "Improve the JSR symbol documentation.",
+    "After the JSR symbol is done, continuously improve the code documentation."
+  ],
+  "values_specified": {
+    "documentation_coverage": "19%"
+  },
+  "removes": [],
+  "depends_on": []
+}

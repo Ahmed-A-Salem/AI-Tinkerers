@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-77",
+  "components": [
+    "middleware",
+    "client"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "RPC converts Date objects in responses to String.",
+    "There should be a way to process RPC data in a generic way to convert RPC-serialized strings back to Date objects on the integration side."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

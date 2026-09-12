@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-71",
+  "components": [
+    "client",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "InferStatusCode gets all possible status codes from an RPC client function.",
+    "InferErrorResponseType infers the error response body type from an RPC client function by extracting response types for non-success status codes.",
+    "InferSuccessResponseType infers the success response body type from an RPC client function by extracting response types for success status codes (2xx)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

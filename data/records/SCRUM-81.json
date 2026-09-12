@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-81",
+  "components": [
+    "helper",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "jwt.sign() should support alg: none.",
+    "jwt.sign() currently supports HS256 and RS algorithms."
+  ],
+  "values_specified": {
+    "alg": "none"
+  },
+  "removes": [],
+  "depends_on": []
+}

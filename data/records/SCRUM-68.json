@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-68",
+  "components": [
+    "compose",
+    "middleware",
+    "validator"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "combine (every) should allow later middlewares to reference context changes made by earlier middlewares",
+    "the second middleware references `slug`, which is typed by the first middleware",
+    "later middleware should be able to call c.req.valid(\"param\") to access the typed validation result provided by the earlier validator middleware"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

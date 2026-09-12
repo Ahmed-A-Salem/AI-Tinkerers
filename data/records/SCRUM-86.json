@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-86",
+  "components": [
+    "hono",
+    "validator",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono is unopinionated.",
+    "Hono doesn't have built-in DI.",
+    "A use-case pattern coordinates services and prevents circular dependencies in the form 1 API <> 1 USE CASE <> N SERVICES <> N REPOSITORIES."
+  ],
+  "values_specified": {
+    "use_case_pattern": "1 API <> 1 USE CASE <> N SERVICES <> N REpositories"
+  },
+  "removes": [],
+  "depends_on": []
+}

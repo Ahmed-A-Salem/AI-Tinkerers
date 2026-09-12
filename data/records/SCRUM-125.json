@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-125",
+  "components": [
+    "context",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "the feature uses a new object EdgeRuntime",
+    "test if EdgeRuntime exists to connect waitUntil to it",
+    "getRuntimeKey returns Supabase as runtime when EdgeRuntime is present"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

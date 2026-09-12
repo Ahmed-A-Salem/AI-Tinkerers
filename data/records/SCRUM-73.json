@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-73",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "contentSecurityPolicyReportOnly setting currently does not support the reportUri option.",
+    "contentSecurityPolicyReportOnly should support the report-uri directive.",
+    "contentSecurityPolicyReportOnly should support the report-to directive.",
+    "The contentSecurityPolicyReportOnly setting should allow specifying a report destination for CSP violations."
+  ],
+  "values_specified": {
+    "header_name": "Content-Security-Policy-Report-Only",
+    "directive_report_uri": "report-uri",
+    "directive_report_to": "report-to",
+    "report_uri_example": "https://csp.example.com/csp-report"
+  },
+  "removes": [],
+  "depends_on": []
+}

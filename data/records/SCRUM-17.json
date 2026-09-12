@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-17",
+  "components": [
+    "hono",
+    "index"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono should drop CJS support in next major version and go ESM only.",
+    "Raise minimum supported version for hono to node >=22.",
+    "Remove all tooling for CJS.",
+    "Publish hono@5 (next major) as an ESM-only release."
+  ],
+  "values_specified": {
+    "minimum_node_version": ">=22",
+    "supported_node_releases": "22, 24, 26",
+    "next_major_version": "5"
+  },
+  "removes": [],
+  "depends_on": [
+    "GH-5114"
+  ]
+}

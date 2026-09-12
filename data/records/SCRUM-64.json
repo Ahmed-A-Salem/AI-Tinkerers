@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-64",
+  "components": [
+    "types",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "TypeScript reports the type error on the route path string when the handler returns an invalid type",
+    "TypeScript diagnostics should point to the handler/callback when the handler has an invalid return type"
+  ],
+  "values_specified": {
+    "hono_version": "4.7.8",
+    "typescript_version": "5.8.x",
+    "node_version": "22.x"
+  },
+  "removes": [],
+  "depends_on": []
+}

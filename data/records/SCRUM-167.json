@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-167",
+  "components": [
+    "helper",
+    "client"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "provide utilities that can test WebSocket",
+    "createWebSocketHelperAndClient returns upgradeWebSocket and connect",
+    "upgradeWebSocket is used as a route handler to perform WebSocket upgrade",
+    "connect() creates a client WebSocket that can set onopen and onmessage handlers"
+  ],
+  "values_specified": {
+    "route_path": "/ws"
+  },
+  "removes": [],
+  "depends_on": []
+}

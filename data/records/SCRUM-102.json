@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-102",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "CORS middleware adds all the required headers before calling await next().",
+    "After await next(), if no response has been sent by previous route handlers, CORS middleware returns a default 204 response.",
+    "OPTIONS handling by the CORS middleware is made optional."
+  ],
+  "values_specified": {
+    "default_status_code": "204"
+  },
+  "removes": [],
+  "depends_on": []
+}

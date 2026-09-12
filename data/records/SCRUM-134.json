@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-134",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Include a file/directory routing option.",
+    "Improve DX experience.",
+    "Reduce the chances of using the same api names in multiple places for large backend only applications."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

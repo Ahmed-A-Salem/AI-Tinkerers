@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-152",
+  "components": [
+    "context",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono currently performs JSON.stringify internally when sending responses via c.json",
+    "An application initialization option jsonStringify should be used for serializing JSON responses",
+    "A custom replacer function can change the runtime shape/types of serialized values"
+  ],
+  "values_specified": {
+    "content_type_header": "application/json",
+    "status_code_ok": "200"
+  },
+  "removes": [],
+  "depends_on": []
+}

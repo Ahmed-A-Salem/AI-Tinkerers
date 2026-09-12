@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-89",
+  "components": [
+    "validator"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "When a query parameter appears once, the validator receives a string.",
+    "When a query parameter appears multiple times, the validator receives an array of strings.",
+    "Validators for query parameters should validate the array version of the parameter."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.2",
+    "runtime": "Cloudflare Workers"
+  },
+  "removes": [],
+  "depends_on": []
+}

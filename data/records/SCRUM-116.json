@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-116",
+  "components": [
+    "jsx",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "If an await happens before calling useContext function the context is not set to the value used in the provider.",
+    "If useContext is called before an await in an async component the context is set to the value provided by the Provider (messages array in AwaitAfterUseContext)."
+  ],
+  "values_specified": {
+    "hono_version": "4.6.16",
+    "node_version": "v22.12.0",
+    "await_delay_ms": "1000",
+    "port": "3000",
+    "messages_ctx_data": "[\"Good Morning\", \"Good Evening\", \"Good Night\"]"
+  },
+  "removes": [],
+  "depends_on": []
+}

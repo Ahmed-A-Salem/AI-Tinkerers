@@ -1,0 +1,27 @@
+{
+  "key": "SCRUM-12",
+  "components": [
+    "middleware",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "return 200 on GET /api",
+    "return 200 on GET existing file",
+    "return 404 on GET non-existent file",
+    "return 405 on POST /api",
+    "return 404 on POST non-existent file"
+  ],
+  "values_specified": {
+    "hono_version": "4.13.1",
+    "runtime": "Node.js",
+    "status_ok": "200",
+    "status_not_found": "404",
+    "status_method_not_allowed": "405"
+  },
+  "removes": [
+    "serveStatic",
+    "methodNotAllowed"
+  ],
+  "depends_on": []
+}

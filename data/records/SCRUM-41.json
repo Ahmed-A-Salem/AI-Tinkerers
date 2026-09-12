@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-41",
+  "components": [
+    "hono",
+    "hono-base",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Export a lightweight BaseHandler class from hono (or hono/handler)",
+    "Pre-bind common properties like this.body, this.cookie, this.headers, this.query and helpers like this.json() on the BaseHandler",
+    "Allow plain class-based handlers without decorators, middleware chains, or reflection",
+    "Be fully tree-shakable and have zero runtime overhead"
+  ],
+  "values_specified": {
+    "unauthorized_status_code": "401",
+    "export_path_candidate": "hono/handler"
+  },
+  "removes": [],
+  "depends_on": []
+}

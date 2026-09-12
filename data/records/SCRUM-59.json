@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-59",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Handlers or middleware will be executed in registration order.",
+    "Root path '/' should be routed deterministically according to registration order."
+  ],
+  "values_specified": {
+    "hono_version_range": "4.8-4.9",
+    "hono_import_version": "4.9.5",
+    "runtime": "Deno",
+    "port": "8080"
+  },
+  "removes": [],
+  "depends_on": [
+    "GH-4384"
+  ]
+}

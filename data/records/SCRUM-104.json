@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-104",
+  "components": [
+    "client",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "hc() allows direct values in path segments (e.g., .users['123']) instead of requiring explicit param mapping.",
+    "The proxy should detect parameter values in path segments and automatically generate the params object.",
+    "Existing param-mapping syntax (e.g., .$get({ param: { id: '123' } })) is preserved for backward compatibility.",
+    "Type definitions should support both syntaxes and ensure proper inference of path parameter types.",
+    "Query parameters and WebSocket connections continue to be supported with the new path-parameter syntax."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

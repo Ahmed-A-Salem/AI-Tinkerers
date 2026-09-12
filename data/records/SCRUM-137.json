@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-137",
+  "components": [
+    "index",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "we remove all #private fields from built code to bypass typescript errors",
+    "JSR package can't remove #private fields from built code",
+    "publish JSR from private code"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": [
+    "GH-3626"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "key": "SCRUM-37",
+  "components": [
+    "hono",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Memory usage can be released.",
+    "After running wrk memory increased to a maximum of 78.25MB and then stabilized at 46.86MB.",
+    "GET /dynamic/matrix performs a 200x200 matrix multiplication and returns a JSON response."
+  ],
+  "values_specified": {
+    "hono_version": "4.11.3",
+    "bun_version": "v1.3.5",
+    "server_port": "3000",
+    "matrix_size": "200",
+    "wrk_concurrency": "500",
+    "wrk_threads": "15s",
+    "init_memory": "5.43MB",
+    "max_memory": "78.25MB",
+    "memory_after_5_min": "46.86MB",
+    "memory_after_30_min": "46.86MB"
+  },
+  "removes": [],
+  "depends_on": []
+}

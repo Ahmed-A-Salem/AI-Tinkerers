@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-6",
+  "components": [
+    "middleware",
+    "compose",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Combining logger + cors + auth middleware in a single route",
+    "Showing the execution order of composed middlewares",
+    "A real-world example of error handling middleware wrapping other middlewares"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

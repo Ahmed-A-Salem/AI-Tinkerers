@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-28",
+  "components": [
+    "utils",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Introduce linters for GitHub Actions.",
+    "Adopt actionlint, ghalint, zizmor, and pinact.",
+    "Use mise with .tool-versions or mise.toml to pin exact tool versions across CI and local development.",
+    "Manage linting setup via organization-level Reusable workflows."
+  ],
+  "values_specified": {
+    "tool_actionlint": "actionlint",
+    "tool_ghalint": "ghalint",
+    "tool_zizmor": "zizmor",
+    "tool_pinact": "pinact",
+    "tool_mise": "mise",
+    "file_tool_versions": ".tool-versions",
+    "file_mise_toml": "mise.toml"
+  },
+  "removes": [],
+  "depends_on": []
+}

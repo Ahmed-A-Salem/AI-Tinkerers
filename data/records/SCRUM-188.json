@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-188",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono supports open-runtimes (the open-runtimes model for functions in AppWrite)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

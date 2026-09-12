@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-204",
+  "components": [
+    "context",
+    "helper",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ContextVariableMap provides incorrect typings.",
+    "A global middleware's Variables (e.g., remoteIp) are not available in mounted Hono instances.",
+    "A middleware's Variables type bound to a nested/mounted Hono instance (e.g., jwtPayload) is visible in unrelated Hono instances.",
+    "Provide a utility type ExtractEnv that extracts the Env generic from a Hono instance.",
+    "Users should manually pass the extracted Env to mounted Hono instances; documentation should at least hint that such a helper can be used."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-62",
+  "components": [
+    "client",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a way to integrate axios with api client.",
+    "The basic fetch api is not simple to use."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

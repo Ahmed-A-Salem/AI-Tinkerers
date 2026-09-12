@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-85",
+  "components": [
+    "hono",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Socket.io integrates with Hono successfully when running on Node.js.",
+    "Socket.io integration with Hono fails on Bun: the server either fails to start or WebSocket connections do not establish properly."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

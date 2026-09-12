@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-103",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support sending ping when using websockt",
+    "Support receiving pong when using websockt"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

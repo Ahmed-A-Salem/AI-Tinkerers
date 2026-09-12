@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-158",
+  "components": [
+    "client",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "RPC client supports connecting to SSE routes using EventSource",
+    "RPC call methods (e.g., client.sse.$get) accept an object of callback handlers including onMessage(event)",
+    "RPC calls accept request options including headers"
+  ],
+  "values_specified": {
+    "authorization_header_name": "Authorization",
+    "authorization_header_value": "Bearer booyah"
+  },
+  "removes": [],
+  "depends_on": []
+}

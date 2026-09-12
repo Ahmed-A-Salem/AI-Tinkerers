@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-93",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "AWS API Gateway v2 Websocket proxy event delivered to the Lambda has no event.httpMethod and includes a body.",
+    "EventV1Processor.getMethod(event) returns event.httpMethod.",
+    "When event.httpMethod is undefined, EventV1Processor cannot extract a valid HTTP method (causing the downstream Request creation error).",
+    "Proposed fix: EventV1Processor.getMethod should return event.httpMethod || 'POST'."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.5",
+    "suggested_default_method": "POST",
+    "observed_error_message": "Request with GET/HEAD method cannot have body."
+  },
+  "removes": [],
+  "depends_on": []
+}

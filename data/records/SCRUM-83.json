@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-83",
+  "components": [
+    "hono",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "import { getConnInfo } can be used from 'hono' instead of 'hono/cloudflare-workers'",
+    "the same hono app can be tested in different runtimes without changing any code"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

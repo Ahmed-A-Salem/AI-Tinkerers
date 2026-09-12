@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-67",
+  "components": [
+    "jsx",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "ExtraDiv component does not propagate the context.",
+    "toString() is called on MyConsumer before the MyContext.Provider function is invoked, so the value hasn't been injected to the context.",
+    "Context is available when the provider directly wraps the consumer (NoExtraDiv) or when wrapped by a component that returns a div (ExtraDivAsComponent)."
+  ],
+  "values_specified": {
+    "hono_version": "4.8.9",
+    "deno_version": "deno 2.2.12 (stable, release, aarch64-apple-darwin)",
+    "expected_output": "<div><div>I have do not have an extra div</div><div class=\"box\"><div>I have an extra div as a component</div></div><div><div>I have an extra div</div></div></div>",
+    "observed_output": "<div><div>I have do not have an extra div</div><div class=\"box\"><div>I have an extra div as a component</div></div><div><div>No context provided</div></div></div>"
+  },
+  "removes": [],
+  "depends_on": []
+}

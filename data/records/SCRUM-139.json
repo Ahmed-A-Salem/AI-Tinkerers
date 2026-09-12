@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-139",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "RegExpRouter is fast.",
+    "Route registration is slow.",
+    "Export routes and RegExp when building the Hono application.",
+    "Built application imports routes and built RegExp.",
+    "Route registration phase is skipped when the application boots."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

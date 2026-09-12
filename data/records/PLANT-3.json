@@ -1,0 +1,19 @@
+{
+  "key": "PLANT-3",
+  "components": [
+    "hono-base",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Fold getPath and getPathNoStrict into a single parsePath(request, strict) that lives inside src/hono-base.ts and is not exported",
+    "Remove the getPath and getPathNoStrict exports from src/utils/url.ts",
+    "The getPath constructor option keeps working, but the default implementation is no longer importable"
+  ],
+  "values_specified": {},
+  "removes": [
+    "getPath",
+    "getPathNoStrict"
+  ],
+  "depends_on": []
+}

@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-9",
+  "components": [
+    "context",
+    "middleware",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Expose a c.waitUntil(promise) helper on the Hono Context object",
+    "Allow middleware to schedule fire-and-forget background tasks (e.g., logging, analytics, cache warming) without blocking the response",
+    "c.waitUntil should be usable after await next() inside middleware"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

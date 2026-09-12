@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-169",
+  "components": [
+    "adapter",
+    "hono",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "aws-lambda adapter does not support trigger requests (e.g. S3, EventBridge, function invokes).",
+    "Requests that do not match the \"HTTP Request\" schema error before being available at Hono's context level.",
+    "Add official support for trigger requests in the aws-lambda adapter so trigger events are available to Hono."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

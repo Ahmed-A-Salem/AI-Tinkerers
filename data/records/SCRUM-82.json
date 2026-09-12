@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-82",
+  "components": [
+    "router",
+    "hono",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "app.get('/', rootRouteHandler) should be a sugar for app.addRoute(...) and return this for chain calls.",
+    "app.removeRoute('/', rootRouteHandler) removes the '/' route so GET / returns 404 Not Found.",
+    "app.use(cacheMiddleware) should be a sugar for app.useMiddleware(...).",
+    "app.removeMiddleware(cacheMiddleware) removes the previously added middleware.",
+    "Hono class should expose related methods and throw an error for a not supported yet router."
+  ],
+  "values_specified": {
+    "get_root_status_before_removal": "200 OK",
+    "get_root_status_after_removal": "404 Not Found"
+  },
+  "removes": [],
+  "depends_on": []
+}

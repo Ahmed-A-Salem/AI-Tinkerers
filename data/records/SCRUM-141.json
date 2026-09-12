@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-141",
+  "components": [
+    "context",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Context exposes a sendEvents() method that opens a Server-Sent Events connection and keeps it open until closed (e.g., on client disconnect).",
+    "The object returned by sendEvents() supports dispatchMessage(message) to send data to the client via SSE.",
+    "The object returned by sendEvents() emits a 'close' event that can be listened to (e.g., target.addEventListener('close', ...)) when the client disconnects, allowing cleanup (such as calling unwatch())."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

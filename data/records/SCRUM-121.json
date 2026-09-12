@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-121",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "SSE does not work in the latest version",
+    "SSE should works"
+  ],
+  "values_specified": {
+    "hono_node_server_version": "1.8.2",
+    "hono_version": "4.1.1",
+    "runtime": "node"
+  },
+  "removes": [],
+  "depends_on": []
+}

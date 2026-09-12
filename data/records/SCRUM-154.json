@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-154",
+  "components": [
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "createHash does not provide a proper way to add salt",
+    "Adding salt by concatenating it to the password before hashing is not a proper solution",
+    "Without salt, if two users have the same password they will produce the same hash"
+  ],
+  "values_specified": {
+    "algorithm_name": "SHA-256",
+    "algorithm_alias": "sha256"
+  },
+  "removes": [
+    "createHash"
+  ],
+  "depends_on": []
+}

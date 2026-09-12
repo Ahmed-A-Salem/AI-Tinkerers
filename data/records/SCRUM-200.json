@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-200",
+  "components": [
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "c.json returns an empty string when the response value is undefined",
+    "c.json calls JSON.stringify(object) before returning",
+    "c.json re-creates the Response instead of using Response.json",
+    "The reporter replaced the implementation to use Response.json (the static Response.json)"
+  ],
+  "values_specified": {
+    "version": "v5"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-178",
+  "components": [
+    "jsx"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "The jsx.tsx example from honojs/examples works without compiler options.",
+    "Adding the second pragma /** @jsxImportSource hono/jsx */ causes deno to error with: \"Relative import path \\\"hono/jsx/jsx-runtime\\\" not prefixed with / or ./ or ../\".",
+    "Using the compiler configuration suggested by the docs causes a similar \"Relative import path \\\"hono/jsx/jsx-runtime\\\" not prefixed with / or ./ or ../\" error at a different location.",
+    "The documentation at https://hono.dev/guides/jsx suggests adding a second pragma or using a compiler configuration, but those suggestions lead to deno import-path errors while the example does not."
+  ],
+  "values_specified": {
+    "hono_version": "4.2.4"
+  },
+  "removes": [],
+  "depends_on": []
+}

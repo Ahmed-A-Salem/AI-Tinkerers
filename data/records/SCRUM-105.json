@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-105",
+  "components": [
+    "context",
+    "hono-base",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Custom helper methods defined in Env.Helpers are directly accessible on the Context object.",
+    "Helper methods receive the context instance as their this binding and can access context via this.",
+    "If options.helpers is provided to the Context constructor, Object.assign(this, options.helpers) is used to attach helpers to the context instance.",
+    "HonoOptions includes an optional helpers property typed as E['Helpers'].",
+    "The exported Context type is HelperMethods<E> & ContextBase<E, P, I>, so helper methods are included in the Context type for TypeScript typing."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-99",
+  "components": [
+    "context",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Add support for Cloudfront request context",
+    "Provide Cloudfront request context for AWS Lambda function URL requests similar to ApiGatewayRequestContext"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

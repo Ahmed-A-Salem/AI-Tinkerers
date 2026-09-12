@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-50",
+  "components": [
+    "helper",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Most browsers limit each cookie key to ~4000 characters.",
+    "h3 cookie utils automatically chunk the data into several cookies.",
+    "Provide cookie helper utilities that chunk cookie values across multiple cookie keys in the official hono cookie helpers."
+  ],
+  "values_specified": {
+    "cookie_key_limit_chars": "~4000 characters"
+  },
+  "removes": [],
+  "depends_on": []
+}

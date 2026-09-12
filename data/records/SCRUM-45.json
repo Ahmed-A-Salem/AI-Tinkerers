@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-45",
+  "components": [
+    "hono",
+    "context",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "basePath is currently configured on a Hono app without a context.",
+    "Allow configuring the base path for routing using information from the context.",
+    "basePath should accept a function that receives the context and returns the base path (e.g., c => c.req.header('X-BASE-PATH')).",
+    "Routes defined on the app should be available under the computed base path (e.g., GET /apps/myapp1/book for base path /apps/myapp1 and route '/book')."
+  ],
+  "values_specified": {
+    "header_name_for_base_path": "X-BASE-PATH",
+    "example_base_path_1": "/apps/myapp1",
+    "example_base_path_2": "/apps/myapp2",
+    "example_route": "/book"
+  },
+  "removes": [],
+  "depends_on": []
+}

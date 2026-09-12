@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-124",
+  "components": [
+    "types",
+    "middleware",
+    "validator"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Middleware can return a Response object or a typed Response.",
+    "Hono does not infer response types from middleware that return a Response object.",
+    "Validator middleware that returns a 400 response is not reflected in the inferred response types for the Hono instance or RPC.",
+    "Calling res.status() before res.json() produces a StatusCode type in the statusCode field.",
+    "HandlerInterface methods such as app.get(...handlers: H[]) do not infer response types returned by middleware."
+  ],
+  "values_specified": {
+    "status_code_400": "400",
+    "status_code_201": "201"
+  },
+  "removes": [],
+  "depends_on": []
+}

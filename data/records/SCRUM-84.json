@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-84",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "You can directly import HTML files in Bun.",
+    "Currently you can only serve them using Bun's serve API.",
+    "Hono should be able to serve the same imported HTML routes."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

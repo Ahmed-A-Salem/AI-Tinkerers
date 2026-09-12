@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-135",
+  "components": [
+    "router",
+    "hono-base",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Caching the result of Router.match() may speed up routing.",
+    "DoS attacks increase memory usage.",
+    "Hono's routers are fast enough without caching.",
+    "Clear the cache every time Router.add() is called for routes that use wildcards."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

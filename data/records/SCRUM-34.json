@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-34",
+  "components": [
+    "middleware",
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "The server should check if the route exists before running authentication middleware",
+    "If a route doesn't exist, return 404 immediately",
+    "Authentication middleware should only run for valid routes",
+    "Authentication middleware currently runs for all requests, even to non-existent routes",
+    "Running authentication on invalid routes creates a potential DoS vulnerability and wastes CPU resources"
+  ],
+  "values_specified": {
+    "hono_version": "4.11.9",
+    "node_version": "20.19.4",
+    "status_code_not_found": "404",
+    "check_route_before_auth": "true"
+  },
+  "removes": [],
+  "depends_on": []
+}

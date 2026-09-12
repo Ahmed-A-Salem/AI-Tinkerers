@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-107",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "30 concurrent sse connections cause a memory leak when tested with k6."
+  ],
+  "values_specified": {
+    "concurrent_sse_connections": "30",
+    "load_test_tool": "k6"
+  },
+  "removes": [],
+  "depends_on": []
+}

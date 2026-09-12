@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-60",
+  "components": [
+    "context",
+    "types",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Currently, when creating routes with validators in Hono, have to manually define a TypeScript type for the Context in order to use it inside controllers.",
+    "Provide a way to automatically access the Context type for each chained route directly from Hono.",
+    "Provide a utility or helper type that infers the final Context type of a route after validators/middlewares have been applied.",
+    "Expose something like RouteGetContext<typeof statusRoutes[\"get\"]> or similar."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

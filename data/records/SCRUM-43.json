@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-43",
+  "components": [
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "hono/cloudflare-worker adapter currently uses the normal websocket API",
+    "Cloudflare recommends using the Hibernation Websocket API",
+    "Hibernation Websocket API allows long-lived connections without incurring billing charges if the connection is dormant",
+    "adapter should be switched to the Hibernation Websocket API or provide an option to choose between the normal websocket API and the Hibernation Websocket API"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

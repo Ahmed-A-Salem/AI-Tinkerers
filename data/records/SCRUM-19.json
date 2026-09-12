@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-19",
+  "components": [
+    "middleware",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Fixed window is the default algorithm",
+    "Sliding window uses a Redis sorted set implementation",
+    "Token bucket provides smooth rate limiting for burst-tolerant APIs",
+    "Each algorithm is a separate store implementation so users can pick the right tradeoff",
+    "rateLimiter accepts options windowMs, limit, keyGenerator, store, and onLimitReached"
+  ],
+  "values_specified": {
+    "window_ms": "60_000",
+    "limit": "100",
+    "header_name": "x-forwarded-for",
+    "status_code": "429",
+    "default_algorithm": "fixed_window"
+  },
+  "removes": [],
+  "depends_on": []
+}

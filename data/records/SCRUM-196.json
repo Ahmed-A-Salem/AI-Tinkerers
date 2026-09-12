@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-196",
+  "components": [
+    "router",
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a way to skip .route() group prefixing for certain routes or methods",
+    "When registering routes on method TRIGGER with paths like aws:s3, the eventSource (aws:s3) must not be prefixed"
+  ],
+  "values_specified": {
+    "method_name": "TRIGGER",
+    "event_source": "aws:s3",
+    "example_route": "TRIGGER aws:s3"
+  },
+  "removes": [],
+  "depends_on": []
+}

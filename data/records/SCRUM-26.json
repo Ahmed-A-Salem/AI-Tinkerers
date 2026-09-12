@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-26",
+  "components": [
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Adapter targets runtimes that provide a WinterTC Socket.",
+    "Adapter uses the WinterTC Sockets API (https://sockets-api.proposal.wintertc.org/)."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

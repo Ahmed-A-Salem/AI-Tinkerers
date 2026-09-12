@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-179",
+  "components": [
+    "router",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "route and mount should accept middlewares",
+    "Calling route('/foo/', authMiddleware, PageFoo) should apply authMiddleware to the mounted subroutes",
+    "Currently calling route with a middleware before the app causes a TypeError: undefined is not an object (evaluating 'app.routes.map')"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

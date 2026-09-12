@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-159",
+  "components": [
+    "middleware",
+    "context",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono should support Express.js compatible middleware.",
+    "An adapter should convert Hono's Context request/response to Node's IncomingMessage and ServerResponse and invoke the Express middleware, awaiting its completion before calling next.",
+    "The adapter should wrap the middleware invocation in a Promise that resolves when next() is called and rejects on an error argument.",
+    "Hono's Context object doesn't directly map to Express's req and res objects.",
+    "Node's IncomingMessage and ServerResponse types don't align with Hono's request and response handling."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

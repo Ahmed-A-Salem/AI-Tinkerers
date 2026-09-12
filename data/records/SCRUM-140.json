@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-140",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "compress middleware currently uses a hard-coded list of supported compression algorithms",
+    "compress middleware should support brotli ('br') compression for responses",
+    "the brotli implementation should use Node's built-in zlib brotli support (no additional third-party dependency)",
+    "compress middleware should be able to use brotli text mode for JSON or other text-only content"
+  ],
+  "values_specified": {
+    "compression_algorithm_brotli": "br",
+    "compression_algorithm_gzip": "gzip"
+  },
+  "removes": [],
+  "depends_on": []
+}

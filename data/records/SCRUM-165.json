@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-165",
+  "components": [
+    "jsx",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "JSX has lots of conflicts with @react-email/components.",
+    "Unable to build email templates using react-email.",
+    "tsconfig.json sets jsx to \"react-jsx\" and jsxImportSource to \"hono/jsx\"."
+  ],
+  "values_specified": {
+    "hono_version": "4.5.2",
+    "jsx": "react-jsx",
+    "jsx_import_source": "hono/jsx",
+    "runtime_platform": "Cloudflare pages"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-110",
+  "components": [
+    "types",
+    "context",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono infers the Context type for each route and then extends it with the next router.",
+    "Type inference causes the application to take about 8 minutes to compile in CI with esbuild.",
+    "Using Hono's type inference requires compiling the entire application (including ORM and business logic) to use RPC functionality.",
+    "The docs recommend compiling your code before using RPC."
+  ],
+  "values_specified": {
+    "ci_compile_time": "about 8 minutes",
+    "live_reload_time_before": "about 2 minutes",
+    "live_reload_time_after": "about 10 seconds"
+  },
+  "removes": [],
+  "depends_on": []
+}

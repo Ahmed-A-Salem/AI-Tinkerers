@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-54",
+  "components": [
+    "router",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono works with Bun using existing routers.",
+    "When the runtime is Bun, Hono should support or integrate Bun's native HTTP router."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

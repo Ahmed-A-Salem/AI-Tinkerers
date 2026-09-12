@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-24",
+  "components": [
+    "client",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "parseResponse throws a DetailedError when the fetch has a non-OK status code.",
+    "Add a new function parseResponseWithError which returns an object containing result and error.",
+    "Provide a way to force-infer a DetailedError via typing only (no additional runtime code), e.g. DetailedError<typeof client.hello.$get>."
+  ],
+  "values_specified": {
+    "status_class_4xx": "4xx"
+  },
+  "removes": [],
+  "depends_on": []
+}

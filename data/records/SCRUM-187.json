@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-187",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "The middleware's default Referrer-Policy is currently set to no-referrer.",
+    "When Referrer-Policy is no-referrer, it hides both the Referer and Origin headers (serializedOrigin becomes null).",
+    "Hiding the Origin header can weaken CSRF mitigations because the server cannot verify same-origin requests.",
+    "The default Referrer-Policy should be strict-origin-when-cross-origin to minimize information leaks while preserving Origin for same-origin requests."
+  ],
+  "values_specified": {
+    "default_referrer_policy": "no-referrer",
+    "proposed_default_referrer_policy": "strict-origin-when-cross-origin"
+  },
+  "removes": [],
+  "depends_on": []
+}

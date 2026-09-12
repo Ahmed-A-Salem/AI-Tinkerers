@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-94",
+  "components": [
+    "middleware",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "CSRF middleware blocks formData (multipart/form-data) POST requests even when the Origin is in the allowed origin list.",
+    "Including both 'Origin' and 'Content-Type: multipart/form-data' headers in the request causes the CSRF middleware to respond with 403.",
+    "Removing the explicit 'Content-Type' header and setting the 'Origin' header allows the request to pass CSRF middleware and return 200.",
+    "Requests from web browsers succeed without explicit Content-Type/Origin headers, while formData requests from iOS/Android apps are blocked by the CSRF middleware."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.5",
+    "runtime": "Bun",
+    "expected_status": "200",
+    "observed_status": "403",
+    "header_content_type_value": "multipart/form-data",
+    "header_origin_value": "http://localhost",
+    "origin_whitelist": "[\"http://your-domain.com\", \"http://localhost\"]"
+  },
+  "removes": [],
+  "depends_on": []
+}

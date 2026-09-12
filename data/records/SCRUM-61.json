@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-61",
+  "components": [
+    "validator",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "validate outgoing responses against a provided schema",
+    "error when the response structure does not match the schema",
+    "remove fields from the response that are not present in the schema (e.g., remove 'email')"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

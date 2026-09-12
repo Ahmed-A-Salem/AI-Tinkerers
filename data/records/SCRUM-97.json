@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-97",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "streaming in hono sets Transfer-Encoding: chucked.",
+    "It works well with http1.1.",
+    "It fails with h2c because this header is not supported.",
+    "h2 uses different streaming mechanisms."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.5",
+    "runtime_platform": "Node 22",
+    "transfer_encoding_header_value": "chucked",
+    "forbidden_error_message": "TypeError [ERR_HTTP2_INVALID_CONNECTION_HEADERS]: HTTP/1 Connection specific headers are forbidden: \"transfer-encoding\""
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-15",
+  "components": [
+    "router",
+    "request",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "A route segment '*' acts as a wildcard path parameter accessible via c.req.param().",
+    "The wildcard capture may contain multiple path segments and does not include the separating '/' between the route and the captured part.",
+    "The wildcard capture is empty when the wildcard matches no additional path (e.g. '/a/*' with '/a' or '/a/').",
+    "The wildcard is a distinct path segment and does not match partial segments (e.g. '/a/*' does not match '/ab').",
+    "Patterns '/*' or '*' capture the entire request path without the leading '/'."
+  ],
+  "values_specified": {
+    "wildcard_symbol": "*"
+  },
+  "removes": [],
+  "depends_on": [
+    "SCRUM-16"
+  ]
+}

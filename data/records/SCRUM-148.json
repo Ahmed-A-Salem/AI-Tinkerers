@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-148",
+  "components": [
+    "middleware",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "trimTrailingSlash middleware should redirect requests whose path ends with a '/' to the same path without the trailing slash.",
+    "trimTrailingSlash should perform this redirect for routes defined with wildcard patterns (e.g., '/my-path/*')."
+  ],
+  "values_specified": {
+    "hono_version": "4.6.1",
+    "redirect_status": "301"
+  },
+  "removes": [],
+  "depends_on": []
+}

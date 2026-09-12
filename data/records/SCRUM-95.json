@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-95",
+  "components": [
+    "hono",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a utility to delegate from one Hono app instance to another.",
+    "Encapsulate the correct logic to forward from a route handler to a sub-app.",
+    "Expose an API such as app.delegateAll('*', entry) to delegate routes."
+  ],
+  "values_specified": {
+    "delegate_route_pattern": "*"
+  },
+  "removes": [],
+  "depends_on": []
+}

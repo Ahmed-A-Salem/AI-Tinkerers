@@ -1,0 +1,29 @@
+{
+  "key": "SCRUM-25",
+  "components": [
+    "adapter",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono includes support for many runtimes and adapters in the main package.",
+    "Most applications only target a single runtime.",
+    "Adapters are conceptually optional integrations rather than core framework functionality.",
+    "Adapters should be split into separate packages and the main hono package should be core framework only."
+  ],
+  "values_specified": {
+    "suggested_package_hono_core": "hono",
+    "suggested_package_node_server": "@hono/node-server",
+    "suggested_package_cloudflare": "@hono/cloudflare",
+    "suggested_package_bun": "@hono/bun",
+    "suggested_package_aws_lambda": "@hono/aws-lambda",
+    "runtime_node_js": "Node.js",
+    "runtime_bun": "Bun",
+    "runtime_cloudflare_workers": "Cloudflare Workers",
+    "runtime_deno": "Deno",
+    "runtime_aws_lambda": "AWS Lambda",
+    "runtime_vercel": "Vercel"
+  },
+  "removes": [],
+  "depends_on": []
+}

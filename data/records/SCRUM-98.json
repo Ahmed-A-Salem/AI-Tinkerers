@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-98",
+  "components": [
+    "adapter",
+    "middleware",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "A TypeError 'Body is unusable: Body has already been read' is thrown during request handling.",
+    "The error occurs randomly with a probability of about 1 in 100 to 1 in 1000.",
+    "The stack trace shows consumeBody -> _Response.text -> createResult -> Runtime.handler.",
+    "The app registers etag, serveStatic, and secureHeaders middleware and responds to GET '*' with c.html(renderPage(...))."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.5",
+    "runtime": "NodeJS on AWS Lambda",
+    "error_probability": "1 in 100 to 1 in 1000",
+    "etag_weak": "true",
+    "serve_static_root": "./static",
+    "random_bytes_size": "16"
+  },
+  "removes": [],
+  "depends_on": []
+}

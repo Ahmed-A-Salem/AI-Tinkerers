@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-183",
+  "components": [
+    "hono",
+    "context",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide a native SFV encoder and decoder for Structured Field Values (RFC 8941).",
+    "Allow the headers API to accept SFV-encoded values and require SFV types for specific header names (e.g., Cache-Status requires an SF-List).",
+    "Provide type-safe helpers to encode SFV from native JavaScript objects and guide developers to use SFV instead of JSON in headers."
+  ],
+  "values_specified": {
+    "rfc_8941": "RFC 8941",
+    "header_name_cache_status": "Cache-Status",
+    "example_ttl_1": "1100",
+    "example_ttl_2": "545"
+  },
+  "removes": [],
+  "depends_on": []
+}

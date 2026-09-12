@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-101",
+  "components": [
+    "middleware",
+    "http-exception"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "When using JWT Middleware to validate bearer token, if the token has expired then the error is a generic HTTPException rather than explanatory.",
+    "Prefer to see the error type surfaced rather than replaced by HTTPException so the client knows they need to send a refresh token."
+  ],
+  "values_specified": {
+    "hono_version": "4.7.4",
+    "runtime": "Bun"
+  },
+  "removes": [],
+  "depends_on": []
+}

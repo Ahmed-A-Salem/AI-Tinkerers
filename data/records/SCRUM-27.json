@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-27",
+  "components": [
+    "types",
+    "context",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Replace ConnInfo with WinterTC SocketInfo",
+    "Expose connection information using the SocketInfo dictionary defined by WinterTC",
+    "Middlewares that rely on SocketInfo should work out of the box"
+  ],
+  "values_specified": {},
+  "removes": [
+    "ConnInfo"
+  ],
+  "depends_on": []
+}

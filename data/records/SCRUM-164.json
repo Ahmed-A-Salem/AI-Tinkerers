@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-164",
+  "components": [
+    "middleware",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Direct route handlers infer Context and route parameter types correctly (e.g., c.get('foo') is string and c.req.param('id') is string).",
+    "Middleware created via a generic factory loses type inference for the handler Context and params (e.g., c.get('foo') becomes never and c.req.param('id') becomes string | undefined).",
+    "Find a way to preserve correct TypeScript type inference when creating MiddlewareHandler dynamically via factory functions."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": [
+    "GH-3198"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-186",
+  "components": [
+    "router",
+    "types"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "defineRoute can be called with either a string path or an object of params plus a function that returns a path string",
+    "createRouter returns an object with a routes property containing the defined routes",
+    "route definitions infer parameter types so callers can pass parameter objects to generate hrefs",
+    "route definitions support extend to create derived routes with additional path segments",
+    "calling a route with params returns an object that exposes an href and supports navigation methods like push"
+  ],
+  "values_specified": {
+    "home_path": "/",
+    "about_path": "/about",
+    "users_route": "/users/${p.userId}",
+    "post_route": "/post/${p.postId}",
+    "user_settings_segment": "/settings",
+    "user_activity_segment": "/activity"
+  },
+  "removes": [],
+  "depends_on": []
+}

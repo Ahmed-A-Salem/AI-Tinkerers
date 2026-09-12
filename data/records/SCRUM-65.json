@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-65",
+  "components": [
+    "adapter",
+    "types",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Lambda allows handling requests not from an ApiGateway (e.g. handler for custom resources).",
+    "Hono should be usable for non-ApiGateway Lambda handlers.",
+    "Current typings do not support non-ApiGateway Lambda handlers, so using them is untyped/unsafe."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

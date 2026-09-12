@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-18",
+  "components": [
+    "hono",
+    "validator",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "HONO provides automatic documentation generation similar to FastAPI",
+    "HONO accepts zod as a parameter type for route handler parameters",
+    "Automatic documentation is generated from zod-annotated route parameters"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,28 @@
+{
+  "key": "SCRUM-8",
+  "components": [
+    "router",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "getPath() runs the path through decodeURI before routing",
+    "RegExpRouter compiles a wildcard to ONLY_WILDCARD_REG_EXP_STR = '.*' and TAIL_WILDCARD_REG_EXP_STR = '(?:|/.*)'",
+    "In JavaScript, '.' never matches a line terminator unless the 's' flag is set",
+    "Named-parameter patterns use LABEL_REG_EXP_STR = '[^/]+' which matches line terminators (so named params are not affected)",
+    "SmartRouter selects a router on the first request and only moves on when add() throws UnsupportedPathError"
+  ],
+  "values_specified": {
+    "hono_version": "4.13.7",
+    "node_version": "v24.20.0",
+    "only_wildcard_reg_exp_str": ".*",
+    "tail_wildcard_reg_exp_str": "(?:|/.*)",
+    "label_reg_exp_str": "[^/]+",
+    "affected_line_terminators": "\\n (%0A), \\r (%0D), \\u2028 (%E2%80%A8), \\u2029 (%E2%80%A9)",
+    "example_status_for_a_20b": "200",
+    "example_status_for_a_0ab": "404",
+    "router_results_table": "SmartRouter: 404, RegExpRouter: 404, TrieRouter: 200, PatternRouter: 200, LinearRouter: 200"
+  },
+  "removes": [],
+  "depends_on": []
+}

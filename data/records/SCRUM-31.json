@@ -1,0 +1,26 @@
+{
+  "key": "SCRUM-31",
+  "components": [
+    "helper",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Provide encrypted cookie support using AES-256-GCM via the Web Crypto API",
+    "Derive encryption key using HKDF-SHA256 from the provided secret",
+    "Use a random 12-byte IV per encryption via crypto.getRandomValues()",
+    "Bind the cookie name as additional authenticated data (AAD)",
+    "Format cookie value as base64(iv || ciphertext || authTag), URL-encoded"
+  ],
+  "values_specified": {
+    "algorithm": "AES-256-GCM",
+    "iv_length_bytes": "12",
+    "key_derivation": "HKDF-SHA256",
+    "cookie_format": "base64(iv||ciphertext||authTag)",
+    "secret_type": "string | BufferSource",
+    "crypto_api": "crypto.subtle",
+    "return_type_getencryptedcookie": "string | undefined | false"
+  },
+  "removes": [],
+  "depends_on": []
+}

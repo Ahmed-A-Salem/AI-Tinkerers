@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-149",
+  "components": [
+    "context",
+    "hono-base",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Context is instantiated internally within HonoBase.",
+    "HonoBase should allow the Context to be injected externally.",
+    "Third-party libraries could provide Hono objects with an extended Context if Context injection is allowed.",
+    "Fields included in the Context are not tree-shakable."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

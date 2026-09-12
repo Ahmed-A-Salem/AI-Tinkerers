@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-174",
+  "components": [
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "setSignedCookie takes arguments in the order: c, cookie name, cookie value, secret, options.",
+    "getSignedCookie currently takes arguments in the order: c, secret, cookie name.",
+    "getSignedCookie requires both the cookie name and the secret.",
+    "In Hono 5 change getSignedCookie argument order to match setSignedCookie (breaking change)."
+  ],
+  "values_specified": {
+    "target_hono_version": "5"
+  },
+  "removes": [
+    "getSignedCookie"
+  ],
+  "depends_on": []
+}

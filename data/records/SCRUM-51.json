@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-51",
+  "components": [
+    "context",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Calling getCookie(c, 'key') after setCookie(c, 'key') currently returns the old cookie value.",
+    "getCookie(c, 'key') should return the value most recently set by setCookie(c, 'key')"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

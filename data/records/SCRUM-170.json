@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-170",
+  "components": [
+    "helper",
+    "types",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "outputFormat supports only Handler.",
+    "outputFormat should support Response.",
+    "Helpers that return a Response should have outputFormat applied to that Response."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

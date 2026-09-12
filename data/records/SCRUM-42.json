@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-42",
+  "components": [
+    "preset",
+    "types",
+    "request"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "BeforeRequestHook runs before the discovery request that determines the paths of dynamic routes (not before the final request).",
+    "AfterResponseHook runs the actual requests.",
+    "The plugin system currently allows defining BeforeRequestHook, AfterResponseHook and AfterGenerateHook.",
+    "Add a new hook that runs before the actual request (after discovery).",
+    "The new hook should be able to return false each time to skip performing the actual request, allowing a first pass to count routes and a second pass to run requests."
+  ],
+  "values_specified": {},
+  "removes": [
+    "BeforeRequestHook"
+  ],
+  "depends_on": []
+}

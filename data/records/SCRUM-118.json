@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-118",
+  "components": [
+    "hono",
+    "types",
+    "adapter"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono class uses DefaultEnv as the default generic type instead of Env.",
+    "Provide interfaces DefaultEnv, EnvBindings, and EnvVariables.",
+    "Developers can extend DefaultEnv via declaration merging to set Bindings and Variables without specifying Env types when instantiating Hono.",
+    "Adapters (example: AWS Lambda) can declare module \"hono\" to add Bindings like event and lambdaContext."
+  ],
+  "values_specified": {},
+  "removes": [
+    "Hono"
+  ],
+  "depends_on": []
+}

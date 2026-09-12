@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-136",
+  "components": [
+    "hono",
+    "middleware",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support CBOR (RFC 8949) as a binary format for serializing objects.",
+    "Optionally provide CBOR support as a third-party helper/middleware if not included in the Hono core package."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

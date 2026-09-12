@@ -1,0 +1,24 @@
+{
+  "key": "SCRUM-150",
+  "components": [
+    "middleware",
+    "client",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support AWS SigV4 requests for lambdaliths running Hono.",
+    "Provide a middleware that uses a Signature (SignatureV4) class to sign each outgoing Hono request automatically.",
+    "Sign requests at send time so the client does not need to know or precompute all requests before signing."
+  ],
+  "values_specified": {
+    "region": "us-east-1",
+    "service": "lambda",
+    "request_method": "POST",
+    "content_type_header": "application/json",
+    "signature_package": "@smithy/signature-v4",
+    "aws_sdk_version": "v3"
+  },
+  "removes": [],
+  "depends_on": []
+}

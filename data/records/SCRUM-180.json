@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-180",
+  "components": [
+    "hono",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Setting cookie with Max-Age > 400 days throws an error.",
+    "Cookie is set without throwing an error."
+  ],
+  "values_specified": {
+    "hono_version": "4.3.9",
+    "max_age_days_limit": "400 days"
+  },
+  "removes": [],
+  "depends_on": []
+}

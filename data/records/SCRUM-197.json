@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-197",
+  "components": [
+    "types",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Type instantiation becomes excessively deep and possibly infinite when many routes are added.",
+    "Moving all routes into a single file allowed adding more routes without triggering the type instantiation error.",
+    "Hono triggers the type-instantiation error at far fewer routes than Elysia in the reported comparison."
+  ],
+  "values_specified": {
+    "additional_routes_added": "35",
+    "hono_routes_total_observed": "120",
+    "hono_routes_per_instance_observed": "40",
+    "elysia_routes_total_observed": "1410",
+    "elysia_routes_per_instance_observed": "470"
+  },
+  "removes": [],
+  "depends_on": []
+}

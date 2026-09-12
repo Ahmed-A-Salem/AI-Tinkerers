@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-132",
+  "components": [
+    "adapter",
+    "hono",
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono should support Cloudflare Workflows.",
+    "Provide a clean, minimal Hono wrapper API to use Workflows in Hono apps deployed on Workers.",
+    "The wrapper should allow using Workflows features such as automatic retries and durable execution in Hono apps."
+  ],
+  "values_specified": {
+    "workflows_launch_date": "Oct 24"
+  },
+  "removes": [],
+  "depends_on": []
+}

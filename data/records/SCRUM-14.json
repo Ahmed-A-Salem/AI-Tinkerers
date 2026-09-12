@@ -1,0 +1,19 @@
+{
+  "key": "SCRUM-14",
+  "components": [
+    "middleware",
+    "hono",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "onError and notFound accept middlewares, similar to route definitions",
+    "Allow running specific middleware when rendering 404 or error pages without registering them globally",
+    "Middleware provided to notFound/onError runs before the final handler"
+  ],
+  "values_specified": {
+    "set_cookie_header": "Set-Cookie"
+  },
+  "removes": [],
+  "depends_on": []
+}

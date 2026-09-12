@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-79",
+  "components": [
+    "helper",
+    "utils"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Parses issue descriptions to extract reproduction steps, environment details, and expected vs actual behavior.",
+    "Generates minimal reproduction test code based on issue descriptions.",
+    "Runs tests in a sandbox environment across multiple runtimes (Node.js, Deno, Bun, Cloudflare Workers).",
+    "Auto-classifies issues as: Bug/Not-a-bug/Need-info/Documentation.",
+    "Provides a 24h initial response time for all issues."
+  ],
+  "values_specified": {
+    "triage_time_reduction": "80%",
+    "initial_response_time": "24h"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-119",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Support the zstd compression algorithm in Hono.",
+    "Recognize/use the Content-Encoding value 'zstd'."
+  ],
+  "values_specified": {
+    "compression_algorithm": "zstd",
+    "header_name": "Content-Encoding"
+  },
+  "removes": [],
+  "depends_on": []
+}

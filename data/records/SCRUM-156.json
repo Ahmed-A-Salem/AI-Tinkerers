@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-156",
+  "components": [
+    "helper",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "serveStatic currently returns 200 OK when serving video files",
+    "When a video file is returned with 200 OK, the browser (Chromium-based) will not allow seeking",
+    "serveStatic should support returning 206 Partial Content for served files",
+    "The 206 behaviour could be enabled or determined by file extension or by content type"
+  ],
+  "values_specified": {
+    "status_code_200": "200 OK",
+    "status_code_206": "206 Partial Content"
+  },
+  "removes": [],
+  "depends_on": []
+}

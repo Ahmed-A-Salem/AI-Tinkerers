@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-171",
+  "components": [
+    "request",
+    "helper",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "conninfo helper exists but there isn't anything for Node.js",
+    "In Koa, ctx.request.ip provides the client IP"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

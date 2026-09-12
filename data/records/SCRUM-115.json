@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-115",
+  "components": [
+    "router",
+    "hono-base",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hot Module Replacement (HMR) should update route handlers during development so files can be changed without restarting the server.",
+    "On re-registering a route, Hono routers should replace the old handler with the new one.",
+    "Currently re-registering a route throws the error: \"Can not add a route since the matcher is already built.\"",
+    "In development, re-registering the same route should not error; however adding a new route after the matcher is built should still produce an error."
+  ],
+  "values_specified": {
+    "node_env_production": "production",
+    "matcher_already_built_error": "Can not add a route since the matcher is already built."
+  },
+  "removes": [],
+  "depends_on": [
+    "GH-3805"
+  ]
+}

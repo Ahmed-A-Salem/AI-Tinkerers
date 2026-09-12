@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-113",
+  "components": [
+    "hono",
+    "types",
+    "context"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "context variables can be defined in normal routes using Hono generic { Variables } and accessed via c.var",
+    "when using upgradeWebSocket from hono/bun, context variable types are not preserved and c.var is any",
+    "globally extending ContextVariableMap is problematic when different routes require different context fields",
+    "upgradeWebSocket should accept a generic to specify per-route context variables so c.var is correctly typed within the WebSocket handler"
+  ],
+  "values_specified": {
+    "foo_type_number": "number",
+    "bar_type_boolean": "boolean",
+    "foo_type_string": "string"
+  },
+  "removes": [],
+  "depends_on": []
+}

@@ -1,0 +1,15 @@
+{
+  "key": "SCRUM-78",
+  "components": [
+    "client"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "The Hono client $url() method always returns an absolute URL object.",
+    "The code always returns new URL(result), which converts relative paths to absolute URLs based on the current origin and can throw an error.",
+    "Provide an option to return relative URLs as strings instead of URL objects."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

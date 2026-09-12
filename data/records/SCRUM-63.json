@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-63",
+  "components": [
+    "validator",
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "response values are automatically validated against a provided schema",
+    "response data is automatically cleaned according to the provided schema",
+    "developers can pass a schema and the framework will validate and clean responses without manually calling zod in each request"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

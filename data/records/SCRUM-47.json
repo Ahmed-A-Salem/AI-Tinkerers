@@ -1,0 +1,17 @@
+{
+  "key": "SCRUM-47",
+  "components": [
+    "hono",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "support OpenAPI out of the box",
+    "no configuration required to enable OpenAPI",
+    "do not require manually adding each response",
+    "provide automatic OpenAPI generation similar to Elysiajs"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

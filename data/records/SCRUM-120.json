@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-120",
+  "components": [
+    "hono",
+    "index"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "execution order of items in the benchmark suite significantly impacts the reported outcomes",
+    "the fastest library changes depending on the order in which the benchmarks are executed",
+    "libraries earlier in the execution order tend to perform better, while those executed later show significant performance degradation"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

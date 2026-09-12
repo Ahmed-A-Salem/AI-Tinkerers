@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-111",
+  "components": [
+    "hono"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "Hono currently misses the CONNECT method.",
+    "Hono should support the CONNECT HTTP method so a MITM proxy can be built."
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

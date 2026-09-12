@@ -1,0 +1,21 @@
+{
+  "key": "SCRUM-155",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "cache middleware, once it is cached, it is never updated.",
+    "Add the duration option to cache middleware.",
+    "Store the duration option in an internal header when the cache matches.",
+    "Check the stored duration to determine if the cached entry has expired."
+  ],
+  "values_specified": {
+    "cache_name": "my-app",
+    "cache_control": "max-age=60",
+    "duration": "120",
+    "wait": "true"
+  },
+  "removes": [],
+  "depends_on": []
+}

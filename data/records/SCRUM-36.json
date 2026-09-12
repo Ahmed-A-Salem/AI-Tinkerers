@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-36",
+  "components": [
+    "middleware",
+    "router"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "routePath(c) returns '/*' for a request to '/health' when middleware is registered after the route",
+    "routePath(c, -1) returns '/*' for a request to '/health' when middleware is registered after the route",
+    "Expected: routePath(c) should return '/health'"
+  ],
+  "values_specified": {
+    "hono_version": "4.11.3",
+    "runtime": "Bun",
+    "observed_route_path": "/*",
+    "expected_route_path": "/health",
+    "routepath_index": "-1",
+    "default_port": "3000"
+  },
+  "removes": [],
+  "depends_on": []
+}

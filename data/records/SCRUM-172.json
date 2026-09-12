@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-172",
+  "components": [
+    "router",
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "calling GET /a logs \"Middleware A\"",
+    "calling GET /b logs \"Middleware B\"",
+    "calling GET /b logs \"Middleware A\" \"Middleware B\"",
+    "appMiddleware is called multiple times in later groups"
+  ],
+  "values_specified": {
+    "hono_version": "4.4.6",
+    "runtime_platform": "Node"
+  },
+  "removes": [],
+  "depends_on": []
+}

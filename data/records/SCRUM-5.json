@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-5",
+  "components": [
+    "middleware"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "middleware runs in sequence",
+    "documentation should include a brief diagram or numbered list showing how middleware executes in sequence to clarify execution order"
+  ],
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
+}

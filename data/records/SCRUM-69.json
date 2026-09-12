@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-69",
+  "components": [
+    "helper"
+  ],
+  "files_touched": [],
+  "behaviors_asserted": [
+    "setSignedCookie returns a Promise<void>.",
+    "There is no programmatic way to get a signed cookie returned as a string.",
+    "generateSignedCookie returns the contents of the signed cookie as a string.",
+    "generateCookie returns the contents of the cookie as a string."
+  ],
+  "values_specified": {
+    "cookie_max_age": "3600",
+    "cookie_same_site": "None",
+    "cookie_http_only": "true",
+    "cookie_secure": "true",
+    "header_cookie": "Cookie",
+    "header_set_cookie": "Set-Cookie"
+  },
+  "removes": [],
+  "depends_on": []
+}
