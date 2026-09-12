@@ -40,6 +40,8 @@ Copy `.env.example` to `.env` and fill in:
 | `OPENROUTER_API_KEY` | Optional fallback, used only when `OPENAI_API_KEY` is absent |
 | `LLM_MODEL` | Model id, default `gpt-5-mini` |
 | `MODE` | `accept` (default) or `auto`. See "Modes" below |
+| `ELEVENLABS_API_KEY` | Optional. Only for regenerating the demo narration with `npm run narrate` |
+| `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL` | Optional voice and model overrides for `npm run narrate` |
 
 ## Setup
 
@@ -146,6 +148,19 @@ its own.
 Event-driven runs through Trigger.dev (ticket created or updated in Jira wakes Agent 2 with no
 command) are landing; see `src/trigger/` once it is on main.
 
+## Demo
+
+- **Video:** `demo/demo.mp4`.
+- **Animated front end:** `demo/frontend/index2.html`. Open it in any browser; it auto-plays a
+  two-minute timeline: a Teams-style stand-up, the transcript going to Agent 1, the draft tickets,
+  Agent 2 walking the code graph, the verdict comment, the approval, Auto mode, and the backlog
+  result.
+- **Narration:** `demo/narration.txt` is the voice-over text. `npm run narrate` regenerates
+  `demo/narration.mp3` with ElevenLabs (needs `ELEVENLABS_API_KEY`; `ELEVENLABS_VOICE_ID` and
+  `ELEVENLABS_MODEL` are optional). Bracketed stage directions are not spoken.
+- **Live take:** `demo/DEMO.md` is the run sheet, with the timed steps, exact commands, which Jira
+  tab is on screen, and the reset procedure between takes.
+
 ## Modes
 
 Every mode runs the same pipeline and produces the same proposed actions. The mode only decides
@@ -173,4 +188,4 @@ text.
 | `src/agent1.ts` | Meeting transcript to draft tickets |
 | `src/types.ts` | The shared record, verdict, and action shapes |
 | `data/` | Index outputs, issue dump, records, verdicts, planted ground truth |
-| `demo/` | Stand-up transcript used in the demo |
+| `demo/` | Demo video, animated front end, narration, run sheet, and the stand-up transcript |
