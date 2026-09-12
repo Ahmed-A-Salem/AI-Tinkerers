@@ -7,10 +7,13 @@
   "scripts": {
     "import:issues": "tsx scripts/import-issues.ts",
     "typecheck": "tsc --noEmit",
-    "index": "tsx scripts/build-index.ts"
+    "index": "tsx scripts/build-index.ts",
+    "extract": "tsx scripts/extract.ts",
+    "act": "tsx scripts/act.ts"
   },
   "dependencies": {
     "@trigger.dev/sdk": "^3.3.17",
+    "dotenv": "^17.4.2",
     "openai": "^4.77.0",
     "ts-morph": "^24.0.0"
   },
