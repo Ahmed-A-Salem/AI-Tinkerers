@@ -86,7 +86,7 @@ Six conflicts were planted in the imported backlog with the ground truth recorde
 `data/planted.json`: four dependency breaks that use real import edges from the code graph, and
 two ordering conflicts. The full backlog was checked once.
 
-> **Caught N of 6 planted conflicts with M false positives across 206 tickets.**
+> **Caught 4 of 6 planted conflicts with 3 false positives across 206 tickets.**
 
 ## Stack
 

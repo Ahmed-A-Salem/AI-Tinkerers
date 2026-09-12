@@ -14,7 +14,7 @@ Agent 2 checks every new or edited ticket against the backlog *and the codebase*
 
 The demo hook: an engineer says "I'll build on getPath." A ticket already in the backlog removes getPath. Agent 2 quotes both lines, names the file, and flags it before anyone writes code.
 
-Caught [N] of 6 planted conflicts across 206 real Hono tickets.
+Caught 4 of 6 planted conflicts across 206 real Hono tickets.
 
 Video: [VIDEO_LINK]
 Code: [REPO_LINK]

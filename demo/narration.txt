@@ -28,4 +28,4 @@ Now Auto mode. A ticket that rips out the signed cookie helpers, against an open
 
 [7 · 1:50 · backlog filter, npm run check -- --all]
 
-Across the whole backlog: two hundred real Hono issues, six planted conflicts. Caught N of six, with M false positives. Two agents, living inside Jira.
+Across the whole backlog: two hundred real Hono issues, six planted conflicts. Caught four of six, with three false positives. Two agents, living inside Jira.
