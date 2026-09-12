@@ -9,16 +9,19 @@
     "return 200 on GET /api",
     "return 200 on GET existing file",
     "return 404 on GET non-existent file",
-    "with get(serveStatic): POST non-existent file returns 405",
-    "with use(serveStatic): POST existing file returns 200"
+    "return 405 on POST /api",
+    "return 404 on POST non-existent file"
   ],
   "values_specified": {
     "hono_version": "4.13.1",
-    "runtime_platform": "Node.js",
-    "http_status_200": "200",
-    "http_status_404": "404",
-    "http_status_405": "405"
+    "runtime": "Node.js",
+    "status_ok": "200",
+    "status_not_found": "404",
+    "status_method_not_allowed": "405"
   },
-  "removes": [],
+  "removes": [
+    "serveStatic",
+    "methodNotAllowed"
+  ],
   "depends_on": []
 }

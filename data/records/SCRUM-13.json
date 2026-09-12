@@ -6,17 +6,20 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "Bearer auth error responses are currently sent only as `application/json` or `text/plain`.",
-    "`throwHTTPException` hardcodes the response Content-Type.",
-    "The middleware throws an `HTTPException` with a pre-built `res`, preventing an `onError` handler from fixing the headers afterwards.",
-    "Allow `MessageFunction` to return a `Response` and use that `Response` as-is (setting `WWW-Authenticate` if missing).",
-    "Alternatively, provide a `contentType` option next to `message`."
+    "Bearer auth error responses can only be sent as application/json or text/plain.",
+    "throwHTTPException hardcodes the response content type.",
+    "Because the middleware throws an HTTPException with a pre-built res, an onError handler can't fix the headers afterwards.",
+    "MessageFunction should be allowed to return a Response and be used as-is (set WWW-Authenticate if missing).",
+    "Optionally support a contentType option next to message."
   ],
   "values_specified": {
-    "application_json": "application/json",
-    "text_plain": "text/plain",
-    "application_problem_json": "application/problem+json"
+    "content_type_json": "application/json",
+    "content_type_text": "text/plain",
+    "content_type_problem_json": "application/problem+json",
+    "header_www_authenticate": "WWW-Authenticate"
   },
-  "removes": [],
+  "removes": [
+    "MessageFunction"
+  ],
   "depends_on": []
 }

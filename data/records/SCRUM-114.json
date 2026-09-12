@@ -1,18 +1,18 @@
 {
   "key": "SCRUM-114",
   "components": [
-    "helper",
     "utils"
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "generateDigest currently uses SHA1",
-    "generateDigest is used to generate ETag values",
-    "Allow the user to pass a func to use a custom hashing method that overrides generateDigest for ETag generation"
+    "Allow the user to pass a func to use a custom hashing method that overrides generateDigest.",
+    "generateDigest currently uses SHA1."
   ],
   "values_specified": {
     "default_hash_algorithm": "SHA1"
   },
-  "removes": [],
+  "removes": [
+    "generateDigest"
+  ],
   "depends_on": []
 }

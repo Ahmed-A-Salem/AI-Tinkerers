@@ -5,14 +5,16 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "createHash has no proper way to add salt or anything",
-    "Adding salt to the password before hashing is not a proper solution",
-    "Without salt, if 2 users have the same password, it will be problematic"
+    "createHash does not provide a proper way to add salt",
+    "Adding salt by concatenating it to the password before hashing is not a proper solution",
+    "Without salt, if two users have the same password they will produce the same hash"
   ],
   "values_specified": {
     "algorithm_name": "SHA-256",
     "algorithm_alias": "sha256"
   },
-  "removes": [],
+  "removes": [
+    "createHash"
+  ],
   "depends_on": []
 }

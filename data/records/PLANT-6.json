@@ -6,13 +6,18 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "showRoutes() should default its colorize option to whatever logger() was configured with",
-    "Keep the colorization decision in src/utils/color.ts so getColorEnabled() and getColorEnabledAsync() stop sniffing NO_COLOR independently"
+    "showRoutes() should default its colorize option to the logger's configured colorize value",
+    "Color decision should be centralized in src/utils/color.ts",
+    "getColorEnabled() and getColorEnabledAsync() should stop independently sniffing NO_COLOR"
   ],
   "values_specified": {
-    "logger_colorize_example": "false",
+    "logger_colorize": "false",
     "env_no_color": "NO_COLOR"
   },
-  "removes": [],
+  "removes": [
+    "getColorEnabled",
+    "getColorEnabledAsync",
+    "showRoutes"
+  ],
   "depends_on": []
 }
