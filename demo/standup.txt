@@ -1,0 +1,15 @@
+Daily stand-up, hono backend team. Wednesday. Present: Maya (lead), Dev, Priya.
+
+MAYA: Morning. Quick round, we have the planning session after this. Dev, you first.
+
+DEV: Yesterday I finished reviewing the compress middleware PR and got the brotli benchmarks running. Today I'm picking up the path helpers people keep asking for in 3210. I'll ship a `hono/path` helper this sprint with `matchedPath` and `basePath`, and I'm building it on top of `getPath` from utils/url so we don't duplicate the percent-decoding loop a third time. No blockers.
+
+MAYA: Good. Keep the API tiny, we can widen it later. Priya?
+
+PRIYA: I spent yesterday on the flaky Deno test, it was the clock skew thing, fixed. For this sprint I'll add `Retry-After` support to the timeout middleware. When a request times out we send the 504 with a `Retry-After` header, configurable in seconds, default 5. I'll also update the timeout docs page while I'm in there.
+
+MAYA: Nice, that's been an open ask from the Cloudflare folks. Anything blocking?
+
+PRIYA: No. I might poke at the JSX streaming issue if I have time, but no promises on that one.
+
+MAYA: Fine, don't commit to it. On my side, nothing new to ship, I'm on PR review and the release notes for 4.14 until Thursday. That's it, see you in planning.
