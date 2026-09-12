@@ -88,6 +88,13 @@ two ordering conflicts. The full backlog was checked once.
 
 > **Caught 4 of 6 planted conflicts with 3 false positives across 206 tickets.**
 
+## Demo
+
+The video is `demo/demo.mp4`. The animated front end behind it is `demo/frontend/index2.html`,
+which opens in any browser and auto-plays a two-minute timeline from the stand-up to the backlog
+result. The voice-over text is `demo/narration.txt` (`npm run narrate` regenerates
+`demo/narration.mp3` with ElevenLabs), and `demo/DEMO.md` is the run sheet for a live take.
+
 ## Stack
 
 TypeScript throughout, single runtime. Jira through the Atlassian REST API with an MCP backend
