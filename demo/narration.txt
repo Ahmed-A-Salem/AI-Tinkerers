@@ -1,30 +1,30 @@
 [1 · 0:00 · stand-up audio plays underneath]
 
-This is a normal daily stand-up. Three engineers, one backend. Listen to Dev. He says he will build a new path helper on top of getPath from the URL utilities.
+A normal daily stand-up. Three engineers, one backend. Listen to Dev: he will build a new path helper on top of getPath from the URL utilities.
 
-Nobody in that room knows that a ticket already in the backlog removes getPath.
+Nobody in that room knows a ticket already in the backlog removes getPath.
 
 [2 · 0:30 · npm run meeting]
 
-The first agent listens to the meeting. It picks out the commitments, the concrete things someone agreed to ship, and turns each one into a draft ticket in Jira. Here is Dev's. Title, description, acceptance criteria, and the label agent-draft. It can create drafts. It cannot do anything else.
+The first agent listens to the meeting, picks out the commitments, and turns each one into a draft ticket in Jira. Here is Dev's: title, description, acceptance criteria, label agent-draft. It can create drafts. It cannot do anything else.
 
 [3 · 0:45 · npm run act -- SCRUM-205]
 
-Creating the ticket wakes the second agent. It does not compare this ticket against all two hundred others. It pulls the handful that share a component, a file, or an import edge in the code graph, and asks the model about only those.
+Creating the ticket wakes the second agent. It does not compare this ticket against all two hundred others. It pulls the few that share a component, a file, or an import edge in the code graph, and asks the model about only those.
 
 It found one. The ticket goes red: label agent-conflict.
 
 [4 · 1:00 · the comment]
 
-Here is the comment. Both lines, quoted. Dev's ticket says build on getPath. The other ticket says remove the getPath export from src/utils/url.ts. And the code path that connects them: src/utils/url.ts, getPath. That is not a guess from the ticket text. The agent read the repository, and this file is what the router imports on every request.
+Here is the comment. Both lines, quoted. Dev's ticket says build on getPath. The other ticket says remove the getPath export from src/utils/url.ts. And the code path that connects them: src/utils/url.ts, getPath. Not a guess from ticket text. The agent read the repository, and this file is what the router imports on every request.
 
 [5 · 1:20 · add label agent-approved, then --apply]
 
-This is Accept mode. The agent has proposed, and it waits. A human adds one label, agent-approved. That is the whole approval interface. The agent links the two tickets. Nobody left Jira.
+This is Accept mode. The agent proposed, and it waits. A human adds one label, agent-approved. That is the whole approval interface. The agent links the two tickets. Nobody left Jira.
 
 [6 · 1:35 · MODE=auto npm run act -- SCRUM-198]
 
-Now Auto mode. A different ticket, a signed cookie flow in the JWT middleware, and a planted ticket that rips out the signed cookie helpers. Same pipeline. This time the agent comments, labels, and links in one pass, with nobody clicking anything. It can do that safely because those are the only three actions it has. There is no code path that edits a ticket.
+Now Auto mode. A different ticket, a signed cookie flow in the JWT middleware, against a planted ticket that rips out the signed cookie helpers. Same pipeline, but it comments, labels, and links in one pass, nobody clicking. Safe, because those are its only three actions. There is no code path that edits a ticket.
 
 [7 · 1:50 · backlog filter, npm run check -- --all]
 
