@@ -27,8 +27,9 @@ Jira key.
 3. Run Phase E on both demo tickets and confirm the verdicts before going on camera:
    `npm run check -- SCRUM-208` prints verdict SCRUM-208 / SCRUM-198, dependency_break, 0.9,
    code path `src/helper/cookie/index.ts -> getSignedCookie()`, and the line
-   "Checked against 9 related tickets, 3 conflict(s) found." (the other two are real overlaps
-   on the same helpers). `npm run check -- SCRUM-210` prints SCRUM-210 / SCRUM-205,
+   "Checked against 9 related tickets, 3 conflict(s) found." SCRUM-208 also gets two more
+   verdicts: SCRUM-174 (an acceptable overlap on the same helpers) and SCRUM-185, the jwt JWKS
+   ticket (one of the 3 counted false positives). `npm run check -- SCRUM-210` prints SCRUM-210 / SCRUM-205,
    dependency_break, 0.92, `src/utils/url.ts -> getPath()`.
 4. Dry run the whole sheet once with `--dry` on each `act` command. Nothing is posted. Then reset.
 5. Browser tabs open in this order: SCRUM-205, SCRUM-210, SCRUM-208, SCRUM-198, and the backlog
@@ -141,9 +142,10 @@ On Windows PowerShell:
 $env:MODE='auto'; npm run act -- SCRUM-208
 ```
 
-Expect: comment, both labels, and the link in a single run, `held for approval` absent. Phase E
-finds three conflicts for SCRUM-208 (SCRUM-198 plus two other signed-cookie tickets), so the
-run posts three proposal comments and three links; the take narrates the SCRUM-198 one:
+Expect: comment, both labels, and the link in a single run, `held for approval` absent. SCRUM-208
+also gets two more verdicts: SCRUM-174 (acceptable overlap) and SCRUM-185 (a counted false
+positive), so the run posts three proposal comments and three links; the take narrates the
+SCRUM-198 one:
 
 ```
   ok   comment on SCRUM-208: [agent-proposed] Possible dependency break with SCRUM-198 (confidence 90%)
@@ -173,14 +175,14 @@ tickets." Hold on it. End.
 
 The agent only ever adds; it never deletes. Undo by hand in Jira, in this order.
 
-1. **Links.** On SCRUM-205 and SCRUM-208, open "Linked issues", hover the link, click the x.
-   One removal clears both sides.
+1. **Links.** On SCRUM-205 and SCRUM-208, open "Linked issues", hover each link, click the x.
+   SCRUM-208 has three (SCRUM-198, SCRUM-174, SCRUM-185). One removal clears both sides.
 2. **Labels.** On SCRUM-205: remove `agent-approved` and `agent-conflict`, keep `agent-draft`.
-   On SCRUM-198, SCRUM-208, SCRUM-210: remove `agent-conflict`.
+   On SCRUM-198, SCRUM-208, SCRUM-210, SCRUM-174, SCRUM-185: remove `agent-conflict`.
 3. **Comments.** Every run posts a new comment and the agent cannot delete them, so a take
    without a reset shows duplicates. Delete the `[agent-proposed]` and `[agent-applied]`
    comments on SCRUM-205 and SCRUM-208 via the comment's "..." menu, or leave them and scroll
-   past. Comments on other tickets are harmless.
+   past. Comments on other tickets (SCRUM-198, SCRUM-210, SCRUM-174, SCRUM-185) are harmless.
 4. **Drafts.** Nothing to do: Agent 1's dedupe means step 2 creates no new tickets. If a draft
    was deleted by mistake, `npm run meeting` recreates it under a new key; use that key.
 5. **Terminal.** Unset `MODE` (`Remove-Item Env:MODE` on PowerShell, `unset MODE` elsewhere).
