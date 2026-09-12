@@ -1,31 +1,27 @@
-[1 · 0:00 · stand-up audio plays underneath]
+[1 · 0:00 · Teams meeting]
 
-A normal daily stand-up. Three engineers, one backend. Listen to Dev: he will build a new path helper on top of getPath from the URL utilities.
+A normal daily stand-up. Three engineers on a call, one shared codebase. Listen to Dev: he is going to build a new feature on top of an existing piece of the code. Nobody on that call knows that a ticket already sitting in the backlog is about to remove exactly that piece.
 
-Nobody in that room knows a ticket already in the backlog removes getPath.
+[2 · 0:20 · transcript flies to the app]
 
-[2 · 0:30 · npm run meeting]
+The meeting ends, and the transcript goes straight to the first agent. It reads what everyone said, keeps the real commitments, and ignores the small talk and the admin.
 
-The first agent listens to the meeting, picks out the commitments, and turns each one into a draft ticket in Jira. Here is Dev's: title, description, acceptance criteria, label agent-draft. It can create drafts. It cannot do anything else.
+[3 · 0:28 · Agent 1 drafts]
 
-[3 · 0:45 · npm run act -- SCRUM-205]
+Two commitments become two draft tickets in Jira, clearly marked as drafts. That is all this agent is allowed to do: write drafts. It never touches anything else.
 
-Creating the ticket wakes the second agent. It does not compare this ticket against all two hundred others. It pulls the few that share a component, a file, or an import edge in the code graph, and asks the model about only those.
+[4 · 0:42 · the code graph]
 
-It found one. The ticket goes red: label agent-conflict.
+A new ticket wakes the second agent. It does not read the whole backlog. It follows each ticket into the code: which files it touches, and what those files depend on. Dev's feature leads down one path. The older ticket leads down another. The two paths meet on a single point in the code. That point is the conflict.
 
-[4 · 1:00 · the comment]
+[5 · 0:58 · verdict and comment]
 
-Here is the comment. Both lines, quoted. Dev's ticket says build on getPath. The other ticket says remove the getPath export from src/utils/url.ts. And the code path that connects them: src/utils/url.ts, getPath. Not a guess from ticket text. The agent read the repository, and this file is what the router imports on every request.
+Both tickets turn red, and a comment appears on Dev's ticket: the exact sentence from each ticket, the place in the code where they collide, and a suggested order: build the feature first, or keep the old piece in place until the feature no longer needs it. Then the agent waits.
 
-[5 · 1:20 · add label agent-approved, then --apply]
+[6 · 1:10 · approval, then auto mode]
 
-This is Accept mode. The agent proposed, and it waits. A human adds one label, agent-approved. That is the whole approval interface. The agent links the two tickets. Nobody left Jira.
+One label from a human, and the agent links the two tickets. In auto mode there is no waiting at all. Here a ticket that removes a login helper meets another that still relies on it. The agent comments, labels, and links, in one pass. Those are its only three actions.
 
-[6 · 1:35 · MODE=auto npm run act -- SCRUM-208]
+[7 · 1:35 · the whole backlog]
 
-Now Auto mode. A ticket that rips out the signed cookie helpers, against an open issue that needs them in the JWT middleware. Same pipeline, but it comments, labels, and links in one pass, nobody clicking. Safe, because those are its only three actions. There is no code path that edits a ticket.
-
-[7 · 1:50 · backlog filter, npm run check -- --all]
-
-Across the whole backlog: two hundred real Hono issues, six planted conflicts. Caught four of six, with three false positives. Two agents, living inside Jira.
+Across the whole backlog, two hundred and six tickets, it caught four of the six conflicts we had hidden in there, with three false alarms. Everything happens inside Jira, in comments, labels, and links, right where the team already works.
