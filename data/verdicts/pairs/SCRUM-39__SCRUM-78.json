@@ -1,0 +1,24 @@
+{
+  "hash": "b7595f7a6f13c265cd0acc7143e6257c7b745362",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-78"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/index.ts (SCRUM-78) uses it",
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-78) uses it",
+    "src/client/index.ts (SCRUM-78) imports src/client/utils.ts (SCRUM-39)",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.85,
+    "ticket_a_line": "The RPC client accepts a custom `fetch` implementation via options, but the `ClientResponse` types are tightly coupled to the native fetch API.",
+    "ticket_b_line": "Provide an option to return relative URLs as strings instead of URL objects.",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A proposes changing the ClientResponse types to better support custom fetch clients, while Ticket B only requests an option to return relative URLs from the $url() method; Ticket B does not assert it relies on the ClientResponse symbol or on the type-layer changes in Ticket A, so there is no dependency break or ordering requirement between them."
+  }
+}

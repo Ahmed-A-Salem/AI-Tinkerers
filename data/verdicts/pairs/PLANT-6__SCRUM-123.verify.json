@@ -1,0 +1,16 @@
+{
+  "hash": "b7fafcce513ebec2143887de422084816074cc66",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-6",
+    "SCRUM-123"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.82,
+    "reason": "PLANT-6 explicitly asks to change the behavior of getColorEnabled()/getColorEnabledAsync (stop independently sniffing NO_COLOR), and SCRUM-123's logger middleware directly imports and awaits getColorEnabledAsync, so A's change would alter a symbol B calls."
+  }
+}

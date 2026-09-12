@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-165",
+  "files": [
+    "src/jsx/jsx-runtime.ts",
+    "src/jsx/jsx-dev-runtime.ts",
+    "src/jsx/types.ts",
+    "src/jsx/intrinsic-elements.ts",
+    "src/jsx/index.ts"
+  ],
+  "source": {
+    "src/jsx/jsx-runtime.ts": "llm",
+    "src/jsx/jsx-dev-runtime.ts": "llm",
+    "src/jsx/types.ts": "llm",
+    "src/jsx/intrinsic-elements.ts": "llm",
+    "src/jsx/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

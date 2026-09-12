@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-27",
+  "files": [
+    "src/helper/conninfo/index.ts",
+    "src/helper/conninfo/types.ts",
+    "src/adapter/cloudflare-workers/conninfo.ts",
+    "src/adapter/deno/conninfo.ts",
+    "src/adapter/bun/conninfo.ts"
+  ],
+  "source": {
+    "src/helper/conninfo/index.ts": "llm",
+    "src/helper/conninfo/types.ts": "llm",
+    "src/adapter/cloudflare-workers/conninfo.ts": "llm",
+    "src/adapter/deno/conninfo.ts": "llm",
+    "src/adapter/bun/conninfo.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

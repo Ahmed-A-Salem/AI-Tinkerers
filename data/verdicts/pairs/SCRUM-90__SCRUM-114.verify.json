@@ -1,0 +1,16 @@
+{
+  "hash": "c00405884a9257ca5104f8df96295012fa7e1d60",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-90",
+    "SCRUM-114"
+  ],
+  "verification": {
+    "changer": "B",
+    "change_is_explicit": false,
+    "dependent_needs_it": false,
+    "type": "none",
+    "confidence": 0.9,
+    "reason": "The repository already exports generateDigest and exposes a generateDigest option in src/middleware/etag (digest.ts and index.ts), so SCRUM-114's request to allow custom hashing is actually already covered by the existing option; neither ticket explicitly removes/renames or adds an API that the other strictly depends on—SCRUM-90 only references generateDigest as existing and requests a different/new option, and SCRUM-114 asks to let users override hashing (not to delete the symbol). Therefore there is no dependency break or ordering conflict."
+  }
+}

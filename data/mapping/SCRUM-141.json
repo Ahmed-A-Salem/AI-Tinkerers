@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-141",
+  "files": [
+    "src/context.ts",
+    "src/helper/streaming/sse.ts",
+    "src/helper/streaming/index.ts",
+    "src/types.ts"
+  ],
+  "source": {
+    "src/context.ts": "llm",
+    "src/helper/streaming/sse.ts": "llm",
+    "src/helper/streaming/index.ts": "llm",
+    "src/types.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

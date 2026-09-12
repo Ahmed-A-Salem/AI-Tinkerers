@@ -1,0 +1,27 @@
+{
+  "hash": "8705eb5d451928c333dd01505a6a5c3c25af4674",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-27",
+    "SCRUM-83"
+  ],
+  "signals": [
+    "SCRUM-27 removes ConnInfo() from src/helper/conninfo/types.ts; src/helper/conninfo/index.ts (SCRUM-83) uses it",
+    "src/helper/conninfo/index.ts (SCRUM-83) imports src/helper/conninfo/types.ts (SCRUM-27)",
+    "src/adapter/cloudflare-workers/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-83)",
+    "src/adapter/deno/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-83)",
+    "src/adapter/bun/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-83)",
+    "both map to src/helper/conninfo/index.ts",
+    "both map into src/helper/conninfo/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Replace ConnInfo with WinterTC SocketInfo",
+    "ticket_b_line": "import { getConnInfo } can be used from 'hono' instead of 'hono/cloudflare-workers'",
+    "file": "src/helper/conninfo/types.ts",
+    "symbol": "ConnInfo",
+    "reason": "SCRUM-27 explicitly removes/renames the ConnInfo symbol (replacing it with SocketInfo) from src/helper/conninfo/types.ts, while SCRUM-83's change routes getConnInfo through src/helper/conninfo/index.ts which currently imports/exports the ConnInfo type, so removing ConnInfo would break the imports/exports relied on by SCRUM-83."
+  }
+}

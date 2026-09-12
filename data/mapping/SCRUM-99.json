@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-99",
+  "files": [
+    "src/adapter/aws-lambda/conninfo.ts",
+    "src/adapter/aws-lambda/types.ts",
+    "src/adapter/aws-lambda/handler.ts"
+  ],
+  "source": {
+    "src/adapter/aws-lambda/conninfo.ts": "llm",
+    "src/adapter/aws-lambda/types.ts": "llm",
+    "src/adapter/aws-lambda/handler.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

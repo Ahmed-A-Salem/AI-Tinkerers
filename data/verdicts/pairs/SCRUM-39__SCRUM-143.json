@@ -1,0 +1,21 @@
+{
+  "hash": "a945aac7e83c47d415f7926c05545488e6381579",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-143"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-143) uses it"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A proposes changing the ClientResponse type to accommodate custom fetch clients, while Ticket B requests improved zod-based inference for query parameter types; Ticket B does not reference or rely on the ClientResponse symbol or on any behavior that A must add or remove, so there is no dependency_break or ordering conflict."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-185",
+  "candidates": 2,
+  "checked": [
+    "SCRUM-208",
+    "SCRUM-174"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-185",
+        "SCRUM-208"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.86,
+      "evidence": {
+        "ticket_a_line": "currently the `jwt` middleware requires a static secret value, however in my use case (see below) it's not a static secret instead it is retrieved from an JWKS.",
+        "ticket_b_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+        "code_path": "src/helper/cookie/index.ts → getSignedCookie()"
+      }
+    }
+  ]
+}

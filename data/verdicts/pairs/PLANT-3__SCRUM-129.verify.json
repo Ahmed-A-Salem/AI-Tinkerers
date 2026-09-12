@@ -1,0 +1,16 @@
+{
+  "hash": "32a5059b2f8a3d37f01653bdd6637d98923ce08c",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-129"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "reason": "Ticket A explicitly removes the exported getPath/getPathNoStrict from src/utils/url.ts, while Ticket B explicitly requests a getPath-like method be available for users to swap the query parser, so A would break B (the constructor-option workaround remains but B asks for an importable getPath)."
+  }
+}

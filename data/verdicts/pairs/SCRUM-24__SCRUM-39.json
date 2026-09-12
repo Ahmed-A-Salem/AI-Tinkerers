@@ -1,0 +1,26 @@
+{
+  "hash": "0f0732089cec10c98268bc9608a4d04329fd83ff",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-24",
+    "SCRUM-39"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/index.ts (SCRUM-24) uses it",
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-24) uses it",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-24)",
+    "src/client/index.ts (SCRUM-24) imports src/client/utils.ts (SCRUM-39)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.85,
+    "ticket_a_line": "Current workaround, check each possible status code explicitly and then cast the err.data to `InferResponseType<typeof client.hello.$get, 4xx>`",
+    "ticket_b_line": "removes: ClientResponse",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "Ticket A's proposed typing changes rely on existing response-type utilities (e.g. InferResponseType / ClientResponse used for typing errors and parseResponse results), while Ticket B explicitly removes the ClientResponse type from src/client/types.ts, which would break the typing approach described in Ticket A."
+  }
+}

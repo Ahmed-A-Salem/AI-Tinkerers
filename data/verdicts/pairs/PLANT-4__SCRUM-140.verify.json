@@ -1,0 +1,16 @@
+{
+  "hash": "1059deb25d85652554f59ffb9838ad13a77959b0",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-4",
+    "SCRUM-140"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.86,
+    "reason": "PLANT-4 explicitly removes parseAccept from src/utils/accept.ts, and SCRUM-140 alters the compress middleware which, per the current code, imports and calls parseAccept (src/middleware/compress/index.ts), so removing that symbol would break the compress changes unless SCRUM-140 also reworks compress to stop using parseAccept (which it does not state)."
+  }
+}

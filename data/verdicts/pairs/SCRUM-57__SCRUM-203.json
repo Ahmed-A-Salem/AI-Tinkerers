@@ -1,0 +1,28 @@
+{
+  "hash": "e41846aa06c7d2160a97081c34b044d6900aec9f",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-57",
+    "SCRUM-203"
+  ],
+  "signals": [
+    "both name Context()",
+    "src/jsx/dom/render.ts (SCRUM-203) imports src/jsx/context.ts (SCRUM-57)",
+    "src/jsx/dom/render.ts (SCRUM-57) imports src/jsx/context.ts (SCRUM-203)",
+    "both map to src/jsx/context.ts",
+    "both map to src/jsx/dom/render.ts",
+    "both map to src/router/reg-exp-router/node.ts",
+    "both map into src/jsx/dom/",
+    "both map into src/router/reg-exp-router/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "ordering",
+    "confidence": 0.8,
+    "ticket_a_line": "Expose currently internal class `Context`, to enable advanced request/response handling.",
+    "ticket_b_line": "import { Context } from 'hono';",
+    "file": "src/context.ts",
+    "symbol": "Context",
+    "reason": "Ticket B's examples import and rely on a publicly importable Context type from 'hono', which does not exist today as a public export — Ticket A is the change that would expose Context, so B is only correct if A ships first."
+  }
+}

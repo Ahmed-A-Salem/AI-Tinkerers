@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-50",
+  "files": [
+    "src/utils/cookie.ts",
+    "src/helper/cookie/index.ts"
+  ],
+  "source": {
+    "src/utils/cookie.ts": "llm",
+    "src/helper/cookie/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

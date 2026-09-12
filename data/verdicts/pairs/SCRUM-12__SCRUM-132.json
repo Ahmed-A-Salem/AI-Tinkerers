@@ -1,0 +1,22 @@
+{
+  "hash": "df3f4c3032f3c2c73678b16e203294d4743ca5b2",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-132"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/adapter/cloudflare-workers/serve-static.ts; src/adapter/cloudflare-workers/serve-static-module.ts (SCRUM-132) uses it",
+    "both map into src/adapter/cloudflare-workers/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.78,
+    "ticket_a_line": "I think the solution would be:\n- modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "Provide a clean, minimal Hono wrapper API to use Workflows in Hono apps deployed on Workers.",
+    "file": "src/adapter/cloudflare-workers/serve-static.ts",
+    "symbol": "serveStatic",
+    "reason": "The code graph shows SCRUM-12 removes or changes serveStatic in src/adapter/cloudflare-workers/serve-static.ts while SCRUM-132 (Cloudflare Workflows support) adds/uses src/adapter/cloudflare-workers/serve-static-module.ts which imports and calls serveStatic; removing or renaming serveStatic would break SCRUM-132."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "key": "PLANT-4",
+  "files": [
+    "src/utils/accept.ts",
+    "src/middleware/language/language.ts",
+    "src/middleware/compress/index.ts",
+    "src/helper/accepts/accepts.ts"
+  ],
+  "source": {
+    "src/utils/accept.ts": "llm",
+    "src/middleware/language/language.ts": "llm",
+    "src/middleware/compress/index.ts": "llm",
+    "src/helper/accepts/accepts.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

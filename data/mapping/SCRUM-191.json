@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-191",
+  "files": [
+    "src/jsx/types.ts",
+    "src/jsx/intrinsic-elements.ts",
+    "src/jsx/dom/intrinsic-element/components.ts",
+    "src/jsx/dom/jsx-runtime.ts"
+  ],
+  "source": {
+    "src/jsx/types.ts": "llm",
+    "src/jsx/intrinsic-elements.ts": "llm",
+    "src/jsx/dom/intrinsic-element/components.ts": "llm",
+    "src/jsx/dom/jsx-runtime.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

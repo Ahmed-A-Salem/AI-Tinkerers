@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-85",
+  "files": [
+    "src/adapter/bun/websocket.ts",
+    "src/adapter/bun/server.ts",
+    "src/helper/websocket/index.ts",
+    "src/adapter/bun/index.ts"
+  ],
+  "source": {
+    "src/adapter/bun/websocket.ts": "llm",
+    "src/adapter/bun/server.ts": "llm",
+    "src/helper/websocket/index.ts": "llm",
+    "src/adapter/bun/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

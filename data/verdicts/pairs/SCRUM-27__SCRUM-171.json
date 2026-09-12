@@ -1,0 +1,29 @@
+{
+  "hash": "4b143931cf3f927b736b904e2cc789bf3d0bf204",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-27",
+    "SCRUM-171"
+  ],
+  "signals": [
+    "SCRUM-27 removes ConnInfo() from src/helper/conninfo/types.ts; src/helper/conninfo/index.ts (SCRUM-171) uses it",
+    "src/helper/conninfo/index.ts (SCRUM-27) imports src/helper/conninfo/types.ts (SCRUM-171)",
+    "src/helper/conninfo/index.ts (SCRUM-171) imports src/helper/conninfo/types.ts (SCRUM-27)",
+    "src/adapter/cloudflare-workers/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-171)",
+    "src/adapter/deno/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-171)",
+    "src/adapter/bun/conninfo.ts (SCRUM-27) imports src/helper/conninfo/index.ts (SCRUM-171)",
+    "both map to src/helper/conninfo/index.ts",
+    "both map to src/helper/conninfo/types.ts",
+    "both map into src/helper/conninfo/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Replace ConnInfo with WinterTC SocketInfo",
+    "ticket_b_line": "conninfo helper exists but there isn't anything for Node.js",
+    "file": "src/helper/conninfo/types.ts",
+    "symbol": "ConnInfo",
+    "reason": "Ticket B expects the existing ConnInfo helper/type to provide client connection info, while Ticket A explicitly removes/replaces ConnInfo with SocketInfo, which would break any code (or helper) that imports or uses ConnInfo."
+  }
+}

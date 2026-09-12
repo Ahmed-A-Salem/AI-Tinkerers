@@ -1,0 +1,26 @@
+{
+  "hash": "16d16365ee68a186d533c7d526934d58cfc421a4",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-54",
+    "SCRUM-144"
+  ],
+  "signals": [
+    "SCRUM-144 removes serveStatic() from src/adapter/bun/serve-static.ts; src/adapter/bun/index.ts (SCRUM-54) uses it",
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-54) uses it",
+    "src/adapter/bun/index.ts (SCRUM-54) imports src/adapter/bun/serve-static.ts (SCRUM-144)",
+    "src/adapter/bun/serve-static.ts (SCRUM-54) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map into src/adapter/bun/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "When the runtime is Bun, Hono should support or integrate Bun's native HTTP router.",
+    "ticket_b_line": "removes: serveStatic",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "The Bun adapter (the ticket asking for Bun support) relies on the existing serveStatic export that lives in src/middleware/serve-static/index.ts; SCRUM-144 (Ticket B) explicitly removes serveStatic, which would break the Bun adapter usage."
+  }
+}

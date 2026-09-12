@@ -12,7 +12,8 @@
     "act": "tsx scripts/act.ts",
     "map": "tsx scripts/map.ts",
     "serve": "tsx scripts/serve.ts",
-    "meeting": "tsx scripts/meeting.ts"
+    "meeting": "tsx scripts/meeting.ts",
+    "check": "tsx scripts/check.ts"
   },
   "dependencies": {
     "@trigger.dev/sdk": "^3.3.17",

@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-124",
+  "files": [
+    "src/types.ts",
+    "src/utils/handler.ts",
+    "src/hono-base.ts",
+    "src/hono.ts",
+    "src/context.ts"
+  ],
+  "source": {
+    "src/types.ts": "llm",
+    "src/utils/handler.ts": "llm",
+    "src/hono-base.ts": "llm",
+    "src/hono.ts": "llm",
+    "src/context.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

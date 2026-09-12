@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-158",
+  "files": [
+    "src/client/client.ts",
+    "src/client/types.ts",
+    "src/client/utils.ts",
+    "src/client/fetch-result-please.ts"
+  ],
+  "source": {
+    "src/client/client.ts": "llm",
+    "src/client/types.ts": "llm",
+    "src/client/utils.ts": "llm",
+    "src/client/fetch-result-please.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

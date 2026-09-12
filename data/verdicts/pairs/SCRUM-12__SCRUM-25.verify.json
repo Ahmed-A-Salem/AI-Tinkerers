@@ -1,0 +1,16 @@
+{
+  "hash": "ab56634d532b057ffa344292de6956e1ae414bbd",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-25"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": true,
+    "dependent_needs_it": false,
+    "type": "none",
+    "confidence": 0.88,
+    "reason": "Ticket A explicitly proposes changing the behaviour of serveStatic (so it would return 404/405 for non-GET/HEAD), so A is the changer and the change is explicit; Ticket B merely requests a packaging split of adapters (it does not require serveStatic to keep its exact current semantics or to remain exported from the same path), so B does not strictly depend on the symbol as-is — this is not a dependency_break nor an ordering conflict."
+  }
+}

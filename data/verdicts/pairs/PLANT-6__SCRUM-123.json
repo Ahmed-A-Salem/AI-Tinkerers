@@ -1,0 +1,24 @@
+{
+  "hash": "0b6613c6936591a9c1450bac645b884a95e10fc0",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-6",
+    "SCRUM-123"
+  ],
+  "signals": [
+    "PLANT-6 removes getColorEnabledAsync() from src/utils/color.ts; src/middleware/logger/index.ts (SCRUM-123) uses it",
+    "src/helper/dev/index.ts (PLANT-6) imports src/utils/color.ts (SCRUM-123)",
+    "src/middleware/logger/index.ts (SCRUM-123) imports src/utils/color.ts (PLANT-6)",
+    "both map to src/utils/color.ts"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "getColorEnabled() and getColorEnabledAsync() should stop independently sniffing NO_COLOR",
+    "ticket_b_line": "color status coding is set with this: const isNoColor = typeof Deno?.noColor === \"boolean\" ? Deno.noColor : process !== void 0 ? \"NO_COLOR\" in process?.env : false;",
+    "file": "src/utils/color.ts",
+    "symbol": "getColorEnabledAsync",
+    "reason": "PLANT-6 proposes removing/changing getColorEnabledAsync in src/utils/color.ts while SCRUM-123's logger change relies on the existing color-detection logic (logger middleware imports and awaits getColorEnabledAsync), so removing or renaming that symbol would break the logger ticket's implementation."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-187",
+  "files": [
+    "src/middleware/secure-headers/index.ts",
+    "src/middleware/secure-headers/secure-headers.ts"
+  ],
+  "source": {
+    "src/middleware/secure-headers/index.ts": "linked",
+    "src/middleware/secure-headers/secure-headers.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

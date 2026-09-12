@@ -1,0 +1,16 @@
+{
+  "hash": "68d0cb04ce234b9cd24686e76b36ac3ab203c4d6",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-122",
+    "SCRUM-174"
+  ],
+  "verification": {
+    "changer": "B",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "reason": "Ticket B explicitly changes/removes the getSignedCookie signature, and the jwt middleware covered by Ticket A currently imports and calls getSignedCookie (src/middleware/jwt/jwt.ts lines shown), so B would break A's middleware code that relies on the existing symbol."
+  }
+}

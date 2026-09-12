@@ -1,0 +1,25 @@
+{
+  "key": "SCRUM-27",
+  "candidates": 4,
+  "checked": [
+    "SCRUM-125",
+    "SCRUM-171",
+    "SCRUM-26",
+    "SCRUM-83"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-27",
+        "SCRUM-171"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "Replace ConnInfo with WinterTC SocketInfo",
+        "ticket_b_line": "conninfo helper exists but there isn't anything for Node.js",
+        "code_path": "src/helper/conninfo/types.ts → ConnInfo()"
+      }
+    }
+  ]
+}

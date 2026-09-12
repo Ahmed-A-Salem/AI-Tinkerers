@@ -1,0 +1,28 @@
+{
+  "hash": "87044b5efa11ad99985a404bc47a776abaa9d640",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-39",
+    "SCRUM-72"
+  ],
+  "signals": [
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/utils.ts (SCRUM-72) uses it",
+    "SCRUM-39 removes ClientResponse() from src/client/types.ts; src/client/index.ts (SCRUM-72) uses it",
+    "src/client/utils.ts (SCRUM-72) imports src/client/fetch-result-please.ts (SCRUM-39)",
+    "src/client/index.ts (SCRUM-72) imports src/client/utils.ts (SCRUM-39)",
+    "src/client/utils.ts (SCRUM-39) imports src/client/fetch-result-please.ts (SCRUM-72)",
+    "both map to src/client/fetch-result-please.ts",
+    "both map to src/client/utils.ts",
+    "both map into src/client/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "The RPC client accepts a custom `fetch` implementation via options, but the `ClientResponse` types are tightly coupled to the native fetch API.",
+    "ticket_b_line": "Type Safety: Full TypeScript support inherited from existing RPC types",
+    "file": "src/client/types.ts",
+    "symbol": "ClientResponse",
+    "reason": "SCRUM-39 proposes changing/removing the ClientResponse type (it asserts ClientResponse is tightly coupled and 'removes: ClientResponse'), while SCRUM-72 explicitly relies on preserving the RPC client's TypeScript types (including ClientResponse) for its SWR integration, so removing/renaming ClientResponse would break SCRUM-72."
+  }
+}

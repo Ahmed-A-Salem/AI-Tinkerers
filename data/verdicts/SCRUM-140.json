@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-140",
+  "candidates": 1,
+  "checked": [
+    "SCRUM-211"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-140",
+        "SCRUM-211"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.85,
+      "evidence": {
+        "ticket_a_line": "compress middleware currently uses a hard-coded list of supported compression algorithms",
+        "ticket_b_line": "Remove parseAccept() from src/utils/accept.ts.",
+        "code_path": "src/utils/accept.ts → parseAccept()"
+      }
+    }
+  ]
+}

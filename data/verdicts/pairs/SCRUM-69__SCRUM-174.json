@@ -1,0 +1,26 @@
+{
+  "hash": "364a9091df5ae910069dd529e5359610e76fad90",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-69",
+    "SCRUM-174"
+  ],
+  "signals": [
+    "both name setSignedCookie()",
+    "src/helper/cookie/index.ts (SCRUM-69) imports src/utils/cookie.ts (SCRUM-174)",
+    "src/helper/cookie/index.ts (SCRUM-174) imports src/utils/cookie.ts (SCRUM-69)",
+    "both map to src/helper/cookie/index.ts",
+    "both map to src/utils/cookie.ts",
+    "both map into src/helper/cookie/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "I propose that a `generateSignedCookie` (and perhaps `generateCookie`) helper functions be created that return the contents of the signed cookie as a string.",
+    "ticket_b_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A adds a new helper that returns a signed cookie string and does not rely on getSignedCookie or change any existing symbol; Ticket B only changes the argument order of getSignedCookie — these do not remove or rename a symbol that Ticket A depends on nor does Ticket A require the new argument order, so there is no dependency_break or ordering conflict."
+  }
+}

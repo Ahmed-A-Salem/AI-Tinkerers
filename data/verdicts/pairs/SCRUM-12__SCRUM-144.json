@@ -1,0 +1,43 @@
+{
+  "hash": "9442ee777fea90b2b911bce170930e0cf8c69c17",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-144"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-144) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/cloudflare-workers/serve-static.ts (SCRUM-144) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/deno/serve-static.ts (SCRUM-144) uses it",
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-12) uses it",
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/cloudflare-workers/serve-static.ts (SCRUM-12) uses it",
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/deno/serve-static.ts (SCRUM-12) uses it",
+    "src/middleware/serve-static/index.ts (SCRUM-12) imports src/middleware/serve-static/path.ts (SCRUM-144)",
+    "src/adapter/bun/serve-static.ts (SCRUM-144) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-144) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/deno/serve-static.ts (SCRUM-144) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/bun/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "src/adapter/deno/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "both map to src/middleware/serve-static/index.ts",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map to src/adapter/cloudflare-pages/handler.ts",
+    "both map to src/adapter/cloudflare-workers/serve-static.ts",
+    "both map to src/adapter/deno/serve-static.ts",
+    "both map into src/middleware/serve-static/",
+    "both map into src/adapter/bun/",
+    "both map into src/adapter/cloudflare-pages/",
+    "both map into src/adapter/cloudflare-workers/",
+    "both map into src/adapter/deno/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.7,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Both tickets involve serveStatic behavior/placement, but neither ticket explicitly removes or renames the existing serveStatic export that the other relies on; Ticket A requests a behavioral change to the existing serveStatic, and Ticket B proposes adding/moving a Node.js-specific serveStatic into the repo. That is not a dependency_break (no concrete claim to delete/rename the existing symbol) nor an ordering conflict (serveStatic already exists today), so there is no conflict under the defined rules."
+  }
+}

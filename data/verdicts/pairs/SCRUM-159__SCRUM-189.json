@@ -1,0 +1,28 @@
+{
+  "hash": "baf00696595c9fc0a8e1c6e6604637e2d7fddcf0",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-159",
+    "SCRUM-189"
+  ],
+  "signals": [
+    "both name Context()",
+    "src/jsx/dom/render.ts (SCRUM-189) imports src/jsx/context.ts (SCRUM-159)",
+    "src/jsx/dom/render.ts (SCRUM-159) imports src/jsx/context.ts (SCRUM-189)",
+    "both map to src/jsx/context.ts",
+    "both map to src/jsx/dom/render.ts",
+    "both map to src/router/reg-exp-router/node.ts",
+    "both map into src/jsx/dom/",
+    "both map into src/router/reg-exp-router/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "An adapter should convert Hono's Context request/response to Node's IncomingMessage and ServerResponse and invoke the Express middleware, awaiting its completion before calling next.",
+    "ticket_b_line": "Runtime throws \"Context is not finalized\" if there is no 'return c.xxx()' in a handler.",
+    "file": "src/context.ts",
+    "symbol": "Context",
+    "reason": "Ticket B would change runtime behaviour to throw when a handler does not return a response; Ticket A's proposed adapter awaits middleware/next but (as shown in the proposal) does not return the final response, so the new runtime check would break the adapter."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-197",
+  "files": [
+    "src/types.ts",
+    "src/hono.ts",
+    "src/router.ts",
+    "src/context.ts",
+    "src/request.ts"
+  ],
+  "source": {
+    "src/types.ts": "llm",
+    "src/hono.ts": "llm",
+    "src/router.ts": "llm",
+    "src/context.ts": "llm",
+    "src/request.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

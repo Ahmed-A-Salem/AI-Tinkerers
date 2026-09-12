@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-84",
+  "files": [
+    "src/adapter/bun/server.ts",
+    "src/adapter/bun/serve-static.ts",
+    "src/adapter/bun/ssg.ts",
+    "src/middleware/serve-static/path.ts"
+  ],
+  "source": {
+    "src/adapter/bun/server.ts": "llm",
+    "src/adapter/bun/serve-static.ts": "llm",
+    "src/adapter/bun/ssg.ts": "llm",
+    "src/middleware/serve-static/path.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

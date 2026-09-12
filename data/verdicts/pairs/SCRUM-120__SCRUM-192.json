@@ -1,0 +1,34 @@
+{
+  "hash": "b37df4b85dc12d8f3df804956c1cef3a856dd451",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-120",
+    "SCRUM-192"
+  ],
+  "signals": [
+    "both name handle()",
+    "src/adapter/vercel/index.ts (SCRUM-192) imports src/adapter/vercel/handler.ts (SCRUM-120)",
+    "both map to src/adapter/aws-lambda/handler.ts",
+    "both map to src/adapter/cloudflare-pages/handler.ts",
+    "both map to src/adapter/lambda-edge/handler.ts",
+    "both map to src/adapter/netlify/handler.ts",
+    "both map to src/adapter/service-worker/handler.ts",
+    "both map to src/adapter/vercel/handler.ts",
+    "both map into src/adapter/aws-lambda/",
+    "both map into src/adapter/cloudflare-pages/",
+    "both map into src/adapter/lambda-edge/",
+    "both map into src/adapter/netlify/",
+    "both map into src/adapter/service-worker/",
+    "both map into src/adapter/vercel/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "",
+    "ticket_b_line": "",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A requests improving benchmark execution/reliability and does not modify or remove the 'handle' adapter API; Ticket B reports a runtime error when using the vercel 'handle' export. There is no change proposed in either ticket that would remove, rename or depend-on the other's symbol or require a specific ordering."
+  }
+}

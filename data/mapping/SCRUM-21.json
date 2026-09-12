@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-21",
+  "files": [
+    "src/adapter/service-worker/handler.ts",
+    "src/adapter/service-worker/index.ts",
+    "src/adapter/service-worker/types.ts",
+    "src/helper/adapter/index.ts",
+    "src/index.ts"
+  ],
+  "source": {
+    "src/adapter/service-worker/handler.ts": "llm",
+    "src/adapter/service-worker/index.ts": "llm",
+    "src/adapter/service-worker/types.ts": "llm",
+    "src/helper/adapter/index.ts": "llm",
+    "src/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

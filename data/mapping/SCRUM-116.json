@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-116",
+  "files": [
+    "src/jsx/context.ts",
+    "src/jsx/jsx-runtime.ts",
+    "src/jsx/streaming.ts"
+  ],
+  "source": {
+    "src/jsx/context.ts": "llm",
+    "src/jsx/jsx-runtime.ts": "llm",
+    "src/jsx/streaming.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

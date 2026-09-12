@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-136",
+  "files": [
+    "src/utils/body.ts",
+    "src/request.ts",
+    "src/utils/mime.ts",
+    "src/client/utils.ts"
+  ],
+  "source": {
+    "src/utils/body.ts": "llm",
+    "src/request.ts": "llm",
+    "src/utils/mime.ts": "llm",
+    "src/client/utils.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

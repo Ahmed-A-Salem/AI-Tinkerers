@@ -1,0 +1,21 @@
+{
+  "hash": "823fc778d5ea3b2482195b32513f124aba89bfc6",
+  "record": {
+    "key": "SCRUM-207",
+    "components": [
+      "index"
+    ],
+    "files_touched": [],
+    "behaviors_asserted": [
+      "MAYA is actively working on PR review tasks through Thursday.",
+      "Work on the release notes for 4.14 is in progress with MAYA assigned until Thursday."
+    ],
+    "values_specified": {
+      "release_version": "4.14",
+      "assigned_until": "Thursday",
+      "assignee": "MAYA"
+    },
+    "removes": [],
+    "depends_on": []
+  }
+}

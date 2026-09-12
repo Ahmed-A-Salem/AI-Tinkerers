@@ -1,0 +1,16 @@
+{
+  "hash": "bab00f1a6bf160de8131816c11754846d4e4aab4",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-84"
+  ],
+  "verification": {
+    "changer": "A",
+    "change_is_explicit": false,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "reason": "Ticket A targets changes to the serveStatic middleware (the code graph also links SCRUM-12 to that file) while Ticket B's Bun adapter imports and uses serveStatic, so A is the changer and B depends on that symbol; however A's text only proposes behavioral changes (not an explicit removal/rename), so change_is_explicit is false."
+  }
+}

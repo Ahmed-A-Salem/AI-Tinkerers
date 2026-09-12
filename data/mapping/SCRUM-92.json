@@ -1,0 +1,20 @@
+{
+  "key": "SCRUM-92",
+  "files": [
+    "src/validator/validator.ts",
+    "src/types.ts",
+    "src/request.ts",
+    "src/validator/utils.ts",
+    "src/jsx/intrinsic-element/components.ts",
+    "src/jsx/dom/intrinsic-element/components.ts"
+  ],
+  "source": {
+    "src/validator/validator.ts": "linked",
+    "src/types.ts": "linked",
+    "src/request.ts": "llm",
+    "src/validator/utils.ts": "llm",
+    "src/jsx/intrinsic-element/components.ts": "collision",
+    "src/jsx/dom/intrinsic-element/components.ts": "collision"
+  },
+  "model": "openai:gpt-5-mini"
+}

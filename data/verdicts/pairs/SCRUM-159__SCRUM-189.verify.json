@@ -1,0 +1,16 @@
+{
+  "hash": "e2f0af6d729e4fb6b70149783b33a02c09b7512b",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-159",
+    "SCRUM-189"
+  ],
+  "verification": {
+    "changer": "B",
+    "change_is_explicit": true,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.67,
+    "reason": "Ticket B proposes changing runtime behaviour around Context finalization (throwing when handlers do not return), which would break Ticket A's adapter handler that awaits middleware/next but does not return the final response."
+  }
+}

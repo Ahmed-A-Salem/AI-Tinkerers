@@ -1,0 +1,22 @@
+{
+  "hash": "464cb4e0fdd1fe2691432e08386c142422372842",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-129"
+  ],
+  "signals": [
+    "PLANT-3 removes getPath(); SCRUM-129 names it",
+    "both map to src/utils/url.ts"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`",
+    "ticket_b_line": "Something like the `getPath` method would be sufficient enough for my use case.",
+    "file": "src/utils/url.ts",
+    "symbol": "getPath",
+    "reason": "Ticket A removes the exported getPath from src/utils/url.ts, while Ticket B requests that a getPath method be available for users to swap the query parser; removing that export would break the ability Ticket B asks for."
+  }
+}

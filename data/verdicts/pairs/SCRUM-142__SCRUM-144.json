@@ -1,0 +1,26 @@
+{
+  "hash": "6e5df3ec1aab43313e200e6482a719292a10efa8",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-142",
+    "SCRUM-144"
+  ],
+  "signals": [
+    "SCRUM-144 removes serveStatic() from src/adapter/bun/serve-static.ts; src/adapter/bun/index.ts (SCRUM-142) uses it",
+    "SCRUM-144 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-142) uses it",
+    "src/adapter/bun/index.ts (SCRUM-142) imports src/adapter/bun/serve-static.ts (SCRUM-144)",
+    "src/adapter/bun/serve-static.ts (SCRUM-142) imports src/middleware/serve-static/index.ts (SCRUM-144)",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map into src/adapter/bun/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "- files (predicted): src/adapter/bun/server.ts, src/adapter/bun/conninfo.ts, src/adapter/bun/index.ts, src/adapter/bun/websocket.ts, src/adapter/bun/serve-static.ts",
+    "ticket_b_line": "- removes: serveStatic",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "SCRUM-144 intends to remove/move serveStatic while SCRUM-142's Bun adapter (src/adapter/bun/serve-static.ts) imports and depends on the serveStatic exported from src/middleware/serve-static, so removing it would break the Bun adapter."
+  }
+}

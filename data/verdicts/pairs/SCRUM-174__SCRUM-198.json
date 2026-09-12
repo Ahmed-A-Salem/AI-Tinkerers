@@ -1,0 +1,25 @@
+{
+  "hash": "ae10a7bce19f4a81e9bc97249f691aca67039302",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-174",
+    "SCRUM-198"
+  ],
+  "signals": [
+    "SCRUM-174 removes getSignedCookie() from src/helper/cookie/index.ts; src/middleware/jwt/jwt.ts (SCRUM-198) uses it",
+    "src/middleware/jwt/jwt.ts (SCRUM-198) imports src/helper/cookie/index.ts (SCRUM-174)",
+    "src/helper/cookie/index.ts (SCRUM-174) imports src/utils/cookie.ts (SCRUM-198)",
+    "src/middleware/jwt/jwt.ts (SCRUM-198) imports src/utils/cookie.ts (SCRUM-174)",
+    "both map to src/utils/cookie.ts"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "So I propose that in Hono 5 a breaking change be introduced into the cookie helper that changes the order of the args for `getSignedCookie` to reflect the order in `setSignedCookie`.",
+    "ticket_b_line": "jwt middleware needs a parameter to specify the secret for the cookie and needs to be able to handle signed cookies.",
+    "file": "src/helper/cookie/index.ts",
+    "symbol": "getSignedCookie",
+    "reason": "Ticket A changes the argument order (signature) of getSignedCookie in src/helper/cookie/index.ts as a breaking change; Ticket B's jwt middleware relies on the existing getSignedCookie signature (it imports and calls getSignedCookie with (ctx, secret, name)), so changing the parameter order will break the jwt middleware."
+  }
+}

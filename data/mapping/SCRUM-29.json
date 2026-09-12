@@ -1,0 +1,12 @@
+{
+  "key": "SCRUM-29",
+  "files": [
+    "src/compose.ts",
+    "src/types.ts"
+  ],
+  "source": {
+    "src/compose.ts": "llm",
+    "src/types.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

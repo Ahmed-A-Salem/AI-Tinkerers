@@ -1,0 +1,16 @@
+{
+  "key": "SCRUM-111",
+  "files": [
+    "src/types.ts",
+    "src/request/constants.ts",
+    "src/client/types.ts",
+    "src/middleware/method-not-allowed/index.ts"
+  ],
+  "source": {
+    "src/types.ts": "llm",
+    "src/request/constants.ts": "llm",
+    "src/client/types.ts": "llm",
+    "src/middleware/method-not-allowed/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

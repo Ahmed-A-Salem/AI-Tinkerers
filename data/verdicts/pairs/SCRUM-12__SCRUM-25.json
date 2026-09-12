@@ -1,0 +1,26 @@
+{
+  "hash": "dfe1226340bc79ffc51e856e7d83259f082e3b02",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-25"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/adapter/bun/serve-static.ts; src/adapter/bun/index.ts (SCRUM-25) uses it",
+    "SCRUM-12 removes serveStatic() from src/adapter/cloudflare-workers/serve-static.ts; src/adapter/cloudflare-workers/serve-static-module.ts (SCRUM-25) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-25) uses it",
+    "src/adapter/bun/index.ts (SCRUM-25) imports src/adapter/bun/serve-static.ts (SCRUM-12)",
+    "both map into src/adapter/bun/",
+    "both map into src/adapter/cloudflare-workers/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.8,
+    "ticket_a_line": "modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "I'd like to suggest separating platform adapters from the main `hono` package into individually installable packages.",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "Ticket A changes/removes the serveStatic middleware (symbol serveStatic in src/middleware/serve-static/index.ts), while Ticket B's adapter-splitting change will move or rely on adapter modules that import/export serveStatic (e.g. src/adapter/bun and cloudflare adapter files); removing or changing serveStatic will break those adapter packages."
+  }
+}

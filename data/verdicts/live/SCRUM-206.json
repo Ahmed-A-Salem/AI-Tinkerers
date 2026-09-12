@@ -1,0 +1,23 @@
+{
+  "hash": "ebdee7ed60d95e4a444962b09f6da4a1c58cf501",
+  "record": {
+    "key": "SCRUM-206",
+    "components": [
+      "middleware"
+    ],
+    "files_touched": [],
+    "behaviors_asserted": [
+      "When the timeout middleware triggers, responses include a 504 status and a Retry-After header.",
+      "The Retry-After value is configurable in seconds.",
+      "The Retry-After value defaults to 5 seconds.",
+      "The timeout docs page is updated to document the Retry-After support and its default/configuration."
+    ],
+    "values_specified": {
+      "timeout_status_code": "504",
+      "retry_after_header_name": "Retry-After",
+      "retry_after_default_seconds": "5"
+    },
+    "removes": [],
+    "depends_on": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "hash": "698c5dfbad83bcbb84c62555ac020c3d0b40c66a",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-2",
+    "SCRUM-151"
+  ],
+  "signals": [
+    "PLANT-2 removes auth(); SCRUM-151 names it"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "- Remove `auth()` from `src/utils/basic-auth.ts`.",
+    "ticket_b_line": "const auth = new Hono().basePath(\"/auth\")",
+    "file": "",
+    "symbol": "",
+    "reason": "No conflict: PLANT-2 removes an internal utils function src/utils/basic-auth.ts::auth, while SCRUM-151's 'auth' is a user-defined Hono router variable in example code; the internal util removal does not affect that user variable and the ticket A states utils/ is internal so no public API change."
+  }
+}

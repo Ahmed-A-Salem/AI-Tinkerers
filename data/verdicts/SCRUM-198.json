@@ -1,0 +1,23 @@
+{
+  "key": "SCRUM-198",
+  "candidates": 2,
+  "checked": [
+    "SCRUM-174",
+    "SCRUM-208"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-198",
+        "SCRUM-208"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "jwt middleware needs to be able to handle signed cookies",
+        "ticket_b_line": "Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.",
+        "code_path": "src/helper/cookie/index.ts → getSignedCookie()"
+      }
+    }
+  ]
+}

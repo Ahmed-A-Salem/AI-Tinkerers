@@ -1,0 +1,41 @@
+{
+  "hash": "84b96beb44c3b096478cae881e287d8097cb95ea",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-156"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-156) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/cloudflare-workers/serve-static.ts (SCRUM-156) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/deno/serve-static.ts (SCRUM-156) uses it",
+    "SCRUM-12 removes serveStatic(); SCRUM-156 names it",
+    "src/middleware/serve-static/index.ts (SCRUM-12) imports src/middleware/serve-static/path.ts (SCRUM-156)",
+    "src/adapter/bun/serve-static.ts (SCRUM-156) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-156) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/deno/serve-static.ts (SCRUM-156) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/bun/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-156)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-156)",
+    "src/adapter/deno/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-156)",
+    "both map to src/middleware/serve-static/index.ts",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map to src/adapter/cloudflare-pages/handler.ts",
+    "both map to src/adapter/cloudflare-workers/serve-static.ts",
+    "both map to src/adapter/deno/serve-static.ts",
+    "both map into src/middleware/serve-static/",
+    "both map into src/adapter/bun/",
+    "both map into src/adapter/cloudflare-pages/",
+    "both map into src/adapter/cloudflare-workers/",
+    "both map into src/adapter/deno/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "- removes: serveStatic, methodNotAllowed",
+    "ticket_b_line": "serveStatic should support returning 206 Partial Content for served files",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "Ticket A states it removes serveStatic from src/middleware/serve-static/index.ts while Ticket B explicitly depends on and wants to extend serveStatic (to add 206 handling), so A would break B's ability to implement that feature."
+  }
+}

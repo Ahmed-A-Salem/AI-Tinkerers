@@ -1,0 +1,14 @@
+{
+  "key": "SCRUM-133",
+  "files": [
+    "src/router/trie-router/node.ts",
+    "src/router/pattern-router/router.ts",
+    "src/router/linear-router/router.ts"
+  ],
+  "source": {
+    "src/router/trie-router/node.ts": "linked",
+    "src/router/pattern-router/router.ts": "linked",
+    "src/router/linear-router/router.ts": "linked"
+  },
+  "model": "openai:gpt-5-mini"
+}

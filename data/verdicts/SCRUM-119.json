@@ -1,0 +1,22 @@
+{
+  "key": "SCRUM-119",
+  "candidates": 1,
+  "checked": [
+    "SCRUM-211"
+  ],
+  "verdicts": [
+    {
+      "pair": [
+        "SCRUM-119",
+        "SCRUM-211"
+      ],
+      "type": "dependency_break",
+      "confidence": 0.9,
+      "evidence": {
+        "ticket_a_line": "https://github.com/honojs/hono/blob/b1335f9fb296cfa4b947367bbad0512c7739c5f5/src/middleware/compress/index.ts#L9",
+        "ticket_b_line": "Remove parseAccept() from src/utils/accept.ts.",
+        "code_path": "src/utils/accept.ts → parseAccept()"
+      }
+    }
+  ]
+}

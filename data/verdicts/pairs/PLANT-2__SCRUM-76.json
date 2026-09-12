@@ -1,0 +1,26 @@
+{
+  "hash": "c500bd6f9a037416a31f8080934f6b67a415f3b1",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-2",
+    "SCRUM-76"
+  ],
+  "signals": [
+    "PLANT-2 removes auth() from src/utils/basic-auth.ts; src/middleware/basic-auth/index.ts (SCRUM-76) uses it",
+    "PLANT-2 removes auth(); SCRUM-76 names it",
+    "both name basicAuth()",
+    "src/middleware/basic-auth/index.ts (SCRUM-76) imports src/utils/basic-auth.ts (PLANT-2)",
+    "both map to src/middleware/basic-auth/index.ts",
+    "both map into src/middleware/basic-auth/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "- Remove `auth()` from `src/utils/basic-auth.ts`.",
+    "ticket_b_line": "I need to get the username in the route handler, and it seems I have to parse the header again, duplicating half of the `basicAuth` (the `auth` util, to be exact).",
+    "file": "src/utils/basic-auth.ts",
+    "symbol": "auth",
+    "reason": "Ticket A removes the exported auth symbol from src/utils/basic-auth.ts, while Ticket B explicitly intends to reuse that auth util to extract the username for passing into context; removing auth would break Ticket B's proposed approach."
+  }
+}

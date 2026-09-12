@@ -1,0 +1,40 @@
+{
+  "hash": "686160785b2550f79a275bb118ce82756c704933",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-12",
+    "SCRUM-53"
+  ],
+  "signals": [
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/bun/serve-static.ts (SCRUM-53) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/deno/serve-static.ts (SCRUM-53) uses it",
+    "SCRUM-12 removes serveStatic() from src/middleware/serve-static/index.ts; src/adapter/cloudflare-workers/serve-static.ts (SCRUM-53) uses it",
+    "SCRUM-12 removes serveStatic(); SCRUM-53 names it",
+    "src/adapter/bun/serve-static.ts (SCRUM-53) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/deno/serve-static.ts (SCRUM-53) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-53) imports src/middleware/serve-static/index.ts (SCRUM-12)",
+    "src/adapter/bun/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-53)",
+    "src/adapter/cloudflare-workers/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-53)",
+    "src/adapter/deno/serve-static.ts (SCRUM-12) imports src/middleware/serve-static/index.ts (SCRUM-53)",
+    "both map to src/middleware/serve-static/index.ts",
+    "both map to src/adapter/bun/serve-static.ts",
+    "both map to src/adapter/cloudflare-pages/handler.ts",
+    "both map to src/adapter/cloudflare-workers/serve-static.ts",
+    "both map to src/adapter/deno/serve-static.ts",
+    "both map into src/middleware/serve-static/",
+    "both map into src/adapter/bun/",
+    "both map into src/adapter/cloudflare-pages/",
+    "both map into src/adapter/cloudflare-workers/",
+    "both map into src/adapter/deno/"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.9,
+    "ticket_a_line": "- modify `serveStatic` so it returns 404 or 405 when request method is neither GET or HEAD, and",
+    "ticket_b_line": "This is impossible in the current `serveStatic` middleware since we no longer have access to the modified time (or the file size for that matter, so Hono doesn't send the `Content-Length` header either).",
+    "file": "src/middleware/serve-static/index.ts",
+    "symbol": "serveStatic",
+    "reason": "Ticket B requires the serveStatic/getContent behavior (to return file metadata), while Ticket A (per the code graph) removes or changes serveStatic in src/middleware/serve-static/index.ts, which would break Ticket B's use of that symbol."
+  }
+}

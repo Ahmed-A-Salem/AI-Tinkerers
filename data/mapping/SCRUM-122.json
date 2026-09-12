@@ -1,0 +1,18 @@
+{
+  "key": "SCRUM-122",
+  "files": [
+    "src/middleware/csrf/index.ts",
+    "src/middleware/jwt/jwt.ts",
+    "src/middleware/basic-auth/index.ts",
+    "src/middleware/bearer-auth/index.ts",
+    "src/middleware/method-not-allowed/index.ts"
+  ],
+  "source": {
+    "src/middleware/csrf/index.ts": "llm",
+    "src/middleware/jwt/jwt.ts": "llm",
+    "src/middleware/basic-auth/index.ts": "llm",
+    "src/middleware/bearer-auth/index.ts": "llm",
+    "src/middleware/method-not-allowed/index.ts": "llm"
+  },
+  "model": "openai:gpt-5-mini"
+}

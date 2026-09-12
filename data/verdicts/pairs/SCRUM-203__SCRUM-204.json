@@ -1,0 +1,24 @@
+{
+  "hash": "5797f0110edba7950b396124e050bf7bb0bca6f7",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-203",
+    "SCRUM-204"
+  ],
+  "signals": [
+    "both name Hono()",
+    "both map to src/preset/quick.ts",
+    "both map to src/preset/tiny.ts",
+    "both map into src/preset/"
+  ],
+  "verdict": {
+    "conflict": false,
+    "type": "none",
+    "confidence": 0.9,
+    "ticket_a_line": "If only there was a `ContextBindingMap`, similar to [`ContextVariableMap`](https://hono.dev/api/context#contextvariablemap), to declare a module interface to write any global bindings there, then you can simply type your context like `(c: Context)` in a route to be able to get types in your `c.env` or `env(c)` Bindings.",
+    "ticket_b_line": "A better solution would be to provide a utility type to extract the ENV generic and let the user manually pass it down to the mounted Hono instances.",
+    "file": "",
+    "symbol": "",
+    "reason": "Ticket A proposes adding a new ContextBindingMap feature and docs; Ticket B proposes a separate ExtractEnv helper and discouraging ContextVariableMap usage — neither removes or renames existing symbols nor requires the other to ship first, so there is no dependency_break or ordering conflict."
+  }
+}

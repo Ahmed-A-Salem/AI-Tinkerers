@@ -1,0 +1,16 @@
+{
+  "hash": "d137390411e40c60a14501f633cfa2c143297073",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "SCRUM-84",
+    "SCRUM-144"
+  ],
+  "verification": {
+    "changer": "B",
+    "change_is_explicit": false,
+    "dependent_needs_it": true,
+    "type": "dependency_break",
+    "confidence": 0.72,
+    "reason": "Code facts show SCRUM-144 removes the serveStatic export at src/middleware/serve-static/index.ts which src/adapter/bun/serve-static.ts (the code path SCRUM-84 relies on) imports, so SCRUM-144 would break SCRUM-84 — but SCRUM-144's description only describes moving/adding a Node.js-specific serveStatic and does not explicitly say it will delete or rename the existing export."
+  }
+}

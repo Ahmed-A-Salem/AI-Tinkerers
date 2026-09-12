@@ -1,0 +1,22 @@
+{
+  "hash": "80536aa1dc27a877b3e8bf75a4a8dac785be9cdb",
+  "model": "openai:gpt-5-mini",
+  "pair": [
+    "PLANT-3",
+    "SCRUM-205"
+  ],
+  "signals": [
+    "PLANT-3 removes getPath(); SCRUM-205 names it",
+    "both map to src/utils/url.ts"
+  ],
+  "verdict": {
+    "conflict": true,
+    "type": "dependency_break",
+    "confidence": 0.95,
+    "ticket_a_line": "Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`.",
+    "ticket_b_line": "The implementation uses `getPath` from utils/url (no new duplicate percent-decoding loop).",
+    "file": "src/utils/url.ts",
+    "symbol": "getPath",
+    "reason": "Ticket A removes the getPath export from src/utils/url.ts while Ticket B's helper explicitly depends on using getPath from utils/url, so Ticket B would break if A ships."
+  }
+}
