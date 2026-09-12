@@ -7,16 +7,14 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "Hono class defaults its environment generic to DefaultEnv instead of Env",
-    "Introduce interfaces DefaultEnv, EnvBindings, EnvVariables to support declaration merging",
-    "Allow developers to extend DefaultEnv via declaration merging so they don't need to specify Env types explicitly",
-    "Adapters can automatically set Bindings when using AWS Lambda",
-    "Developers can create a Hono instance and MiddlewareHandler without specifying Env types"
+    "Hono class uses DefaultEnv as the default generic type instead of Env.",
+    "Provide interfaces DefaultEnv, EnvBindings, and EnvVariables.",
+    "Developers can extend DefaultEnv via declaration merging to set Bindings and Variables without specifying Env types when instantiating Hono.",
+    "Adapters (example: AWS Lambda) can declare module \"hono\" to add Bindings like event and lambdaContext."
   ],
-  "values_specified": {
-    "hono_generic_old_default": "Env",
-    "hono_generic_default": "DefaultEnv"
-  },
-  "removes": [],
+  "values_specified": {},
+  "removes": [
+    "Hono"
+  ],
   "depends_on": []
 }

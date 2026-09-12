@@ -5,16 +5,16 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "getSignedCookie(), setSignedCookie() and generateSignedCookie() pull WebCrypto HMAC signing into the cookie helper",
-    "getCookie() and setCookie() argument orders don't match",
-    "Removing the signed-cookie helpers will make hono/cookie synchronous end to end and take crypto.subtle out of it entirely",
-    "Apps that need a tamper-proof value can put a signed JWT in a plain httpOnly cookie instead"
+    "getSignedCookie, setSignedCookie, and generateSignedCookie in src/helper/cookie/index.ts pull WebCrypto HMAC signing into the cookie helper.",
+    "get and set argument orders for signed-cookie helpers do not match.",
+    "Removing the signed-cookie helpers will make hono/cookie synchronous end to end and remove crypto.subtle from it.",
+    "Apps that need a tamper-proof value can put a signed JWT in a plain httpOnly cookie instead."
   ],
   "values_specified": {},
   "removes": [
     "getSignedCookie",
-    "generateSignedCookie",
-    "setSignedCookie"
+    "setSignedCookie",
+    "generateSignedCookie"
   ],
   "depends_on": []
 }

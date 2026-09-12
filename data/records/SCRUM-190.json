@@ -7,16 +7,14 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "JWT middleware sets the context variable jwtPayload to any",
-    "End users cannot specify the payload type for the JWT middleware",
-    "ContextVariableMap cannot be overridden to change the jwtPayload type",
-    "The only way to set the payload type currently is by casting",
-    "Allow jwt middleware to accept a generic payload type parameter via jwt<MyPayloadType>({ secret: '123' })"
+    "JWT middleware sets the context variable jwtPayload with type any.",
+    "ContextVariableMap cannot be overridden to change jwtPayload's type.",
+    "Only way to set jwtPayload type currently is by casting.",
+    "Allow specifying a generic type parameter on jwt middleware, e.g. jwt<MyPayloadType>({ secret: '123' }).",
+    "Alternatively, remove interface ContextVariableMap { jwtPayload: any; } and require users to define context variables themselves."
   ],
   "values_specified": {
-    "context_variable_name": "jwtPayload",
-    "context_variable_type": "any",
-    "example_secret": "'123'"
+    "example_secret": "123"
   },
   "removes": [
     "ContextVariableMap"

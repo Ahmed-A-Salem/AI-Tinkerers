@@ -49,20 +49,12 @@ export function mentionedSymbols(text: string, vocab: Vocab, max = 40): string[]
   return found;
 }
 
-/**
- * What the ticket does to a symbol. Only the first three make it into `removes`: they are the
- * ones that break importers. Forcing the model to label every mentioned symbol keeps "fix
- * serveStatic on Bun" out of `removes`, where it used to land as a false dependency break.
- */
-export type SymbolChange = 'remove' | 'rename' | 'unexport' | 'deprecate' | 'modify' | 'extend' | 'fix' | 'mention';
-const BREAKING: ReadonlySet<SymbolChange> = new Set(['remove', 'rename', 'unexport']);
-
 /** Strict schemas cannot express Record<string,string>; values_specified travels as pairs. */
 export interface RawRecord {
   components: string[];
   behaviors_asserted: string[];
   values_specified: { name: string; value: string }[];
-  symbol_changes: { symbol: string; change: SymbolChange }[];
+  removes: string[];
   depends_on: string[];
 }
 
@@ -71,7 +63,7 @@ const SCHEMA: JsonSchemaSpec = {
   schema: {
     type: 'object',
     additionalProperties: false,
-    required: ['components', 'behaviors_asserted', 'values_specified', 'symbol_changes', 'depends_on'],
+    required: ['components', 'behaviors_asserted', 'values_specified', 'removes', 'depends_on'],
     properties: {
       components: { type: 'array', items: { type: 'string' } },
       behaviors_asserted: { type: 'array', items: { type: 'string' } },
@@ -84,18 +76,7 @@ const SCHEMA: JsonSchemaSpec = {
           properties: { name: { type: 'string' }, value: { type: 'string' } },
         },
       },
-      symbol_changes: {
-        type: 'array',
-        items: {
-          type: 'object',
-          additionalProperties: false,
-          required: ['symbol', 'change'],
-          properties: {
-            symbol: { type: 'string' },
-            change: { type: 'string', enum: ['remove', 'rename', 'unexport', 'deprecate', 'modify', 'extend', 'fix', 'mention'] },
-          },
-        },
-      },
+      removes: { type: 'array', items: { type: 'string' } },
       depends_on: { type: 'array', items: { type: 'string' } },
     },
   },
@@ -108,16 +89,7 @@ Fields:
 - components: which parts of the codebase the ticket is about. Choose ONLY from the component list given. 1-3 entries. If nothing fits, choose the closest one.
 - behaviors_asserted: concrete behaviours the ticket states or requires, one short sentence each, in the ticket's own terms (e.g. "middleware runs in registration order", "c.req.param() decodes percent-encoding"). 0-5 entries. Not questions, not complaints.
 - values_specified: concrete values the ticket pins down: timeouts, limits, defaults, status codes, header names, versions. name = snake_case identifier, value = the literal. Only when a specific value appears in the text.
-- symbol_changes: one entry per candidate symbol the ticket talks about, with what the ticket does to it:
-    remove    = the ticket proposes deleting it (or says it should be deleted)
-    rename    = the ticket proposes renaming it
-    unexport  = the ticket proposes making it internal / no longer importable / dropping it from the public API
-    deprecate = the ticket proposes marking it deprecated (it still exists for now)
-    modify    = the ticket changes its behaviour, signature, or default while keeping it
-    extend    = the ticket adds an option, overload, or capability to it
-    fix       = the ticket reports or fixes a bug in it
-    mention   = the ticket only mentions it for context
-  Use bare names from the candidate symbol list ONLY. Be strict about remove/rename/unexport: a ticket that fixes, changes, or extends a symbol does NOT remove it. When in doubt between remove and modify, choose modify and put the change under behaviors_asserted.
+- removes: symbols (functions, classes, types, methods, options) the ticket proposes to remove, rename, deprecate, or change the signature/behaviour of. Use bare names from the candidate symbol list ONLY. Empty if the ticket removes nothing.
 - depends_on: other ticket keys or issue numbers this ticket explicitly says it depends on / must come after (e.g. "#1234", "after PROJ-5 lands"). Only explicit references.`;
 
 export function buildPrompt(issue: KeyedIssue, vocab: Vocab): { user: string; candidates: string[] } {
@@ -131,7 +103,7 @@ export function buildPrompt(issue: KeyedIssue, vocab: Vocab): { user: string; ca
     `Body:\n${body.slice(0, 6000) || '(no description)'}`,
     '',
     `Component list: ${vocab.components.join(', ')}`,
-    `Candidate symbols (named in the ticket; use only these in "symbol_changes"): ${candidates.length ? candidates.join(', ') : '(none)'}`,
+    `Candidate symbols (named in the ticket; use only these in "removes"): ${candidates.length ? candidates.join(', ') : '(none)'}`,
   ]
     .filter((l) => l !== '')
     .join('\n');
@@ -162,12 +134,7 @@ export function normalise(key: string, raw: RawRecord, vocab: Vocab): TicketReco
     files_touched: [],
     behaviors_asserted: uniq((raw.behaviors_asserted ?? []).map((s) => s.trim()).filter(Boolean)).slice(0, 5),
     values_specified: values,
-    removes: uniq(
-      (raw.symbol_changes ?? [])
-        .filter((c) => BREAKING.has(c.change))
-        .map((c) => bare(c.symbol))
-        .filter((s) => vocab.symbols.has(s)),
-    ),
+    removes: uniq((raw.removes ?? []).map(bare).filter((s) => vocab.symbols.has(s))),
     depends_on: uniq((raw.depends_on ?? []).map(normaliseRef).filter((d): d is string => d !== undefined)),
   };
 }

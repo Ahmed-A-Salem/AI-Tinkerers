@@ -1,15 +1,15 @@
 {
   "key": "SCRUM-27",
   "components": [
-    "hono",
+    "types",
     "context",
-    "types"
+    "middleware"
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "ConnInfo is currently a non-standard Hono abstraction to get connection information from a web server.",
-    "Replace ConnInfo with WinterTC SocketInfo.",
-    "Support WinterTC SocketInfo so more things designed for WinterTC Sockets work out of the box (like middlewares that rely on SocketInfo)."
+    "Replace ConnInfo with WinterTC SocketInfo",
+    "Expose connection information using the SocketInfo dictionary defined by WinterTC",
+    "Middlewares that rely on SocketInfo should work out of the box"
   ],
   "values_specified": {},
   "removes": [
