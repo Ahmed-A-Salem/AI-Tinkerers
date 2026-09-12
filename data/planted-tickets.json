@@ -1,0 +1,44 @@
+[
+  {
+    "key": "PLANT-1",
+    "title": "Remove signed cookie helpers (`getSignedCookie` / `setSignedCookie`) from hono/cookie",
+    "body": "### What is the feature you are proposing?\n\nI'd like to rip out the signed cookie flow from `hono/cookie` this cycle.\n\n`getSignedCookie()`, `setSignedCookie()` and `generateSignedCookie()` in `src/helper/cookie/index.ts` pull WebCrypto HMAC signing into a helper that most apps only use for plain `getCookie()` / `setCookie()`. The get and set argument orders don't match, which keeps confusing people, and a signed cookie gets mistaken for an encrypted one far too often.\n\nProposal:\n- Delete `getSignedCookie`, `setSignedCookie` and `generateSignedCookie` from `src/helper/cookie/index.ts`.\n- Drop the signed-cookie section from the cookie helper docs.\n- Apps that need a tamper-proof value can put a signed JWT in a plain `httpOnly` cookie instead.\n\nThis makes `hono/cookie` synchronous end to end and takes `crypto.subtle` out of it entirely.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-11T09:12:44Z"
+  },
+  {
+    "key": "PLANT-2",
+    "title": "basicAuth: replace the `auth()` util with a constant-time `verifyBasicAuth()`",
+    "body": "### What is the feature you are proposing?\n\n`src/utils/basic-auth.ts` exposes `auth(req)`, which decodes the `Authorization` header and returns `{ username, password }` in clear text. `src/middleware/basic-auth/index.ts` then compares both fields itself with `timingSafeEqual`. Handing the raw credentials object around is more surface than we need, and it keeps getting copied into userland code.\n\nProposal:\n- Replace `auth()` with `verifyBasicAuth(req, users)`, which decodes the header and does the constant-time comparison in one place, returning only `true` / `false`.\n- `basicAuth()` calls `verifyBasicAuth()`; the `{ username, password }` object is no longer produced anywhere.\n- Remove `auth()` from `src/utils/basic-auth.ts`.\n\n`utils/` is internal, so there is no public API change for people calling `basicAuth()`.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-11T13:40:02Z"
+  },
+  {
+    "key": "PLANT-3",
+    "title": "perf: fold `getPath` and `getPathNoStrict` into one internal path parser",
+    "body": "### What is the feature you are proposing?\n\n`src/hono-base.ts` chooses between `getPath` and `getPathNoStrict` from `src/utils/url.ts` when the app is constructed. The two functions duplicate almost all of the path extraction and percent-decoding loop, and the router benchmarks show the extra indirection on every request.\n\nProposal:\n- Fold both into a single `parsePath(request, strict)` that lives inside `src/hono-base.ts` and is not exported.\n- Remove the `getPath` and `getPathNoStrict` exports from `src/utils/url.ts`.\n- The `getPath` constructor option keeps working, but the default implementation is no longer importable.\n\nNothing in userland should import from `utils/` directly, so this should be fine for a minor.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-10T17:05:31Z"
+  },
+  {
+    "key": "PLANT-4",
+    "title": "Slim down `utils/accept`: drop the generic `parseAccept()` parser",
+    "body": "### What is the feature you are proposing?\n\n`src/utils/accept.ts` is a couple of hundred lines of generic `Accept-*` parsing (q-values, parameters, wildcards) behind `parseAccept()`. It ends up in the bundle of every app that uses `hono/compress`, even though compress only ever picks between two encodings.\n\nProposal:\n- Remove `parseAccept()` from `src/utils/accept.ts`.\n- Give the `language` middleware its own small `Accept-Language` matcher in `src/middleware/language/language.ts`.\n- `compress()` goes back to a plain `includes('gzip')` / `includes('deflate')` check on `Accept-Encoding`, since gzip and deflate are the only encodings it supports anyway.\n\nThat should shave a few KB off Workers bundles that only use compress.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-11T20:18:09Z"
+  },
+  {
+    "key": "PLANT-5",
+    "title": "Deprecate `streamSSE()` in favour of `c.writeSSE()`",
+    "body": "### What is the feature you are proposing?\n\nNow that SSE can be written straight from the context with `c.writeSSE()`, the `streamSSE(c, async (stream) => { ... })` wrapper in `src/helper/streaming/sse.ts` is mostly boilerplate, especially for callback-based sources where you end up holding the stream open with a `while (true)` loop and `stream.sleep()`.\n\nProposal:\n- Mark `streamSSE()` as `@deprecated` and point to `c.writeSSE()`.\n- Move the SSE examples in the streaming docs and the `hono/streaming` JSDoc over to `c.writeSSE()`.\n- Remove `streamSSE()` in v5.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-12T02:47:55Z"
+  },
+  {
+    "key": "PLANT-6",
+    "title": "dev: `showRoutes()` should respect the logger's `colorize` option",
+    "body": "### What is the feature you are proposing?\n\nOn Cloudflare Workers we run `logger({ colorize: false })` so request logs don't fill up with ANSI escape codes. `showRoutes()` from `hono/dev` still makes its own decision through `getColorEnabled()` in `src/utils/color.ts`, so the route table printed at startup is now the only coloured output left in our Workers logs.\n\nProposal:\n- Default the `colorize` option of `showRoutes()` to whatever `logger()` was configured with.\n- Keep that decision in one place in `src/utils/color.ts`, so `getColorEnabled()` and `getColorEnabledAsync()` stop sniffing `NO_COLOR` independently.\n\nSmall change, but it would make Workers logs consistent.",
+    "labels": [{ "name": "enhancement" }],
+    "createdAt": "2026-09-12T04:31:20Z"
+  }
+]

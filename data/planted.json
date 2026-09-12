@@ -1,0 +1,47 @@
+[
+  {
+    "pair": ["GH-2398", "PLANT-1"],
+    "type": "dependency_break",
+    "expected_code_path": "src/helper/cookie/index.ts → getSignedCookie()",
+    "edge": { "from": "src/middleware/jwt/jwt.ts", "to": "src/helper/cookie/index.ts" },
+    "demo": true,
+    "also_acceptable": ["GH-2942", "GH-4281"],
+    "note": "Demo pair (brief §7, the refresh-token analogue). GH-2398 reads the JWT from a signed cookie via jwt({ cookie }), and src/middleware/jwt/jwt.ts calls getSignedCookie() to do it. PLANT-1 deletes getSignedCookie/setSignedCookie from the cookie helper. GH-2942 and GH-4281 change the same helpers, so a verdict against them is a real overlap, not a false positive."
+  },
+  {
+    "pair": ["GH-4192", "PLANT-2"],
+    "type": "dependency_break",
+    "expected_code_path": "src/utils/basic-auth.ts → auth()",
+    "edge": { "from": "src/middleware/basic-auth/index.ts", "to": "src/utils/basic-auth.ts" },
+    "note": "GH-4192 wants the username out of basicAuth and names the auth() util that parses it. src/middleware/basic-auth/index.ts calls auth(ctx.req.raw) and passes requestUser.username on. PLANT-2 replaces auth() with a boolean-only verifier, so no username is produced anywhere."
+  },
+  {
+    "pair": ["GH-3210", "PLANT-3"],
+    "type": "dependency_break",
+    "expected_code_path": "src/utils/url.ts → getPath()",
+    "edge": { "from": "src/hono-base.ts", "to": "src/utils/url.ts" },
+    "note": "GH-3210 asks for user-facing path utilities built on getPath. src/hono-base.ts imports getPath from src/utils/url.ts as the default path getter. PLANT-3 removes the getPath export and makes the default implementation private."
+  },
+  {
+    "pair": ["GH-3543", "PLANT-4"],
+    "type": "dependency_break",
+    "expected_code_path": "src/utils/accept.ts → parseAccept()",
+    "edge": { "from": "src/middleware/compress/index.ts", "to": "src/utils/accept.ts" },
+    "also_acceptable": ["GH-3781"],
+    "note": "GH-3543 (brotli) needs real Accept-Encoding negotiation with q-values across more than two encodings; src/middleware/compress/index.ts does that with parseAccept() today. PLANT-4 removes parseAccept() and drops compress to substring checks. GH-3781 (zstd) hits the same break."
+  },
+  {
+    "pair": ["GH-3527", "PLANT-5"],
+    "type": "ordering",
+    "expected_code_path": "src/helper/streaming/sse.ts → streamSSE()",
+    "edge": { "from": "src/helper/streaming/sse.ts", "to": "src/context.ts" },
+    "note": "PLANT-5 deprecates streamSSE() in favour of c.writeSSE(), which exists only once GH-3527 (writeSSE at the Context level) ships. Context has no writeSSE today; only SSEStreamingApi.writeSSE() inside streamSSE. Neither ticket mentions the other."
+  },
+  {
+    "pair": ["GH-3751", "PLANT-6"],
+    "type": "ordering",
+    "expected_code_path": "src/utils/color.ts → getColorEnabledAsync()",
+    "edge": { "from": "src/middleware/logger/index.ts", "to": "src/utils/color.ts" },
+    "note": "PLANT-6 has showRoutes() inherit logger({ colorize: false }). logger() takes only a print function today and decides colour via getColorEnabledAsync(); a switch to turn colour off is what GH-3751 asks for. PLANT-6 is only correct after GH-3751 ships and does not say so."
+  }
+]
