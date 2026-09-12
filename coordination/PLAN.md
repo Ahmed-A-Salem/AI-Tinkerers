@@ -25,6 +25,8 @@ Only the main orchestrator edits this file. Everyone else reads it and reports C
 1. `CLAUDE.md` is loaded automatically. Read `docs/BRIEF.md` §5 (architecture) once.
 2. Read your phase card below. Nothing else in this file is required.
 3. `npm install && npm run typecheck` must pass before you start.
+   If your phase needs the target repo (`target/hono`, gitignored, so absent on a fresh clone):
+   `git clone --depth 1 https://github.com/honojs/hono target/hono && npm run index`
 4. Send `CLAIM <phase>: <files>` to your orchestrator. Do the work. Run the acceptance check.
    Send `DONE <phase>: <acceptance output>` or `BLOCKED <phase>: <what you need>`.
 
@@ -72,7 +74,7 @@ session knows what exists and does not redo it.
 | A1 | Root `package.json` (ESM; ts-morph, openai, @trigger.dev/sdk; tsx, typescript), `tsconfig.json` (strict), `.env.example` | `npm install && npm run typecheck` exits 0 |
 | A2 | `src/types.ts`: TicketRecord (§5.2), ConflictVerdict (§5.3), index shapes (§5.1), `AgentAction` union = comment / link / label only | typecheck |
 | A3 | `src/jira/client.ts`: `getJiraClient()` → `JiraClient` with whoAmI / getIssue / searchIssues / addComment / addLabel / linkIssues / createDraftIssue. REST backend (API token) and MCP backend, chosen by env. No updateDescription by design. | typecheck |
-| A3 | Target repo `honojs/hono` shallow-cloned to `target/hono` (gitignored). 200 open issues in `data/hono-issues.json`. `scripts/import-issues.ts` dry-run OK. | `npm run import:issues` (dry run) prints 200 valid payloads |
+| A3 | Target repo `honojs/hono` shallow-cloned to `target/hono` (gitignored; fresh clones re-create it with `git clone --depth 1 https://github.com/honojs/hono target/hono`). 200 open issues in `data/hono-issues.json`. `scripts/import-issues.ts` dry-run OK. | `npm run import:issues` (dry run) prints 200 valid payloads |
 | A3 | Code index: `npm run index` → `data/symbols.json` (1122 symbols, 625 exported), `data/imports.json` (493 internal edges), `data/symbol-collisions.json` (66 names in >1 file) | files exist, counts as stated |
 | **A4** | **Jira live.** Needs from Ahmed: `JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN`, `JIRA_PROJECT_KEY` in `.env` (or the MCP OAuth). | `npx tsx scripts/jira-smoke.ts --comment <KEY>` reads 5 issues and a test comment appears in Jira. Then `npm run import:issues -- --go` creates 200 issues and writes `data/gh-to-jira.json`. **BLOCKED on Ahmed.** |
 
