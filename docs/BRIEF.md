@@ -187,7 +187,7 @@ Narration: ElevenLabs. Write the script *before* building — it defines "done."
 
 ## 9. Proving it works
 
-Six conflicts planted, ground truth recorded in `planted.json`. Run the full backlog once. Report precision/recall in one sentence in the writeup: *"Caught 5 of 6 planted conflicts with 1 false positive across 200 tickets."* This sentence is worth more than a paragraph of architecture.
+Six conflicts planted, ground truth recorded in `planted.json`. Run the full backlog once. Report precision/recall in one sentence in the writeup: (illustrative example from the brief; the measured result is in `docs/WRITEUP.md`) *"Caught 5 of 6 planted conflicts with 1 false positive across 200 tickets."* This sentence is worth more than a paragraph of architecture.
 
 ## 10. Open decisions
 
