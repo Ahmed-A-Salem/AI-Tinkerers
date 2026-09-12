@@ -11,6 +11,8 @@
  */
 import type { AgentAction, ConflictVerdict, ConflictType } from '../types.js';
 import type { JiraClient } from '../jira/index.js';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolveKey } from '../extract/issues.js';
 
 /** Tag on every proposal comment (brief §5.5). */
 export const PROPOSED_TAG = 'agent-proposed';
@@ -73,15 +75,30 @@ function symbolOf(codePath: string): string {
   return tail.trim().replace(/\(\)$/, '') || 'the shared symbol';
 }
 
+/** Does this ticket's record list the symbol under `removes`? Missing record → false. */
+function removesSymbol(ticket: string, sym: string): boolean {
+  try {
+    const file = `data/records/${resolveKey(ticket)}.json`;
+    if (!existsSync(file)) return false;
+    const rec = JSON.parse(readFileSync(file, 'utf8')) as { removes?: string[] };
+    return (rec.removes ?? []).some((r) => r.replace(/\(\)$/, '') === sym);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * A human-readable ordering suggestion inside the comment. Advice only: the agent's actions
- * stay comment / label / link, and the humans decide.
+ * stay comment / label / link, and the humans decide. For a dependency break, the ticket whose
+ * record removes the symbol is the "remover"; the other one depends on it.
  */
 export function recommendedOrder(v: ConflictVerdict): string {
   const [a, b] = v.pair;
   if (v.type === 'ordering') return `${a} first, then ${b} (${b} assumes ${a} has shipped).`;
   const sym = symbolOf(v.evidence.code_path);
-  return `land ${a} before ${b}, or keep ${sym} available until ${a} has migrated off it; if ${b} must go first, add the replacement to ${a} before merging.`;
+  const remover = removesSymbol(a, sym) && !removesSymbol(b, sym) ? a : b;
+  const dependent = remover === a ? b : a;
+  return `land ${dependent} before ${remover}, or keep ${sym} available until ${dependent} has migrated off it; if ${remover} must go first, add the replacement to ${dependent} before merging.`;
 }
 
 export function noConflictComment(candidates: number | undefined): string {
