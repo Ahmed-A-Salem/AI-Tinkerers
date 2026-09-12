@@ -48,7 +48,7 @@ Shared, append-only: `package.json` (add deps, don't remove), `.env.example`.
 | Phase | Name                              | Lane  | Status        | Gate  | Depends on |
 |-------|-----------------------------------|-------|---------------|-------|------------|
 | A     | Foundation                        | Ahmed | **done** except A4 (needs Jira credential) | 12:15 | — |
-| B     | Ticket extractor → records        | Ahmed | todo          | 12:45 | A |
+| B     | Ticket extractor → records        | Ahmed | **blocked** (a3; code + typecheck done 12:55, needs OPENROUTER_API_KEY in `.env` to run acceptance) | 12:45 | A |
 | C     | Ticket→code mapping (decision)    | Ather | todo          | 13:00 | A |
 | D     | Planted conflicts + ground truth  | Ather | todo          | 13:00 | A |
 | E     | Retrieval + comparison → verdicts | Ather | todo          | 13:30 | B, C, D |
@@ -90,7 +90,7 @@ Known sharp edges for later phases: see "Notes for the intelligence layer" at th
 - **Output:** `data/records/<KEY>.json`, one per ticket, exactly `TicketRecord`. `files_touched` may be empty here; Phase C fills it.
 - **CLI:** `npm run extract` (all tickets, skips cached) and `npm run extract -- <KEY>` (force one).
 - **Files:** `src/extract/`, `scripts/extract.ts`.
-- **Model:** OpenAI (`OPENAI_API_KEY`), fallback OpenRouter (`OPENROUTER_API_KEY`). Use structured output / JSON mode.
+- **Model:** OpenRouter (`OPENROUTER_API_KEY`, OpenAI-compatible endpoint `https://openrouter.ai/api/v1`). `OPENAI_API_KEY` is optional; if set it is used first. Use structured output / JSON mode.
 - **Acceptance:**
   1. `npm run extract` over 200 tickets completes; `ls data/records | wc -l` = 200.
   2. Open 5 records by hand: `components` non-empty and plausible, `removes` / `values_specified` populated where the ticket text supports it, nothing invented.
@@ -245,8 +245,9 @@ the LLM using the code graph, emit §5.3 `ConflictVerdict[]`.
 
 | Owner | Phase | Files / areas | Since |
 |-------|-------|---------------|-------|
+| Ahmed / session ai-tinkerers-a3 | B | `src/extract/` (issues.ts, llm.ts, cache.ts, index.ts), `scripts/extract.ts`, package.json (append `extract` script + dotenv) | 12:49 |
 
-(No active claims. All pre-reset sessions are retired.)
+Main orchestrator since 12:48: session ai-tinkerers-f0. Ather's side: onboarding sent 12:35, no reply yet.
 
 ## Decisions
 
@@ -259,6 +260,15 @@ the LLM using the code graph, emit §5.3 `ConflictVerdict[]`.
   Linear only if no Jira credential at all.
 - `JiraClient` has no updateDescription(); `createDraftIssue()` hardcodes `agent-draft`.
 - Verification = functional acceptance checks per phase, no unit tests.
+- 2026-09-12 12:58 (Ahmed): **LLM provider = OpenRouter.** Every phase that calls a model (B, C, E, I)
+  reads `OPENROUTER_API_KEY` and talks to `https://openrouter.ai/api/v1` through the `openai` SDK
+  with `baseURL` set. `OPENAI_API_KEY` is optional and only used if present. Pick a cheap
+  JSON-capable model (e.g. `openai/gpt-4o-mini` via OpenRouter) and put the id in one place
+  (`LLM_MODEL` env, default in code) so it can be swapped.
+- 2026-09-12 12:50 (Phase B): **record key convention** for `data/records/<KEY>.json`: `issue.key` if
+  present (PLANT-*), else the `data/gh-to-jira.json` mapping if it exists, else `GH-<number>`.
+  Exported as `issueKey()` / `loadIssues()` from `src/extract/issues.ts`; Phases C and E reuse it
+  rather than re-deriving keys.
 
 ## Notes for the intelligence layer (Phases C, D, E)
 
