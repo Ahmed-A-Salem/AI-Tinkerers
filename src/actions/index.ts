@@ -11,6 +11,8 @@
  */
 import type { AgentAction, ConflictVerdict, ConflictType } from '../types.js';
 import type { JiraClient } from '../jira/index.js';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolveKey } from '../extract/issues.js';
 
 /** Tag on every proposal comment (brief §5.5). */
 export const PROPOSED_TAG = 'agent-proposed';
@@ -62,8 +64,49 @@ export function proposalComment(v: ConflictVerdict, key: string): string {
     `${v.pair[0]} says: ${quote(v.evidence.ticket_a_line)}`,
     `${v.pair[1]} says: ${quote(v.evidence.ticket_b_line)}`,
     `Code path: ${v.evidence.code_path}`,
+    `Recommended order: ${recommendedOrder(v)}`,
     `Proposed action: link ${arrow} (${link.linkType}). To approve, add the label ${APPROVED_LABEL} to this ticket; the agent will then link the pair. -- Backlog Conflict Agent`,
   ].join('\n\n');
+}
+
+/** Symbol name from a code path like "src/utils/url.ts -> getPath()" (either arrow style). */
+function symbolOf(codePath: string): string {
+  const tail = codePath.split(/->|→/).pop() ?? codePath;
+  return tail.trim().replace(/\(\)$/, '') || 'the shared symbol';
+}
+
+/** Does this ticket's record list the symbol under `removes`? Missing record → false. */
+function removesSymbol(ticket: string, sym: string): boolean {
+  try {
+    const file = `data/records/${resolveKey(ticket)}.json`;
+    if (!existsSync(file)) return false;
+    const rec = JSON.parse(readFileSync(file, 'utf8')) as { removes?: string[] };
+    return (rec.removes ?? []).some((r) => r.replace(/\(\)$/, '') === sym);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * A human-readable ordering suggestion inside the comment. Advice only: the agent's actions
+ * stay comment / label / link, and the humans decide. For a dependency break, the ticket whose
+ * record removes the symbol is the "remover"; the other one depends on it.
+ */
+export function recommendedOrder(v: ConflictVerdict): string {
+  const [a, b] = v.pair;
+  if (v.type === 'ordering') return `${a} first, then ${b} (${b} assumes ${a} has shipped).`;
+  const sym = symbolOf(v.evidence.code_path);
+  const ra = removesSymbol(a, sym);
+  const rb = removesSymbol(b, sym);
+  let remover: string;
+  if (ra !== rb) remover = ra ? a : b;
+  else {
+    // Records agree or are silent: fall back to the quoted lines (which one talks about removing).
+    const verb = /(remov|delet|drop|rip out|fold|un-?export|get rid)/i;
+    remover = verb.test(v.evidence.ticket_b_line) && !verb.test(v.evidence.ticket_a_line) ? b : a;
+  }
+  const dependent = remover === a ? b : a;
+  return `land ${dependent} before ${remover}, or keep ${sym} available until ${dependent} has migrated off it; if ${remover} must go first, add the replacement to ${dependent} before merging.`;
 }
 
 export function noConflictComment(candidates: number | undefined): string {
