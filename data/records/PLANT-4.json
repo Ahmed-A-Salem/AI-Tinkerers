@@ -6,15 +6,14 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "Remove parseAccept() from src/utils/accept.ts.",
-    "language middleware uses a small Accept-Language matcher in src/middleware/language/language.ts.",
-    "compress() checks Accept-Encoding using plain includes('gzip') / includes('deflate')."
+    "language middleware uses a small Accept-Language matcher in src/middleware/language/language.ts",
+    "compress() checks Accept-Encoding using includes('gzip') and includes('deflate')"
   ],
   "values_specified": {
-    "encoding_gzip": "gzip",
-    "encoding_deflate": "deflate",
+    "header_accept_language": "Accept-Language",
     "header_accept_encoding": "Accept-Encoding",
-    "header_accept_language": "Accept-Language"
+    "encoding_gzip": "gzip",
+    "encoding_deflate": "deflate"
   },
   "removes": [
     "parseAccept"

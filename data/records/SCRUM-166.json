@@ -6,8 +6,9 @@
   ],
   "files_touched": [],
   "behaviors_asserted": [
-    "hc should accept either a URL or a Hono instance",
-    "When passed a Hono instance, hc should function like testClient"
+    "hc accepts either a URL or a Hono instance",
+    "When given a Hono instance, hc behaves like testClient",
+    "testClient should be renamed because it is useful beyond testing"
   ],
   "values_specified": {},
   "removes": [

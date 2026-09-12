@@ -1,24 +1,18 @@
 {
   "key": "SCRUM-144",
   "components": [
-    "middleware",
-    "adapter"
+    "adapter",
+    "middleware"
   ],
   "files_touched": [],
   "behaviors_asserted": [
     "Create serveStatic in hono/nodejs.",
-    "The new serveStatic should use the base Serve Static Middleware in this repo.",
+    "serveStatic in this repo should use the base Serve Static Middleware implementation in the main repo.",
+    "Stop developing the Serve Static in honojs/node-server and close https://github.com/honojs/node-server/pull/202.",
     "Mark the Serve Static in honojs/node-server as deprecated.",
-    "Stop developing the Serve Static in honojs/node-server."
+    "Keep the Node.js Server in honojs/node-server rather than moving the entire server into the main repo."
   ],
-  "values_specified": {
-    "route_pattern": "/static/*",
-    "serve_static_root": "./"
-  },
-  "removes": [
-    "serveStatic"
-  ],
-  "depends_on": [
-    "https://github.com/honojs/node-server/pull/202"
-  ]
+  "values_specified": {},
+  "removes": [],
+  "depends_on": []
 }
