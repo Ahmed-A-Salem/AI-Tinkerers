@@ -1,0 +1,15 @@
+{
+  "candidates": 3,
+  "verdicts": [
+    {
+      "pair": ["SCRUM-2", "SCRUM-3"],
+      "type": "dependency_break",
+      "confidence": 0.92,
+      "evidence": {
+        "ticket_a_line": "Cache the parsed cookie map on the context so getCookie() does not re-parse the header on every call.",
+        "ticket_b_line": "Remove the cookie helper parse() from src/utils/cookie.ts; callers should read the header directly.",
+        "code_path": "src/utils/cookie.ts -> parse()"
+      }
+    }
+  ]
+}
